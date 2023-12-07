@@ -1,0 +1,18 @@
+current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/okazakimiyuna/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20231206-19794-sv3wjb sitelibdir\=./.gem.20231206-19794-sv3wjb clean
+
+current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20231206-19794-sv3wjb sitelibdir\=./.gem.20231206-19794-sv3wjb
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20231206-19794-sv3wjb sitelibdir\=./.gem.20231206-19794-sv3wjb install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20231206-19794-sv3wjb/skiptrace/internal
+
+current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20231206-19794-sv3wjb sitelibdir\=./.gem.20231206-19794-sv3wjb clean
