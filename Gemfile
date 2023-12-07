@@ -12,6 +12,13 @@ gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
+# Seeds
+gem 'seed-fu'
+
+# Model
+gem 'active_hash'
+gem 'enum_help'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -27,6 +34,22 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# gem 'turbolinks'
+gem 'meta-tags'
+gem 'slim-rails'
+
+# Assets
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
+gem 'sass-rails'
+gem 'sassc'
+gem 'uglifier'
+
+# Configuration
+gem 'config'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -41,6 +64,24 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+
+# Pagination
+gem 'bootstrap4-kaminari-views'
+gem 'kaminari'
+gem 'kaminari-i18n'
+
+# Form
+gem 'cocoon'
+gem 'simple_form'
+
+# Debugger
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'byebug'
+gem 'pry'
+gem 'pry-byebug'
+gem 'pry-doc'
+gem 'pry-rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
