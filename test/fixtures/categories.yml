@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  save: MyString
+  error: MyString
+
+two:
+  save: MyString
+  error: MyString
