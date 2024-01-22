@@ -3,10 +3,14 @@ class PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
   end
 
-  def new 
+  def new
+    @post = Post.new
+  end
+  
+  def create 
     @post = Post.new(post_params)
     if @post.save
-      redirect_to posts_path, sucess: 'メモが作成されました'
+      redirect_to posts_path, success: 'メモが作成されました'
     else
       flash.now['danger'] = 'メモの作成に失敗しました'
       render :new
@@ -16,7 +20,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :title, :file_name, :code_content, :other_content)
+    params.require(:post).permit(:save_type_name, :title, :file_name, :code_content, :other_content)
   end
-
 end

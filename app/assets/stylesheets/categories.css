@@ -1,0 +1,35 @@
+.container{
+  display: flex;
+  justify-content: center;
+  gap: 30px 50px;
+  margin-top: 250px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem 1rem 4rem;
+  color: #fff;
+  border-radius: 100vh 0 0 100vh;
+  background: #fa4141;
+}
+
+h2:before {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
+
+.body{
+  background-image: url('memo.png');
+  background-size: auto;
+}

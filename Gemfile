@@ -50,6 +50,9 @@ gem 'uglifier'
 gem 'config'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
+gem 'rails-i18n'
+gem 'enum_help'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

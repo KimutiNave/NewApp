@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  error_type_name: MyString
+  status_error_name: 1
+  title: MyString
+  code_content: MyText
+  other_content: MyText
+
+two:
+  error_type_name: MyString
+  status_error_name: 1
+  title: MyString
+  code_content: MyText
+  other_content: MyText

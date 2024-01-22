@@ -1,0 +1,41 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        file_name: "ファイル名"
+      post2:
+        file_name: "ファイル名"
+    enums:
+      post:
+        file_name:
+          app: "app/"
+          app1: "app/assets/"
+          app2: "app/controllers/_controller.rb"
+          app3: "app/models/.rb"
+          app4: "app/view/.html"
+          app5: "app/helper/"
+          bin: "bin/"
+          config: "config"
+          config1: "config/routes.rb"
+          config2: "config/locales/ja.yml"
+          db: "db/"
+          db1: "db/migrate/.rb"
+          lib: "lib/"
+          log: "log/"
+          public: "public/"
+          spec: "spec/"
+          storage: "storage/"
+          tmp: "tmp/"
+          vendor: "vendor/"
+          browserslistrc: ".browserslistrc"
+          gitattributes: ".gitattributes"
+          gitignore: ".gitignore"
+          gemfile: "Gemfile"
+          rakefile: "Rakefile"
+          read_me: "Read.me"
+
+
+
+
+
+

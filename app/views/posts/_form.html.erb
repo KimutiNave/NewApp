@@ -1,0 +1,17 @@
+<%= form_with url: posts_path, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :save_type_name, '保存用' %>
+    <%= f.text_field :save_type_name, value: '保存用', readonly: true %>
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title, required: true %>
+    <%= f.label :file_name, 'ファイル名' %>
+    <%= form.collection_select :file_type_id, FileType.all, :id, :name, include_blank: true %>
+    <%= f.label :code_content, 'コード内容' %>
+    <%= f.text_area :code_content %>
+    <%= f.label :other_content, 'その他' %>
+    <%= f.text_area :other_content %>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'カテゴリーを作成' %>
+  </div>
+<% end %>

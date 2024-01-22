@@ -10,22 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_18_140014) do
-  create_table "post2s", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2024_01_08_160042) do
+  create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
     t.string "title"
-    t.string "file_name"
     t.text "code_content"
     t.text "other_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "name"
-    t.string "title"
+  create_table "file_types", force: :cascade do |t|
     t.string "file_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "save_type_name"
+    t.string "title"
     t.text "code_content"
     t.text "other_content"
     t.datetime "created_at", null: false
