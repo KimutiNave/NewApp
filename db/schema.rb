@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_142331) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_22_143312) do
   create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_142331) do
     t.text "other_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "other_file_name"
+    t.string "other_error_name"
   end
 
   create_table "file_types", force: :cascade do |t|

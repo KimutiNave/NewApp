@@ -1,11 +1,12 @@
 <%= form_with url: posts_path, local: true do |f| %>
   <div class="form-group">
+    <%= I18n.l Time.zone.now, format: :full_date  %>
+  </div>
+  <br>
+  <div class="form-group">
     <%= f.label :save_type_name, '保存用' %><br>
     <%= f.text_field :save_type_name, value: '保存用', readonly: true %>
   </div>
-  <br>
-  <%= Time.current.strftime("%Y年%m月%d日 %H:%M") %>
-  <%= I18n.t("date.abbr_day_names")[Time.current.wday] %>
   <br>
   <div class="form-group">
     <%= f.label :title, 'タイトル' %><br>

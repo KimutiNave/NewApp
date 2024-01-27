@@ -16,6 +16,6 @@ class AnotherPostsController < ApplicationController
   private
 
   def another_post_params
-    params.require(:another_post).permit(:error_type_name, :status_error_name, :title, :code_content, :other_content)
+    params.require(:another_post).permit(:error_type_name, :status_error_name, :other_error_name, :title, :file_name, :other_file_name, :code_content, :other_content)
   end
 end

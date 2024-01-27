@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 30px 50px;
-  margin-top: 250px;
+  margin-top: 150px;
 }
 
 h1 {
@@ -29,7 +29,40 @@ h2:before {
   background: #fff;
 }
 
-.body{
-  background-image: url('memo.png');
-  background-size: auto;
+.line-block{
+  display: inline-block;
+  margin-left: 200px;
+}
+
+.boxmi11 {
+  position: relative;
+  margin: 3em 0 1em 0;
+  background: #fff6e6;
+  box-shadow: 0 2px 3px rgba(0,0,0,.22);
+  padding: 22px 8px 22px 8px;
+  background-color: #fff6e6;
+  font-weight: bold;
+  width: 300px;
+  height: 80px;
+}
+.boxmi11-title {
+  background: #fff6e6;
+  font-size: 1.5em;
+  text-align: center;
+  color: #00010a;
+  margin-top: 30px;
+  font-weight:bold;
+}
+.boxmi11:after {
+  position: absolute;
+  content: "";
+  top: 25px;
+  width: 30%;
+  height: 35px;
+  opacity: 0.3;
+  margin: -35px auto 10px 35%;
+  background: #74abcd;
+  transform: rotate(-2deg);
+  left: 10px;
+  right: 10px;
 }

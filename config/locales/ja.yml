@@ -1,4 +1,7 @@
 ja:
+  time:
+      formats:
+        full_date: "%Y年%m月%d日 (%a)"
   activerecord:
     attributes:
       post:
@@ -33,9 +36,3 @@ ja:
           gemfile: "Gemfile"
           rakefile: "Rakefile"
           read_me: "Read.me"
-
-
-
-
-
-
