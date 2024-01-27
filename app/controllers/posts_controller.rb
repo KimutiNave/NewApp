@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def create 
     @post = Post.new(post_params)
     if @post.save
-      redirect_to posts_path, success: 'メモが作成されました'
+      redirect_to articles_path, success: 'メモが作成されました'
     else
       flash.now['danger'] = 'メモの作成に失敗しました'
       render :new

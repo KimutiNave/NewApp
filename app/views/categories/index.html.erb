@@ -1,14 +1,17 @@
+<div class="topleft">
+  <h3><%= link_to "戻る", root_path, class: "btn btn-outline-dark" %><h3>
+</div>
 <div class="container">
   <h1> ٩( ᐛ )وどちらかを選択して下さい</h1>
 </div>
   <br>
   <div class="line-block">
     <div class="boxmi11">
-      <div class="boxmi11-title">保存用</div>
+      <div class="boxmi11-title"><%= link_to "保存用", new_post_path %></div>
     </div>
   </div>
   <div class="line-block">
     <div class="boxmi11">
-      <div class="boxmi11-title">エラー用</div>
+      <div class="boxmi11-title"><%= link_to "エラー用", new_another_post_path %></div>
     </div>
   </div>

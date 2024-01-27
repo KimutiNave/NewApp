@@ -72,6 +72,7 @@ gem "bootsnap", require: false
 gem 'bootstrap4-kaminari-views'
 gem 'kaminari'
 gem 'kaminari-i18n'
+gem 'bootstrap'
 
 # Form
 gem 'cocoon'

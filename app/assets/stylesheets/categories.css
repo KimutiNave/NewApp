@@ -5,8 +5,18 @@
   margin-top: 150px;
 }
 
+.topleft{
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
 h1 {
   text-align: center;
+}
+
+h3{
+  text-size-adjust: none;
 }
 
 h2 {
