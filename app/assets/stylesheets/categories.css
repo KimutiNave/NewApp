@@ -7,16 +7,12 @@
 
 .topleft{
   position: absolute;
-  top: 10px;
+  top: 30px;
   left: 100px;
 }
 
 h1 {
   text-align: center;
-}
-
-h3{
-  text-size-adjust: none;
 }
 
 h2 {
@@ -53,7 +49,7 @@ h2:before {
   background-color: #fff6e6;
   font-weight: bold;
   width: 300px;
-  height: 80px;
+  height: 130px;
 }
 .boxmi11-title {
   background: #fff6e6;

@@ -1,7 +1,7 @@
 <%= form_with url: another_posts_path, local: true do |f| %>
   <div class="form-group">
-    <%= f.label :error_type_name, 'エラー用' %><br>
-    <%= f.text_field :error_type_name, value: 'エラー用', readonly: true %>
+    <%= f.label :error_type_name, 'カテゴリー' %><br>
+    <%= f.text_field :error_type_name, value: 'エラー用', style: "text-align: center;", readonly: true %>
   </div>
   <br>
   <div class="form-group">

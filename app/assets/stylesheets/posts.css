@@ -8,3 +8,9 @@
   display: none;
   justify-content: center;
 }
+
+.topleft{
+  position: absolute;
+  top: 30px;
+  left: 100px;
+}
