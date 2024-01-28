@@ -20,6 +20,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:save_type_name, :title, :file_name, :other_file_name, :code_content, :other_content)
+    params.require(:post).permit(:save_type_name, :title, :file_name, :other_file_name, :code_content, :other_content).page(params[:page])
   end
 end
