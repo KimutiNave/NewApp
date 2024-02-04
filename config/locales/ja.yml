@@ -4,6 +4,11 @@ ja:
         full_date: "%Y年%m月%d日 (%a)"
   activerecord:
     attributes:
+      user:
+        name: '名前'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
       post:
         file_name: "ファイル名"
       post2:
@@ -36,3 +41,4 @@ ja:
           gemfile: "Gemfile"
           rakefile: "Rakefile"
           read_me: "Read.me"
+    
