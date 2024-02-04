@@ -2,6 +2,8 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
-// 追加
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
 import 'custom/other_option';
 import 'custom/another_option';
