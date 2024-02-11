@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <%# deviseのフラッシュメッセージを表示%>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+
+    <div class="container">
+      <% if current_user %>
+       <%= render "shared/header"%>
+      <% end %>
+    </div>
   </body>
 </html>

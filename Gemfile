@@ -54,6 +54,8 @@ gem 'rails-i18n'
 gem 'enum_help'
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

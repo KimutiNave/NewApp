@@ -1,4 +1,6 @@
 class AnotherPost < ApplicationRecord
+  belongs_to :user
+
   validates :other_error_name, length: { maximum: 5000 }
   validates :title, length: { maximum: 500 }
   validates :other_file_name, length: { maximum: 500 }

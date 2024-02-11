@@ -1,18 +1,16 @@
 class PostsController < ApplicationController
-  def index 
-    @posts = Post.all.order(created_at: :desc)
-  end
+  before_action :authenticate_user!, only: [:new, :create]
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
   
   def create 
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to articles_path, success: 'メモが作成されました'
     else
-      flash.now['danger'] = 'メモの作成に失敗しました'
+      flash.now[:alert] = 'メモの作成に失敗しました'
       render :new
     end
   end
@@ -20,6 +18,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:save_type_name, :title, :file_name, :other_file_name, :code_content, :other_content).page(params[:page])
+    params.require(:post).permit(:save_type_name, :title, :file_name, :other_file_name, :code_content, :other_content)
   end
 end

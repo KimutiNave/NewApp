@@ -1,10 +1,12 @@
 class AnotherPostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+  
   def new
     @another_post = AnotherPost.new
   end
 
   def create
-    @another_post = AnotherPost.new(another_post_params)
+    @another_post = current_user.anotherposts.build(another_post_params)
     if @another_post.save
       redirect_to articles_path, success: 'メモが作成されました'
     else
@@ -16,6 +18,6 @@ class AnotherPostsController < ApplicationController
   private
 
   def another_post_params
-    params.require(:another_post).permit(:error_type_name, :status_error_name, :other_error_name, :title, :file_name, :other_file_name, :code_content, :other_content).page(params[:page])
+    params.require(:another_post).permit(:error_type_name, :status_error_name, :other_error_name, :title, :file_name, :other_file_name, :code_content, :other_content)
   end
 end
