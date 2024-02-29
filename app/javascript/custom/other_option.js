@@ -1,11 +1,18 @@
-document.getElementById('file_name').addEventListener('change', function() {
-  var value = this.value;
-  var post_other_content = document.getElementById('post_other_content');
-
-  if(value === '26') {
-    post_other_content.classList.remove('hidden');
-  } else {
-    post_other_content.classList.add('hidden');
+document.addEventListener('turbo:load', function() {
+  var fileTypeElement = document.getElementById('another_post_file_type_id');
+  if (fileTypeElement) {
+    fileTypeElement.addEventListener('change', function() {
+      var value = this.value;
+      var anotherPostOtherContent = document.getElementById('another_post_other_content');
+      
+      if (anotherPostOtherContent) {
+        if(value === '26') {
+          anotherPostOtherContent.classList.remove('hidden');
+        } else {
+          anotherPostOtherContent.classList.add('hidden');
+        }
+      }
+    });
   }
 });
 

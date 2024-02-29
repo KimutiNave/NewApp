@@ -12,9 +12,14 @@
  *
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'font-awesome';
 @import "another_posts";
 @import "categories";
 @import "posts";
 @import "top";
 @import "articles";
+@import "users";
+@import "components/flash";
+@import "config/animations";

@@ -1,11 +1,10 @@
-<%= render 'shared/header'%>
 <div class="topleft">
   <%= link_to "戻る", root_path, class: "btn btn-primary btn-lg", style: "font-size: 20px;" %>
 </div>
 <div class="container">
   <h1> ٩( ᐛ )وどちらかを選択して下さい</h1>
 </div>
-  <br>
+<div class="container">
   <div class="line-block">
     <div class="boxmi11">
       <div class="boxmi11-title"><%= link_to "保存用", new_post_path %></div>
@@ -16,3 +15,4 @@
       <div class="boxmi11-title"><%= link_to "エラー用", new_another_post_path %></div>
     </div>
   </div>
+</div>

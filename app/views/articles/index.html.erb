@@ -1,35 +1,104 @@
-<h1>記事一覧</h1>
-
-<h2>保存用の記事</h2>
-<% if @posts.present? %>
-  <% @posts.each do |post| %>
-    <div>
-      <p><%= post.save_type_name%></p>
-      <p><%= post.title %></p>
-      <p><%= post.file_name %></p>
-      <p><%= post.other_file_name %></p>
-      <p><%= post.code_content %></p>
-      <p><%= post.other_content %></p>
-      <p><%= post.created_at.strftime("%B %d, %Y %H:%M") %></p>
+<nav class="navbar navbar-expand-md bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">メニュー</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'トップページ', root_path, class: "nav-link active" %> <span class="sr-only">(current)</span>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            メモの作成
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to '保存用メモ作成', new_post_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'エラー用メモ作成', new_another_post_path , class: "dropdown-item" %></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'サインアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
-  <% end %>
-<% end %>
+  </div>
+</nav>
 
-<h2>エラー用の記事</h2>
-<% if @another_posts.present? %>
-  <% @another_posts.each do |another_post| %>
-    <div>
-     <h3><%= another_post.title %></h3>
-      <p><%= another_post.error_type_name %></p>
-      <p><%= another_post.status_error_name %></p>
-      <p><%= another_post.other_error_name %></p>
-      <p><%= another_post.file_name %></p>
-      <p><%= another_post.other_file_name %></p>
-      <p><%= another_post.code_content %></p>
-      <p><%= another_post.other_content %></p>
-      <p><%= another_post.created_at.strftime("%B %d, %Y %H:%M") %></p>
-    </div>
-  <% end %>
-<% end %>
-<br>
-<%= paginate @paginated_articles %>
+<div class="font-arrange">記事一覧</div>
+
+<div class="posts-container">
+  <div class="col-lg-5 offset-lg-1">
+    <h2>保存用の記事</h2>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
+        <p><%= post.save_type_name %></p>
+        <p><%= post.title %></p>
+        <p>
+        <% if post.file_type.present? %>
+          <%= post.file_type.file_name %>
+        <% else %>
+          <%= "その他" %>
+        <% end %>
+        </p>
+        <p><%= post.other_file_name %></p>
+        <p><%= post.code_content %></p>
+        <p><%= post.other_content %></p>
+        <p><%= post.created_at.strftime("%B %d, %Y %H:%M") %></p>
+        <ul class='crud-menu-btn list-inline float-right'>
+          <li class="list-inline-item">
+            <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
+              <i class="fa-solid fa-pen-nib"></i>
+            <% end %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col">
+    <h2>エラー用の記事</h2>
+    <% if @another_posts.present? %>
+      <% @another_posts.each do |another_post| %>
+        <p><%= another_post.title %></p>
+        <p><%= another_post.error_type_name %></p>
+        <p><%= another_post.status_error_name %></p>
+        <p><%= another_post.other_error_name %></p>
+        <p>
+        <% if another_post.file_type.present? %>
+          <%= another_post.file_type.file_name %>
+        <% else %>
+          <%= "その他" %>
+        <% end %>
+        </p>
+        <p><%= another_post.other_file_name %></p>
+        <p><%= another_post.code_content %></p>
+        <p><%= another_post.other_content %></p>
+        <p><%= another_post.created_at.strftime("%B %d, %Y %H:%M") %></p>
+        <ul class='crud-menu-btn list-inline float-right'>
+          <li class="list-inline-item">
+            <%= link_to edit_another_post_path(another_post), id: "button-edit-#{another_post.id}" do %>
+              <i class="fa-solid fa-pen-nib"></i>
+            <% end %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to another_post_path(another_post), id: "button-delete-#{another_post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<br />
+<div class="center"><%= paginate @paginated_articles, theme: 'bootstrap-5'%>

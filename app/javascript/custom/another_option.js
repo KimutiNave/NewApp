@@ -1,10 +1,19 @@
-document.getElementById('status_error_name').addEventListener('change', function() {
-  var value = this.value;
-  var error_post_other_content = document.getElementById('error_post_other_content');
-
-  if(value === "その他") {
-    error_post_other_content.classList.remove('hidden');
-  } else {
-    error_post_other_content.classList.add('hidden');
+document.addEventListener('turbo:load', function() {
+  var statusErrorElement = document.getElementById('another_post_status_error_name');
+  if (statusErrorElement) {
+    statusErrorElement.addEventListener('change', function() {
+      var value = this.value;
+      var errorPostOtherContent = document.getElementById('error_post_other_content');
+      
+      if (errorPostOtherContent) {
+        if(value === "その他") {
+          errorPostOtherContent.classList.remove('hidden');
+        } else {
+          errorPostOtherContent.classList.add('hidden');
+        }
+      }
+    });
   }
 });
+
+console.log("ABC")

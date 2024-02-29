@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root to: 'top#index'
   get "category" => "categories#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :posts, only: %i[new create edit update destroy]
-  resources :another_posts, only: %i[new create edit update destroy]
+  resources :posts, except: [:show ] do
+    get :search, on: :collection
+  end
+  resources :another_posts, except: [:show ] do
+    get :search, on: :collection
+  end
   resources :articles, only: [:index]
 end

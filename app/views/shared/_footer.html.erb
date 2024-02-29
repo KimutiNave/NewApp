@@ -1,0 +1,7 @@
+<div class="row">
+  <%= current_user.name + "さん"%>
+</div>
+<div class="row">
+  <%= link_to "サインアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+</div>
+

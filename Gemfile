@@ -53,9 +53,14 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails-i18n'
 gem 'enum_help'
 
+# Authentication
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+# Search
+gem 'ransack'
+gem 'rails-autocomplete'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -73,8 +78,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Pagination
-gem 'bootstrap4-kaminari-views'
 gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 gem 'kaminari-i18n'
 gem 'bootstrap'
 

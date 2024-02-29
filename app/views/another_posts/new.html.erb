@@ -1,4 +1,16 @@
-<%= form_with url: another_posts_path, local: true do |f| %>
+<div class="topleft">
+  <%= link_to "カテゴライズへ戻る", category_path, class: "btn btn-primary" %>
+</div>
+<div class="topright">
+  <%= link_to "保存用メモ作成", new_post_path,  class: "btn btn-primary" %>
+</div>
+<div class="form-group me-3">
+  <%= I18n.l Time.zone.now, format: :full_date  %>
+</div>
+<div class="form-group me-3">
+  <%= link_to "エラー用メモ一覧を見る", another_posts_path, class: "btn btn-secondary" %>
+</div>
+<%= form_with model: @another_post, url: another_posts_path, local: true do |f| %>
   <div class="form-group">
     <%= f.label :error_type_name, 'カテゴリー' %><br>
     <%= f.text_field :error_type_name, value: 'エラー用', style: "text-align: center;", readonly: true %>
@@ -10,21 +22,21 @@
   </div>
   <br>
   <div class="form-group">
-    <%= f.text_area :other_error_name, id: "error_post_other_content", tyle: "min-width: 550px", class: "hidden" %>
+    <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px", class: "hidden" %>
   </div>
   <br>
   <div class="form-group">
     <%= f.label :title, 'タイトル' %><br>
-    <%= f.text_field :title, required: true %>
+    <%= f.text_field :title %>
   </div>
   <br>
   <div class="form-group">
     <%= f.label :file_name, 'ファイル名' %><br>
-    <%= f.collection_select :file_name, FileType.all, :id, :file_name, include_blank: true, id: "file_select" %>
+    <%= f.collection_select :file_type_id, FileType.all, :id, :file_name, include_blank: true, id: "file_select" %>
   </div>
   <br><br>
   <div class="form-group">
-    <%= f.text_area :other_file_name, id: "post_other_content", style: "min-width: 250px", class: "hidden"  %>
+    <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px", class: "hidden"  %>
   </div>
   <br>
   <div class="form-group">

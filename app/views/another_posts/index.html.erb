@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-md bg-body-tertiary">
+  <%= render "another_posts/header" %>
+</nav>
+    <div class="container-fluid" > 
+      <%= search_form_for @q, url: another_posts_path, method: :get do |f| %>
+        <div class="col-md-3 mb-1 mt-1">
+          <%= f.label :created_at_gteq, '投稿日から' %>
+          <%= f.date_field :created_at_gteq, class: "form-control mt-2", style: "text-aligin-left" %>
+          <br>
+          <%= f.label :created_at_lteq, '投稿日まで' %>
+          <%= f.date_field :created_at_lteq, class: "form-control mt-2", style: "text-aligin-left" %>
+          <%= f.submit "検索", class: "btn btn-primary mt-2" %>
+        </div>
+      <% end %>
+    </div>
+
+<div class="font-arrange">エラー用の記事一覧</div>
+
+<div class="posts-container">
+  <div class="col-lg-5 offset-lg-1">
+    <% if @another_posts.present? %>
+      <% @another_posts.each do |another_post| %>
+        <p><%= another_post.title %></p>
+        <p><%= another_post.error_type_name %></p>
+        <p><%= another_post.status_error_name %></p>
+        <p><%= another_post.other_error_name %></p>
+        <p>
+        <% if another_post.file_type.present? %>
+          <%= another_post.file_type.file_name %>
+        <% else %>
+          <%= "その他" %>
+        <% end %>
+        </p>
+        <p><%= another_post.other_file_name %></p>
+        <p><%= another_post.code_content %></p>
+        <p><%= another_post.other_content %></p>
+        <p><%= another_post.created_at.strftime("%B %d, %Y %H:%M") %></p>
+        <ul class='crud-menu-btn list-inline float-right'>
+          <li class="list-inline-item">
+            <%= link_to edit_another_post_path(another_post), id: "button-edit-#{another_post.id}" do %>
+              <i class="fa-solid fa-pen-nib"></i>
+            <% end %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to another_post_path(another_post), id: "button-delete-#{another_post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<br />
+<div class="center"><%= paginate @another_posts, theme: 'bootstrap-5'%></div>
