@@ -6,7 +6,7 @@ document.addEventListener('turbo:load', function() {
       var errorPostOtherContent = document.getElementById('error_post_other_content');
       
       if (errorPostOtherContent) {
-        if(value === "その他") {
+        if(value === "other") {
           errorPostOtherContent.classList.remove('hidden');
         } else {
           errorPostOtherContent.classList.add('hidden');

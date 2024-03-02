@@ -19,7 +19,10 @@
   </div>
   <br><br>
   <div class="form-group">
-    <%= f.text_area :other_file_name, id: "post_other_content", style: "min-width: 250px", class: "hidden" %>
+    <% if @post.file_type&.file_name == 'その他' %>
+      <%= f.text_area :other_file_name, id: "post_other_content", style: "min-width: 250px" %>
+    <% end %>
+    <%= f.text_area :other_file_name, id: "post_other_content", style: "min-width: 250px", class: "hidden"  %>
   </div>
   <br>
   <div class="form-group">

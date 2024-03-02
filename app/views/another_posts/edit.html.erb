@@ -9,10 +9,13 @@
   <br>
   <div class="form-group">
     <%= f.label :status_error_name, 'エラー名' %><br>
-    <%= f.select :status_error_name, options_for_select(AnotherPost.status_error_names.keys.map { |k| [k.humanize, k] }) , include_blank: true%>
+    <%= f.select :status_error_name, AnotherPost.status_error_names.map { |key, value| [value, key] }, {include_blank: true} %>
   </div>
   <br>
   <div class="form-group">
+    <% if @another_post.status_error_name == 'other' %>
+      <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px" %>
+    <% end %>
     <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px", class: "hidden" %>
   </div>
   <br>
@@ -27,7 +30,10 @@
     </div>
   <br><br>
     <div class="form-group">
-      <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px", class: "hidden"  %>
+      <% if @another_post.file_type&.file_name == 'その他' %>
+        <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px" %>
+      <% end %>
+      <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px", class: "hidden" %>
     </div>
   <br>
     <div class="form-group">

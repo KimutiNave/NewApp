@@ -4,6 +4,11 @@ class PostsController < ApplicationController
   def index
     @q = current_user.posts.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :file_type).order(created_at: :desc).page(params[:page])
+    respond_to do |format|
+      format.html
+      format.json {render json: @posts}
+      format.js
+    end
   end
 
   def new
@@ -12,11 +17,15 @@ class PostsController < ApplicationController
   
   def create 
     @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to posts_path, notice: "メモが作成されました"
-    else
-      flash.now[:warning]= "メモの作成に失敗しました"
-      render :new, status: :unprocessable_entity
+
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to posts_path(@post), notice: "メモが作成されました" }
+        format.json { render :index, status: :created, location: @post }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -26,17 +35,23 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-    if @post.update(post_params)
-      redirect_to request.referer, notice: 'メモが更新されました'
-    else
-      render :edit, status: :unprocessable_entity
+
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html {redirect_to request.referer, notice: 'メモが更新されました'}
+        format.json { render json: @post } 
+      else
+        format.html {render :edit, status: :unprocessable_entity}
+      end
     end
   end
 
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
-    redirect_to posts_path, notice: "メモが削除されました" 
+    respond_to do |format|
+      format.html { redirect_to posts_path, notice: "メモが削除されました", status: :see_other }
+    end
   end
 
   def search
@@ -45,7 +60,9 @@ class PostsController < ApplicationController
     .where("title LIKE ? OR other_file_name LIKE ? OR file_types.file_name LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
     .distinct
     respond_to do |format|
-      format.js
+      format.html # HTML形式のリクエストに対応
+      format.json { render json: @posts } # JSON形式のリクエストに対応。オートコンプリート用のデータをJSONで返す
+      format.js 
     end
   end
 

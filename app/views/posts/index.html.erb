@@ -19,34 +19,42 @@
 <body>
   <div class="font-arrange">保存用の記事一覧</div>
   <div class="posts-container">
-    <div class="col-lg-5 offset-lg-1">
       <% if @posts.present? %>
         <% @posts.each do |post| %>
-          <p><%= post.save_type_name %></p>
-          <p><%= post.title %></p>
-          <p>
-          <% if post.file_type.present? %>
-          <%= post.file_type.file_name %>
-          <% else %>
-            <%= "その他" %>
-          <% end %>
-          </p>
-          <p><%= post.other_file_name %></p>
-          <p><%= post.code_content %></p>
-          <p><%= post.other_content %></p>
-          <p><%= post.created_at.strftime("%B %d, %Y %H:%M") %></p>
-          <ul class='crud-menu-btn list-inline float-right'>
-            <li class="list-inline-item">
-              <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
-              <i class="fa-solid fa-pen-nib"></i>
-              <% end %>
-            </li>
-            <li class="list-inline-item">
-              <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
-              <i class="fa-solid fa-trash"></i>
-              <% end %>
-            </li>
-          </ul>
+          <div class="card" style="width: 35rem;">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.save_type_name %></h6>
+              <h5 class="card-title"><%= post.title %></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <% if post.file_type.present? %>
+                  <%= post.file_type.file_name %>
+                <% else %>
+                  <%= "" %>
+                <% end %>
+              </li>
+              <li class="list-group-item"><%= post.other_file_name %></li>
+            </ul>
+            <div class="card-body">
+              <p class="card-text"><%= post.code_content %></p>
+              <p class="card-text"><%= post.other_content %></p>
+            </div>
+            <li class="list-group-item"><%= post.created_at.strftime("%B %d, %Y %H:%M") %></li>
+            <br>
+            <ul class='crud-menu-btn list-inline float-right'>
+              <li class="list-inline-item">
+                <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
+                  <i class="fa-solid fa-pen-nib"></i>
+                <% end %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+              </li>
+            </ul>
+          </div>
         <% end %>
       <% end %>
     </div>
