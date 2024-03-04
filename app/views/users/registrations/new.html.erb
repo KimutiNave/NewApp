@@ -29,8 +29,14 @@
             <%= f.submit "新規登録", class: "btn btn-primary" %>
           </div>
         <% end %>
-        <br >
-        <%= render "users/shared/links" %>
+        <br>
+          <%= render "users/shared/links", class: "btn-btn-primary" %>
+        <br>
+        <div class="mb-3">
+          <div class="box-scroll">
+              <%= render 'top/policy'  %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -15,8 +15,9 @@
   <div class="form-group">
     <% if @another_post.status_error_name == 'other' %>
       <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px" %>
+    <% else %>
+      <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px", class: "hidden" %>
     <% end %>
-    <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px", class: "hidden" %>
   </div>
   <br>
   <div class="form-group">
@@ -32,8 +33,9 @@
     <div class="form-group">
       <% if @another_post.file_type&.file_name == 'その他' %>
         <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px" %>
+      <% else %>
+        <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px", class: "hidden" %>
       <% end %>
-      <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px", class: "hidden" %>
     </div>
   <br>
     <div class="form-group">

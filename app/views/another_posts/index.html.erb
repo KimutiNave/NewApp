@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-md bg-body-tertiary">
-  <%= render "another_posts/header" %>
-</nav>
+<%= render 'shared/header' %>
+<div class= "center">
+  <%= render 'another_posts/search_form', url: search_another_posts_path %>
+</div>
     <div class="container-fluid" > 
       <%= search_form_for @q, url: another_posts_path, method: :get do |f| %>
         <div class="col-md-3 mb-1 mt-1">

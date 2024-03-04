@@ -1,19 +1,20 @@
 <head>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <%= render 'posts/header' %>
-  </nav>
-    <div class="container-fluid" > 
-      <%= search_form_for @q, url: posts_path, method: :get do |f| %>
-        <div class="col-md-3 mb-1 mt-1">
-          <%= f.label :created_at_gteq, '投稿日から' %>
-          <%= f.date_field :created_at_gteq, class: "form-control mt-2", style: "text-aligin-left" %>
-          <br>
-          <%= f.label :created_at_lteq, '投稿日まで' %>
-          <%= f.date_field :created_at_lteq, class: "form-control mt-2", style: "text-aligin-left" %>
-          <%= f.submit "検索", class: "btn btn-primary mt-2" %>
-        </div>
-      <% end %>
-    </div>
+  <%= render 'shared/header' %>
+  <div class="center">
+    <%= render 'posts/search_form', url: search_posts_path %>
+  </div>
+  <div class="container-fluid" > 
+    <%= search_form_for @q, url: posts_path, method: :get do |f| %>
+      <div class="col-md-3 mb-1 mt-1">
+        <%= f.label :created_at_gteq, '投稿日から' %>
+        <%= f.date_field :created_at_gteq, class: "form-control mt-2", style: "text-aligin-left" %>
+        <br>
+        <%= f.label :created_at_lteq, '投稿日まで' %>
+        <%= f.date_field :created_at_lteq, class: "form-control mt-2", style: "text-aligin-left" %>
+        <%= f.submit "検索", class: "btn btn-primary mt-2" %>
+      </div>
+    <% end %>
+  </div>
 </head>
 
 <body>
@@ -49,7 +50,7 @@
                 <% end %>
               </li>
               <li class="list-inline-item">
-                <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
+                <%= link_to post_path(post), data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
                   <i class="fa-solid fa-trash"></i>
                 <% end %>
               </li>

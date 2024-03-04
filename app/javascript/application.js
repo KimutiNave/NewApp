@@ -3,7 +3,8 @@
 //= require popper
 //= require bootstrap
 
-import "@hotwired/turbo-rails";
+import "@hotwired/turbo-rails"
+Turbo.session.drive = true
 import "controllers";
 import "@fortawesome/fontawesome-free";
 import { Application } from '@hotwired/stimulus';

@@ -48,3 +48,13 @@
       transparent 105px,  transparent 129px, 
       rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
 }
+
+.box-scroll {
+  width:250px;
+  margin: auto;
+  height:180px;
+  overflow:auto;
+  padding:20px;
+  border:1px solid #000;
+  background-color:rgb(249, 243, 235);
+}
