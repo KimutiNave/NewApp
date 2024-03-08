@@ -3,8 +3,9 @@
 //= require popper
 //= require bootstrap
 
-import "@hotwired/turbo-rails";
-import "./controllers";
+import "@hotwired/turbo-rails"
+Turbo.session.drive = true
+import "controllers";
 import "@fortawesome/fontawesome-free";
 import { Application } from '@hotwired/stimulus';
 import { Autocomplete } from 'stimulus-autocomplete';
@@ -15,5 +16,3 @@ application.register('autocomplete', Autocomplete)
 import 'custom/another_option';
 import 'custom/other_option';
 import 'original/other_option';
-import 'original/navbar_custum';
-

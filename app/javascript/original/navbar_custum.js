@@ -1,5 +1,6 @@
 document.addEventListener("turbo:load", initializeDropdown);
 document.addEventListener("turbo:frame-load", initializeDropdown);
+document.addEventListener("turbo:click", initializeDropdown);
 document.addEventListener("turbo:render", initializeDropdown);
 
 function initializeDropdown() {
