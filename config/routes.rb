@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   resources :another_posts, except: [:show ] do
     get :search, on: :collection
   end
-  resources :articles, only: [:index]
 end
