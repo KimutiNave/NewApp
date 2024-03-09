@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   #新規登録時のストロングパラメーターに「nameカラム」の追加
@@ -20,6 +21,7 @@ class ApplicationController < ActionController::Base
 
   #ログイン時にnameパラメーターを許可する。
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :email])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
   end
 end

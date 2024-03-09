@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand-md bg-body-tertiary">
-  <%= render "another_posts/header" %>
-</nav>
+<head>
+  <%= render 'shared/header' %>
+  <div class="center">
+    <%= render 'another_posts/search_form', url: search_another_posts_path %>
+  </div>
+  <div data-turbo="false">
     <div class="container-fluid" > 
       <%= search_form_for @q, url: another_posts_path, method: :get do |f| %>
         <div class="col-md-3 mb-1 mt-1">
@@ -9,10 +12,12 @@
           <br>
           <%= f.label :created_at_lteq, '投稿日まで' %>
           <%= f.date_field :created_at_lteq, class: "form-control mt-2", style: "text-aligin-left" %>
-          <%= f.submit "検索", class: "btn btn-primary mt-2" %>
+          <%= f.submit "検索", class: "btn btn-success mt-2" %>
         </div>
       <% end %>
     </div>
+  </div>
+</head>
 
 <div class="font-arrange">エラー用の記事一覧</div>
 
