@@ -8,7 +8,7 @@
   <%= I18n.l Time.zone.now, format: :full_date  %>
 </div>
 <div class="form-group me-3">
-  <%= link_to "保存用メモ一覧を見る", posts_path, class: "btn btn-secondary" %>
+  <%= link_to "保存用メモ一覧を見る", posts_path, class: "btn btn-secondary", data: { turbo: false } %>
 </div>
 <%= form_with model: @post, url: posts_path, local: true do |f| %>
   <br>
@@ -24,7 +24,7 @@
   <br>
   <div class="form-group">
     <%= f.label :file_name, 'ファイル名' %><br>
-    <%= f.collection_select :file_type_id, FileType.all, :id, :file_name, include_blank: true, id: "file_select" %>
+    <%= f.collection_select :file_type_id, FileType.all, :id, :file_name, include_blank: true %>
   </div>
   <br><br>
   <div class="form-group">

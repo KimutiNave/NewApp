@@ -1,158 +1,64 @@
-# NewApp
+■サービス概要
 
-Rails 5,6,7どれを使うか決める
-→デプロイ先に対応しているか否かを調べる
-あとの機能は環境構築してから決める
+記載したコードを消さずに取っておきたい人向けに
+コードを保存できる
+メモ形式のサービスです。
 
-# 高度な技術で使用する
-* マルチ検索
-Stimulus Autocomplete（Rails7 ）
-JQuery
-gem 'rails-autocomplete'
+■Railsに絞った理由
+Rails on Ruby を現在進行形で学習しているためエラーの内容やコードを保存する際に必要な事項をイメージがしやすいこと。
+rubyではなくrailsなのはファイル数やファイル名など複数あり、コードを保存する際に予めファイル名などが付いていれば自分で命名する手間が減るなどコード保存アプリとしてメリットがrubyよりもあるため。
+まずは現在進行形で学習しているRailsでメモアプリを展開し、その後のレビューや評価などでその他の言語も増やしていこうと考えているため。
 
-* キューとバックグラウンド処理
-ActiveJob（Rails標準）
-Sidekiq
+■ このサービスへの思い・作りたい理由
 
-yarnのインストール
+デフォルトのメモ帳アプリにもコードを保存することは出来ますが、
+メモの量が多くなりどこにどのコードを記載したか分からなくなってしまうため
+カテゴライズされたメモでコードをどこに保存したか、またコードを見返したい時などに
+分かりやすいメモを考案しました。
+私自身、デフォルトのメモ帳アプリなどにコードを記載したりしますが
+コードだけではなく様々なことをメモに記載するためどこにコードを保存したか
+探すことがありました。
+そこで、エラーが出た時のコードの保存やメソッドの変更などカテゴライズごとにメモが分別されるなど
+いつどんなコードを記載したかわかるメモがあればと思い、このサービスを考えました。
+コードで躓いた時でも簡単にどんなコードを書いたか見返せるメモアプリにしていきたいと思います。
 
+■ ユーザー層について
+記載したコードを消さずに取っておきたい人、メモに保存してもメモの量が多くなりコードをどこに記載したか分からなくなってしまう人
 
-### Gemfile
+■サービスの利用イメージ
+controller‥など記載しなくても選択でcontrollerやmodelなど記載したいファイル名を選べたり
+カテゴライズや日付でいつどんなコードを記載したか簡単に見返すことができるメモサービスです。
 
-source 'https://rubygems.org'
-ruby '2.6.5'
+■ ユーザーの獲得について
+GoogleやYahooで「コード保存」、「コードメモアプリ」などのキーワード検索で出てくるなどを考えています。
 
-gem 'rails', '5.2.3'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'gretel'
+■ サービスの差別化ポイント・推しポイント
+ファイル名が選べたり他のメモ機能に記載しなくてもいいため手間やメモの容量が省けたり
+コードのみが記載されるメモアプリなため簡単に自分の記載したコードを見返せたりできるのがポイントです。
 
-# Assets
-gem 'bootstrap-sass'
-gem 'font-awesome-rails'
-gem 'jquery-rails'
-gem 'sass-rails'
-gem 'sassc', '2.1.0'
-gem 'uglifier'
-gem 'webpacker'
+■ 機能候補
+*MVPリリース時に実装予定の機能
+新規登録機能
+トップページ
+新規投稿フォーム
+編集フォーム
+投稿一覧
+ページネーション
+選択機能(controller‥など記載しなくても選択でcontrollerやmodelなど記載したいファイル名を選べる)
+マルチ検索機能（ 使用技術とライブラリ：　Stimulus Autocomplete（Rails7 ）& JQuery）
 
-# UI/UX
-gem 'rails-i18n', '~> 5.0.0'
-# gem 'turbolinks'
-gem 'jbuilder'
-gem 'meta-tags'
-gem 'slim-rails'
+*本リリース時に実装する予定の機能
+トップページ
+新規投稿フォーム
+編集フォーム
+投稿一覧
+ページネーション
+マルチ検索機能（ 使用技術とライブラリ：　Stimulus Autocomplete（Rails7 ）& JQuery）
+選択機能(controller‥など記載しなくても選択でcontrollerやmodelなど記載したいファイル名を選べる)
 
-# Authentication　（今回認証はないので記載しない）
-gem 'pundit'
-gem 'sorcery'
+以下追加機能
+ソート機能
+キーとバックグラウンド処理（キー：Sidekiq バックエンド：Active Job）
+項目追加機能
+ロボらんてくんのようなチャットサービス（可能な範囲）
 
-# Configuration
-gem 'config'
-gem 'dotenv-rails', require: 'dotenv/rails-now'
-
-# Database
-gem 'sqlite3'
-gem 'redis-rails'
-
-# Seeds
-gem 'seed-fu'
-
-# Pagination
-gem 'bootstrap4-kaminari-views'
-gem 'kaminari'
-gem 'kaminari-i18n'
-
-# Breadcrumbs
-gem 'gretel'
-
-# Form
-gem 'cocoon'
-gem 'simple_form'
-
-# Soft delete
-gem 'paranoia'
-gem 'paranoia_uniqueness_validator'
-
-# Model
-gem 'active_hash'
-gem 'enum_help'
-
-# Validation
-gem 'validate_url'
-gem 'validates_email_format_of'
-
-# Decorator
-gem 'active_decorator'
-
-# Application server
-gem 'puma'
-
-# Background Job
-gem 'resque'
-gem 'whenever', require: false
-
-# Debugger
-group :development do
-  gem 'listen'
-  gem 'web-console'
-end
-
-group :development, :test do
-
-  # CLI
-  gem 'spring'
-  gem 'spring-commands-rspec'
-
-  # Test
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
-  gem 'simplecov', require: false
-
-  # Code analyze
-  gem 'brakeman', require: false
-  gem 'bullet'
-  gem 'coffeelint'
-  gem 'rails_best_practices'
-  gem 'reek'
-  gem 'rspec_junit_formatter'
-  gem 'rubocop'
-  gem 'rubocop-checkstyle_formatter'
-  gem 'rubocop-rails'
-  gem 'scss_lint', require: false
-  gem 'slim_lint'
-
-  # Debugger
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'byebug'
-  gem 'pry'
-  gem 'pry-byebug'
-  gem 'pry-doc'
-  gem 'pry-rails'
-
-  # Print debug
-  gem 'awesome_print'
-  gem 'tapp'
-
-  # Table/Schema
-  gem 'annotate', github: 'ctran/annotate_models', branch: 'develop'
-  gem 'migration_comments'
-
-  # Deploy
-  gem 'capistrano', '3.9.0'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rails-console'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-resque', require: false
-  gem 'capistrano3-puma'
-end
-
-group :test do
-  gem 'capybara'
-  gem 'faker'
-  gem 'fuubar'
-  gem 'shoulda-matchers'
-  gem 'timecop'
-  gem 'webdrivers'
-end
