@@ -3,10 +3,10 @@ current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.
 creating Makefile
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bcrypt-3.1.20/ext/mri
-make DESTDIR\= sitearchdir\=./.gem.20240204-2414-die88m sitelibdir\=./.gem.20240204-2414-die88m clean
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-mgm8zi sitelibdir\=./.gem.20240309-8086-mgm8zi clean
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bcrypt-3.1.20/ext/mri
-make DESTDIR\= sitearchdir\=./.gem.20240204-2414-die88m sitelibdir\=./.gem.20240204-2414-die88m
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-mgm8zi sitelibdir\=./.gem.20240309-8086-mgm8zi
 compiling bcrypt_ext.c
 bcrypt_ext.c:41:38: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
     args.size   = NIL_P(input) ? 0 : RSTRING_LEN(input);
@@ -26,8 +26,8 @@ char *crypt_r(const char *key, const char *setting, struct crypt_data *data)
 linking shared-object bcrypt_ext.bundle
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bcrypt-3.1.20/ext/mri
-make DESTDIR\= sitearchdir\=./.gem.20240204-2414-die88m sitelibdir\=./.gem.20240204-2414-die88m install
-/usr/bin/install -c -m 0755 bcrypt_ext.bundle ./.gem.20240204-2414-die88m
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-mgm8zi sitelibdir\=./.gem.20240309-8086-mgm8zi install
+/usr/bin/install -c -m 0755 bcrypt_ext.bundle ./.gem.20240309-8086-mgm8zi
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/bcrypt-3.1.20/ext/mri
-make DESTDIR\= sitearchdir\=./.gem.20240204-2414-die88m sitelibdir\=./.gem.20240204-2414-die88m clean
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-mgm8zi sitelibdir\=./.gem.20240309-8086-mgm8zi clean
