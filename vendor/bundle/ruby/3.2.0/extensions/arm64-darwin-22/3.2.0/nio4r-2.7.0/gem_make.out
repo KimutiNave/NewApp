@@ -14,10 +14,10 @@ checking for sys/resource.h... yes
 creating Makefile
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/nio4r-2.7.0/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-uuv2ki sitelibdir\=./.gem.20231206-19794-uuv2ki clean
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-8kl690 sitelibdir\=./.gem.20240309-8086-8kl690 clean
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/nio4r-2.7.0/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-uuv2ki sitelibdir\=./.gem.20231206-19794-uuv2ki
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-8kl690 sitelibdir\=./.gem.20240309-8086-8kl690
 compiling bytebuffer.c
 compiling monitor.c
 compiling nio4r_ext.c
@@ -360,8 +360,8 @@ compiling selector.c
 linking shared-object nio4r_ext.bundle
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/nio4r-2.7.0/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-uuv2ki sitelibdir\=./.gem.20231206-19794-uuv2ki install
-/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20231206-19794-uuv2ki
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-8kl690 sitelibdir\=./.gem.20240309-8086-8kl690 install
+/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20240309-8086-8kl690
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/nio4r-2.7.0/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-uuv2ki sitelibdir\=./.gem.20231206-19794-uuv2ki clean
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-8kl690 sitelibdir\=./.gem.20240309-8086-8kl690 clean

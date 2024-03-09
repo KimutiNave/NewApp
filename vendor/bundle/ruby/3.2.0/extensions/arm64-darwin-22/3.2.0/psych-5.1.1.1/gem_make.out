@@ -5,13 +5,13 @@ checking for yaml_get_version() in -lyaml... yes
 creating Makefile
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/psych-5.1.1.1/ext/psych
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-2d77bw sitelibdir\=./.gem.20231206-19794-2d77bw clean
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-f2v1n5 sitelibdir\=./.gem.20240309-8086-f2v1n5 clean
 cd libyaml && /Library/Developer/CommandLineTools/usr/bin/make clean
 /bin/sh: line 0: cd: libyaml: No such file or directory
 make: [clean-so] Error 1 (ignored)
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/psych-5.1.1.1/ext/psych
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-2d77bw sitelibdir\=./.gem.20231206-19794-2d77bw
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-f2v1n5 sitelibdir\=./.gem.20240309-8086-f2v1n5
 compiling psych.c
 compiling psych_emitter.c
 compiling psych_parser.c
@@ -20,11 +20,11 @@ compiling psych_yaml_tree.c
 linking shared-object psych.bundle
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/psych-5.1.1.1/ext/psych
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-2d77bw sitelibdir\=./.gem.20231206-19794-2d77bw install
-/usr/bin/install -c -m 0755 psych.bundle ./.gem.20231206-19794-2d77bw
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-f2v1n5 sitelibdir\=./.gem.20240309-8086-f2v1n5 install
+/usr/bin/install -c -m 0755 psych.bundle ./.gem.20240309-8086-f2v1n5
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/psych-5.1.1.1/ext/psych
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-2d77bw sitelibdir\=./.gem.20231206-19794-2d77bw clean
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-f2v1n5 sitelibdir\=./.gem.20240309-8086-f2v1n5 clean
 cd libyaml && /Library/Developer/CommandLineTools/usr/bin/make clean
 /bin/sh: line 0: cd: libyaml: No such file or directory
 make: [clean-so] Error 1 (ignored)

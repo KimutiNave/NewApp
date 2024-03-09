@@ -3,16 +3,16 @@ current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.
 creating Makefile
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/racc-1.7.3/ext/racc/cparse
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-86cbck sitelibdir\=./.gem.20231206-19794-86cbck clean
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-ketodf sitelibdir\=./.gem.20240309-8086-ketodf clean
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/racc-1.7.3/ext/racc/cparse
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-86cbck sitelibdir\=./.gem.20231206-19794-86cbck
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-ketodf sitelibdir\=./.gem.20240309-8086-ketodf
 compiling cparse.c
 linking shared-object racc/cparse.bundle
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/racc-1.7.3/ext/racc/cparse
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-86cbck sitelibdir\=./.gem.20231206-19794-86cbck install
-/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20231206-19794-86cbck/racc
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-ketodf sitelibdir\=./.gem.20240309-8086-ketodf install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20240309-8086-ketodf/racc
 
 current directory: /Users/okazakimiyuna/workspace/NewApp/vendor/bundle/ruby/3.2.0/gems/racc-1.7.3/ext/racc/cparse
-make DESTDIR\= sitearchdir\=./.gem.20231206-19794-86cbck sitelibdir\=./.gem.20231206-19794-86cbck clean
+make DESTDIR\= sitearchdir\=./.gem.20240309-8086-ketodf sitelibdir\=./.gem.20240309-8086-ketodf clean
