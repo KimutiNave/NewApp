@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for railsdakenomemo on 2024-03-09T23:36:45+09:00
+# fly.toml app configuration file generated for railsdakememo-app on 2024-03-12T21:07:42+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'railsdakenomemo'
+app = 'railsdakememo-app'
 primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
