@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_09_071629) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_16_151515) do
   create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
@@ -23,6 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_09_071629) do
     t.string "other_error_name"
     t.integer "user_id", null: false
     t.integer "file_type_id"
+    t.integer "file_types_id", null: false
+    t.index ["file_types_id"], name: "index_another_posts_on_file_types_id"
     t.index ["user_id"], name: "index_another_posts_on_user_id"
   end
 
@@ -42,6 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_09_071629) do
     t.string "other_file_name"
     t.integer "user_id", null: false
     t.integer "file_type_id"
+    t.integer "file_types_id", null: false
+    t.index ["file_types_id"], name: "index_posts_on_file_types_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -59,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_09_071629) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "another_posts", "file_types", column: "file_types_id"
   add_foreign_key "another_posts", "users"
+  add_foreign_key "posts", "file_types", column: "file_types_id"
   add_foreign_key "posts", "users"
 end

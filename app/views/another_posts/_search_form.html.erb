@@ -1,7 +1,7 @@
 <div data-turbo="false">
   <%= search_form_for @q, url:another_posts_path, method: :get do |f| %>
     <div data-controller="autocomplete" data-autocomplete-url-value="/another_posts/search" role="combobox">
-      <%= f.search_field :error_type_name_or_file_type_file_name_or_file_type_id_or_status_error_name_or_other_error_name_or_title_or_code_content_or_other_content_cont, data: { autocomplete_target: "input" }, type: "text", class: "form-control", placeholder: "フリーワード検索" %>
+      <%= f.search_field :error_type_name_or_file_type_file_name_or_file_type_id_or_status_error_name_or_other_error_name_or_title_or_code_content_or_other_content_cont, data: { autocomplete_target: "input" }, type: "text", class: "form-control", placeholder: "ファイル名とタイトル検索" %>
       <%= f.hidden_field :error_type_name_or_file_type_file_name_or_file_type_id_or_status_error_name_or_other_error_name_or_title_or_code_content_or_other_content_cont, data: { autocomplete_target: 'hidden' } %>
       <ul class="list-group" data-autocomplete-target="results"></ul>
     </div>
