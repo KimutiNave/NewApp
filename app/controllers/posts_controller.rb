@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   def search
     @posts = current_user.posts.includes(:user, :file_type)
     .joins(:file_type)
-    .where("title LIKE ? OR other_file_name LIKE ? OR file_types.file_name LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    .where("CAST(title AS text) LIKE ? OR CAST(other_file_name AS text) LIKE ? OR CAST(file_types.file_name AS text) LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
     .distinct
     respond_to do |format|
       format.js
