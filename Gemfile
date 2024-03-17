@@ -45,6 +45,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'sassc'
 gem 'uglifier'
+gem 'mini_racer'
 
 # Configuration
 gem 'config'
