@@ -82,3 +82,14 @@ h4 {
   padding: 1rem 2rem;
   border-left: 6px double #000;
 }
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.font-arrange {
+  border-bottom: 3px dashed #000;
+  text-align: center;
+  font-size: 30px;
+}

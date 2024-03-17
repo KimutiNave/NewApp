@@ -32,7 +32,7 @@
   <br>
   <div class="form-group">
     <%= f.label :file_name, 'ファイル名' %><br>
-    <%= f.collection_select :file_type_id, FileType.all, :id, :file_name, include_blank: true, id: "file_select" %>
+    <%= f.collection_select :file_type_id, FileType.all, :id, :file_name, include_blank: true %>
   </div>
   <br><br>
   <div class="form-group">

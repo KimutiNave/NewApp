@@ -36,3 +36,9 @@
 .btn-primary {
   margin-left: 10px; /* 自動補完のコンテナとの間にマージンを設ける */
 }
+
+.posts-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
