@@ -2,6 +2,7 @@ class AnotherPost < ApplicationRecord
   belongs_to :user
   belongs_to :file_type, optional: true
 
+  validate :file_type_id, allow_blank: true
   validates :other_error_name, length: { maximum: 5000 }, allow_blank: true
   validates :title, length: { maximum: 500 }, allow_blank: true
   validates :other_file_name, length: { maximum: 500 }, allow_blank: true

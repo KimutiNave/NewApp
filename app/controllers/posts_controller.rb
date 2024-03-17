@@ -10,7 +10,8 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
   
-  def create 
+  def create
+    binding.pry 
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to posts_path, notice: "メモが作成されました"
