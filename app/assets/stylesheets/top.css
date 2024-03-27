@@ -70,7 +70,7 @@ h3 {
   padding: 0.5rem 0 2rem;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  font-size: 26px;
+  font-size: 28px;
   background-image: linear-gradient(135deg, #16b5dd 10%, #b2d5de 100%);
   background-repeat: no-repeat;
   background-size: 4rem 0.4rem;
@@ -79,8 +79,11 @@ h3 {
 }
 
 h4 {
-  padding: 1rem 2rem;
-  border-left: 6px double #000;
+  font-size: large;
+  font-weight: bold;
+}
+h5{
+  font-size: 16px;
 }
 
 .center{
@@ -92,4 +95,7 @@ h4 {
   border-bottom: 3px dashed #000;
   text-align: center;
   font-size: 30px;
+}
+.haikei{
+  background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%); 
 }
