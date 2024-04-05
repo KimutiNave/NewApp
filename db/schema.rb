@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_09_071629) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_27_114907) do
   create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
@@ -30,6 +30,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_09_071629) do
     t.string "file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notification_settings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id"
+    t.integer "another_post_id"
+    t.integer "file_type_id"
+    t.integer "notify_days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["another_post_id"], name: "index_notification_settings_on_another_post_id"
+    t.index ["file_type_id"], name: "index_notification_settings_on_file_type_id"
+    t.index ["post_id"], name: "index_notification_settings_on_post_id"
+    t.index ["user_id"], name: "index_notification_settings_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -60,5 +74,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_09_071629) do
   end
 
   add_foreign_key "another_posts", "users"
+  add_foreign_key "notification_settings", "another_posts"
+  add_foreign_key "notification_settings", "file_types"
+  add_foreign_key "notification_settings", "posts"
+  add_foreign_key "notification_settings", "users"
   add_foreign_key "posts", "users"
 end

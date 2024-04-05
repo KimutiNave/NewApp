@@ -50,6 +50,7 @@ gem 'mini_racer'
 # Configuration
 gem 'config'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'whenever', require: false
 
 gem 'rails-i18n'
 gem 'enum_help'
@@ -58,6 +59,8 @@ gem 'enum_help'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem "omniauth-twitter" ## Twitter認証
+gem "omniauth-rails_csrf_protection"
 
 # Search
 gem 'ransack'

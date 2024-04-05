@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "top" => 'top#index'
   get "policy" => "top#policy"
   get "category" => "categories#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :posts, except: [:show ] do
     get :search, on: :collection
@@ -17,4 +18,5 @@ Rails.application.routes.draw do
   resources :another_posts, except: [:show ] do
     get :search, on: :collection
   end
+  resources :notification_settings
 end
