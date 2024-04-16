@@ -57,6 +57,9 @@ gem 'enum_help'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+# Twitter認証
+gem "omniauth-twitter2"
+gem "omniauth-rails_csrf_protection"
 
 # Search
 gem 'ransack'
