@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_27_114907) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_13_151859) do
   create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
@@ -69,6 +69,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_27_114907) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.boolean "is_deleted", default: false, null: false
+    t.string "uid"
+    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
