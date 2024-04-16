@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   # 論理削除用のルーティング
   patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
   
-  root to: 'top#index'
+  root to: 'homes#home'
+  get "top" => 'top#index'
   get "policy" => "top#policy"
   get "category" => "categories#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :posts, except: [:show ] do
     get :search, on: :collection
@@ -16,4 +18,5 @@ Rails.application.routes.draw do
   resources :another_posts, except: [:show ] do
     get :search, on: :collection
   end
+  resources :notification_settings
 end

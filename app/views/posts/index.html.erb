@@ -1,57 +1,57 @@
 <head>
   <%= render 'shared/header' %>
-  <div class="center">
+  <div class="search-container">
     <%= render 'posts/search_form', url: search_posts_path %>
-  </div>
-  <div data-turbo="false">
-    <div class="container-fluid" > 
-      <%= search_form_for @q, url: posts_path, method: :get do |f| %>
-        <div class="col-md-3 mb-1 mt-1">
-          <%= f.label :created_at_gteq, '投稿日から' %>
-          <%= f.date_field :created_at_gteq, class: "form-control mt-2", style: "text-aligin-left" %>
-          <br>
-          <%= f.label :created_at_lteq, '投稿日まで' %>
-          <%= f.date_field :created_at_lteq, class: "form-control mt-2", style: "text-aligin-left" %>
-          <%= f.submit "検索", class: "btn btn-primary mt-2" %>
-        </div>
-      <% end %>
-    </div>
   </div>
 </head>
 
 <body>
-  <div class="font-arrange">保存用の記事一覧</div>
+  <div class="font-arrange"><div class="text-left"><i class="fa-solid fa-wand-magic-sparkles"></i>保存用の記事一覧<i class="fas fa-dove"></i></div></div>
   <div class="posts-container">
     <div class="col-lg-5 offset-lg-1">
       <% if @posts.present? %>
         <% @posts.each do |post| %>
-          <p><%= post.save_type_name %></p>
-          <p><%= post.title %></p>
-          <p>
-          <% if post.file_type.present? %>
-          <%= post.file_type.file_name %>
-          <% else %>
-            <%= "その他" %>
-          <% end %>
-          </p>
-          <p><%= post.other_file_name %></p>
-          <p><%= post.code_content %></p>
-          <p><%= post.other_content %></p>
-          <p><%= post.created_at.strftime("%B %d, %Y %H:%M") %></p>
-          <ul class='crud-menu-btn list-inline float-right'>
-            <li class="list-inline-item">
-              <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
-              <i class="fa-solid fa-pen-nib"></i>
+          <div class="card" style="width: 40rem;">
+            <h5 class="card-title"><%= post.title %></h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.save_type_name %></h6>
+            <ul class="list-group list-group-flush">
+              <% if post.file_type.present? %>
+                <li class="list-group-item"><%= post.file_type.file_name %></li>
+                <% else %>
+                <li class="list-group-item"><%= " " %></li>
               <% end %>
-            </li>
-            <li class="list-inline-item">
-              <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
-              <i class="fa-solid fa-trash"></i>
-              <% end %>
-            </li>
-          </ul>
-        <% end %>
-      <% end %>
+            </ul>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= post.other_file_name %></li>
+            </ul>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p class="card-text"><%= post.code_content %></p>
+              </blockquote>
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p class="card-text"><%= post.other_content %></p>
+              </blockquote>
+            </div>
+            <div class="card-body"><%= post.created_at.strftime("%B %d, %Y %H:%M") %></div>
+            <div class="card-body">
+              <ul class='crud-menu-btn list-inline float-right'>
+                <li class="list-inline-item">
+                  <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
+                    <i class="fa-solid fa-pen-nib"></i>
+                  <% end %>
+                </li>
+                <li class="list-inline-item">
+                  <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
+                  <i class="fa-solid fa-trash"></i>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <%end%>
+      <%end%>
     </div>
   </div>
   <br />
