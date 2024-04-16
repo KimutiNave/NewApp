@@ -1,6 +1,4 @@
 class AnotherPostsController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @q = current_user.another_posts.ransack(params[:q])
     @another_posts = @q.result(distinct: true).includes(:user, :file_type).order(created_at: :desc).page(params[:page])
@@ -40,7 +38,7 @@ class AnotherPostsController < ApplicationController
   end
 
   def search
-    @another_posts = AnotherPost.includes(:user, :file_type).joins(:file_type).where("status_error_name LIKE ? OR other_error_name LIKE ? OR title LIKE ?  OR other_file_name LIKE ? OR file_types.file_name LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    @another_posts = AnotherPost.includes(:user, :file_type).joins(:file_type).where("CAST(status_error_name AS text) LIKE ? OR CAST(other_error_name AS text) LIKE ? OR CAST(title AS text) LIKE ?  OR CAST(other_file_name AS text) LIKE ? OR CAST(file_types.file_name AS text) LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
     .distinct
     respond_to do |format|
       format.js

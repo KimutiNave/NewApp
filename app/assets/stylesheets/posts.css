@@ -23,8 +23,12 @@
 
 .font-arrange {
   border-bottom: 3px dashed #000;
-  text-align: center;
-  font-size: 30px;
+  font-size: 20px;
+  margin: 8px;
+}
+.text-left{
+  text-align: left;
+  margin-left: 10px;
 }
 
 [data-controller="autocomplete"] {
@@ -35,4 +39,16 @@
 /* 検索ボタンに対するスタイル */
 .btn-primary {
   margin-left: 10px; /* 自動補完のコンテナとの間にマージンを設ける */
+}
+
+.posts-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.search-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5px;
+  justify-content: center;
 }

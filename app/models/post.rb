@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :file_type, optional: true
+  has_many :notification_settings, dependent: :destroy
   
   validates :title, length: { maximum: 500 }, allow_blank: true
   validates :other_file_name, length: { maximum: 500 }, allow_blank: true

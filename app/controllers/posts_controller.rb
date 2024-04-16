@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @q = current_user.posts.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :file_type).order(created_at: :desc).page(params[:page])
@@ -10,7 +8,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
   
-  def create 
+  def create
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to posts_path, notice: "メモが作成されました"
@@ -42,7 +40,7 @@ class PostsController < ApplicationController
   def search
     @posts = current_user.posts.includes(:user, :file_type)
     .joins(:file_type)
-    .where("title LIKE ? OR other_file_name LIKE ? OR file_types.file_name LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    .where("CAST(title AS text) LIKE ? OR CAST(other_file_name AS text) LIKE ? OR CAST(file_types.file_name AS text) LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
     .distinct
     respond_to do |format|
       format.js

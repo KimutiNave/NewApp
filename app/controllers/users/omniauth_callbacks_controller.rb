@@ -5,8 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+  def twitter
+    callback_from :twitter
+  end
 
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
@@ -27,4 +28,22 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def after_omniauth_failure_path_for(scope)
   #   super(scope)
   # end
+  private
+  def callback_from(provider)
+
+    @user = User.from_oauth(request.env['omniauth.auth'])
+    @user.save!
+
+    # persisted?でDBに保存済みかどうか判断
+    if @user.persisted?
+      sign_in @user 
+      redirect_to top_path 
+    else
+      redirect_to new_user_registration_path
+    end
+  end
+
+  def failure
+    redirect_to root_path and return
+  end
 end
