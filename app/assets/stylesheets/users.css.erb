@@ -7,16 +7,16 @@
 }
 
 .main-container {
-  background-image: url("<%= asset_path('yurubo42.png') %>");
+  background-image: url("<%= asset_path('notebook-3820634_1920.jpg') %>");
   background-size: cover;
   background-repeat: no-repeat; /* 画像が繰り返し表示されないようにする */
-  background-position: center center; /* 背景画像がコンテナの中心に位置する */
-  height: 100vh; /* ビューポートの高さ全体をカバー */
-  width: 100vw; /* ビューポートの幅全体をカバー */
+  position: relative;
+  margin: 0px 0px 0px 0px;
+  height: calc(1440/1920 * 100vw);
 }
 
 .sub-container {
-  background-image: url("<%= asset_path('sai-19.png') %>");
+  background-image: url("<%= asset_path('pen-1215435_1920.jpg') %>");
   background-size: cover;
   background-repeat: no-repeat; /* 画像が繰り返し表示されないようにする */
   background-position: center center; /* 背景画像がコンテナの中心に位置する */
