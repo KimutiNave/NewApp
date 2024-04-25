@@ -15,6 +15,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'e0e24801006dfad6512adccd040d38fcaefef14495983b45f2463d35a62c5ba3144cee408743324be4c1f48d3aaf093c329da3c9cad8660041918b7b503095cd'
+  config.omniauth :twitter2, Rails.application.credentials.twitter[:twitter_id], Rails.application.credentials.twitter[:twitter_api_secret], callback_path: "/users/auth/twitter2/callback"
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -70,7 +71,6 @@ Devise.setup do |config|
   # given strategies, for example, `config.params_authenticatable = [:database]` will
   # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
-  # config.omniauth :twitter, Rails.application.credentials.twitter[:twitter_api_key], Rails.application.credentials.twitter[:twitter_api_secret], skip_jwt: true
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:database]` will
