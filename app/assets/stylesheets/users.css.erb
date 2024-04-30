@@ -10,9 +10,9 @@
   background-image: url("<%= asset_path('notebook-3820634_1920.jpg') %>");
   background-size: cover;
   background-repeat: no-repeat; /* 画像が繰り返し表示されないようにする */
-  position: relative;
-  margin: 0px 0px 0px 0px;
-  height: calc(1440/1920 * 100vw);
+  background-position: center center; /* 背景画像がコンテナの中心に位置する */
+  height: 100vh; /* ビューポートの高さ全体をカバー */
+  width: 100vw; /* ビューポートの幅全体をカバー */
 }
 
 .sub-container {
@@ -34,4 +34,20 @@ h2 {
     color: #323232;
     font-weight: bold;
     font-size: 26px;
+}
+.wrapper{
+    min-height: 60vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+footer{
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #1955a6;
+    text-align: center;
+    padding: 30px 0;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
 }

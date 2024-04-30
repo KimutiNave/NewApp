@@ -4,7 +4,7 @@
     <div class="col-lg-3 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
       <div class="card">
         <div class="card-body">
-          <h2>サインイン</h2>
+          <h2>ログイン</h2>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="mb-3">
               <%= f.label :name %><br />
@@ -29,7 +29,7 @@
             </div>
             <br />
             <div class="mb-3">
-              <%= f.submit "サインイン", class: "btn btn-primary" %>
+              <%= f.submit "ログイン", class: "btn btn-primary" %>
             </div>
           <% end %>
           <br />
@@ -37,5 +37,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="wrapper">
+    <footer>
+      <p><%= link_to "このアプリの機能とは？", root_path%> </p>
+    </footer>
   </div>
 </div>
