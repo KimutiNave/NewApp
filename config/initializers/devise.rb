@@ -15,8 +15,12 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'e0e24801006dfad6512adccd040d38fcaefef14495983b45f2463d35a62c5ba3144cee408743324be4c1f48d3aaf093c329da3c9cad8660041918b7b503095cd'
+  # if Rails.application.credentials.stripe
+    # Stripe.api_key = Rails.application.credentials.twitter
+    # config.omniauth :twitter2, Stripe.api_key[:twitter_id], Stripe.api_key[:twitter_api_secret], callback_path: "/users/auth/twitter2/callback"
+  # end
   config.omniauth :twitter2, Rails.application.credentials.twitter[:twitter_id], Rails.application.credentials.twitter[:twitter_api_secret], callback_path: "/users/auth/twitter2/callback"
-
+  
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -228,7 +232,7 @@ Devise.setup do |config|
 
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.
-  # config.sign_in_after_reset_password = true
+  config.sign_in_after_reset_password = true
 
   # ==> Configuration for :encryptable
   # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
