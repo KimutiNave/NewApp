@@ -11,7 +11,7 @@
           <% if @minimum_password_length %>
             (<%= @minimum_password_length %> 文字以上)
           <% end %>
-          <%= f.password_field,password, autofocus: true, class: "form-control" %>
+          <%= f.password_field :password, autofocus: true, class: "form-control" %>
         </div>
         <div class="field mt-3">
           <%= f.label :新しいパスワード（確認用）, class: "translatable-text" %>
@@ -27,5 +27,3 @@
     </div>
   </div>
 </div>
-
-<%= render "users/shared/links" %>
