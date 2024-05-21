@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_13_151859) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_21_155346) do
   create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
@@ -24,6 +24,32 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_151859) do
     t.integer "user_id", null: false
     t.integer "file_type_id"
     t.index ["user_id"], name: "index_another_posts_on_user_id"
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.integer "file_type_id"
+    t.integer "notification_setting_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["file_type_id"], name: "index_bookmarks_on_file_type_id"
+    t.index ["notification_setting_id"], name: "index_bookmarks_on_notification_setting_id"
+    t.index ["post_id"], name: "index_bookmarks_on_post_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "another_post_id", null: false
+    t.integer "file_type_id"
+    t.integer "notification_setting_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["another_post_id"], name: "index_favorites_on_another_post_id"
+    t.index ["file_type_id"], name: "index_favorites_on_file_type_id"
+    t.index ["notification_setting_id"], name: "index_favorites_on_notification_setting_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "file_types", force: :cascade do |t|
@@ -71,11 +97,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_151859) do
     t.boolean "is_deleted", default: false, null: false
     t.string "uid"
     t.string "provider"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "another_posts", "users"
+  add_foreign_key "bookmarks", "file_types"
+  add_foreign_key "bookmarks", "notification_settings"
+  add_foreign_key "bookmarks", "posts"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "favorites", "another_posts"
+  add_foreign_key "favorites", "file_types"
+  add_foreign_key "favorites", "notification_settings"
+  add_foreign_key "favorites", "users"
   add_foreign_key "notification_settings", "another_posts"
   add_foreign_key "notification_settings", "file_types"
   add_foreign_key "notification_settings", "posts"
