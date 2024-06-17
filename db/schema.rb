@@ -21,8 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_21_155346) do
     t.datetime "updated_at", null: false
     t.string "other_file_name"
     t.string "other_error_name"
-    t.integer "user_id", null: false
     t.integer "file_type_id"
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_another_posts_on_user_id"
   end
 
@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_21_155346) do
     t.index ["file_type_id"], name: "index_bookmarks_on_file_type_id"
     t.index ["notification_setting_id"], name: "index_bookmarks_on_notification_setting_id"
     t.index ["post_id"], name: "index_bookmarks_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_bookmarks_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
@@ -49,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_21_155346) do
     t.index ["another_post_id"], name: "index_favorites_on_another_post_id"
     t.index ["file_type_id"], name: "index_favorites_on_file_type_id"
     t.index ["notification_setting_id"], name: "index_favorites_on_notification_setting_id"
+    t.index ["user_id", "another_post_id"], name: "index_favorites_on_user_id_and_another_post_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -80,8 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_21_155346) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "other_file_name"
-    t.integer "user_id", null: false
     t.integer "file_type_id"
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

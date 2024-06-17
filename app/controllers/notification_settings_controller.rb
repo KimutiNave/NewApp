@@ -1,4 +1,8 @@
 class NotificationSettingsController < ApplicationController
+  def index
+    @notifications = current_user.notification_settings.order(created_at: :desc).page(params[page]).per(20)
+  end
+  
   def new
     @notification_setting = NotificationSetting.new
   end
@@ -15,6 +19,6 @@ class NotificationSettingsController < ApplicationController
   private
 
   def notification_setting_params
-    params.require(:notification_setting).permit(:notify_days, :post_id)
+    params.require(:notification_setting).permit(:user_id, :notify_days, :post_id, :another_post_id, :file_type_id)
   end
 end

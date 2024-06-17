@@ -9,9 +9,9 @@
   <div class="font-arrange"><div class="text-left"><i class="fa-solid fa-wand-magic-sparkles"></i>保存用の記事一覧<i class="fas fa-dove"></i></div></div>
   <div class="posts-container">
     <div class="col-lg-5 offset-lg-1">
-      <% if @posts.present? %>
-        <% @posts.each do |post| %>
-          <div class="card" style="width: 40rem;">
+      <div class="card" style="width: 40rem;">
+        <% if @posts.present? %>
+          <% @posts.each do |post| %>
             <h5 class="card-title"><%= post.title %></h5>
             <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.save_type_name %></h6>
             <ul class="list-group list-group-flush">
@@ -49,11 +49,16 @@
                 </li>
               </ul>
             </div>
-          </div>
+            <%= link_to "メモの詳細", post_path(post)%>
+            <% if current_user.bookmark?(post) %>
+              <%= render 'bookmarks/unbookmark', { post: post } %>
+            <% else %>
+              <%= render 'bookmarks/bookmark', { post: post } %>
+            <% end %>
+          <%end%>
         <%end%>
-      <%end%>
+      </div>
     </div>
   </div>
-  <br />
   <div class="center"><%= paginate @posts, theme: 'bootstrap-5'%></div>
 </body>

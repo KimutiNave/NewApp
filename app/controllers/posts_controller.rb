@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @q = current_user.posts.ransack(params[:q])
-    @posts = @q.result(distinct: true).includes(:user, :file_type).order(created_at: :desc).page(params[:page])
+    @posts = @q.result(distinct: true).includes(:user, :file_type, :bookmarks).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -45,6 +45,14 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def bookmark
+    @post_bookmarks = current_user.bookmark_posts.includes(:user).order(created_at: :desc)
+  end
+
+  def show
+    @post = current_user.posts.find(params[:id])
   end
 
   private

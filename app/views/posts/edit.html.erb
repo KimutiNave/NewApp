@@ -1,5 +1,5 @@
 <div class="topleft mt-3">
-  <%= link_to "記事一覧へ戻る", posts_path, class: "btn btn-primary" %>
+  <%= link_to "記事一覧へ戻る", posts_path, class: "btn btn-primary", data: { turbo: false } %>
 </div>
 <%= form_with model: @post, local: true do |f| %>
   <br>
