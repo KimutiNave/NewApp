@@ -32,8 +32,10 @@ Rails.application.routes.draw do
   end
   resources :another_posts, except: [:show ] do
     get :search, on: :collection
-    get :favorites, on: :collection
+    resource :favorites, only: [:create, :destroy]
+    collection do
+      get :favorites
+    end
   end
-  resources :favorites, only: [:create, :destroy]
   resources :notification_settings
 end
