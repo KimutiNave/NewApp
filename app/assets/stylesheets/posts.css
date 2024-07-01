@@ -39,16 +39,27 @@
 /* 検索ボタンに対するスタイル */
 .btn-primary {
   margin-left: 10px; /* 自動補完のコンテナとの間にマージンを設ける */
+  padding-left: 10px;
 }
 
 .posts-container {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  margin-left: 10px;
+  flex-shrink: 0;
 }
 .search-container{
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-left: 5px;
+}
+
+.bookmark-box{
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  margin: 10px;
+  padding: 10px;
 }

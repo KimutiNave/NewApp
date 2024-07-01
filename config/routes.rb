@@ -25,11 +25,11 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :posts do
     get :search, on: :collection
-    resource :bookmarks, only: [:create, :destroy]
     collection do
       get :bookmarks
     end
   end
+  resources :bookmarks, only: %i[create destroy]
   resources :another_posts, except: [:show ] do
     get :search, on: :collection
     resource :favorites, only: [:create, :destroy]

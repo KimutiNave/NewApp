@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_21_155346) do
     t.integer "user_id", null: false
     t.integer "post_id", null: false
     t.integer "file_type_id"
-    t.integer "notification_setting_id", null: false
+    t.integer "notification_setting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["file_type_id"], name: "index_bookmarks_on_file_type_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_21_155346) do
     t.integer "user_id", null: false
     t.integer "another_post_id", null: false
     t.integer "file_type_id"
-    t.integer "notification_setting_id", null: false
+    t.integer "notification_setting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["another_post_id"], name: "index_favorites_on_another_post_id"

@@ -16,16 +16,11 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, uniqueness: true
 
-  def skip_confirmation!
-    self.confirmed_at = Time.now.utc
-  end
-
   def active_for_authentication?
     super && (is_deleted == false)
   end
 
   def self.from_omniauth(auth)
-
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
@@ -36,6 +31,12 @@ class User < ApplicationRecord
     id == object.user_id
   end
 
+  def skip_confirmation!
+    super do |resource|
+      resource.skip_confirmation!
+      resource.save!
+    end
+  end
  # post用のお気に入り
   def bookmark(post)
     bookmark_posts << post

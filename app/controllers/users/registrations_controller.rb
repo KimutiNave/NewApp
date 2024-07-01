@@ -6,13 +6,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   #def new
-  # super
+    #super
   #end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  
+  def create
+    @user = User.new(sign_up_params)
+    @user.skip_confirmation!
+    if @user.save!
+      sign_in @user
+      redirect_to top_path
+    end
+  end
+
+  #protected
+
+  #def configure_permitted_parameters
+    #devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  #end
+
 
   # GET /resource/edit
   # def edit
