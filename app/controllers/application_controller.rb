@@ -8,18 +8,13 @@ class ApplicationController < ActionController::Base
     # @notification_settings = current_user.notification_settings.where(read: false) if user_signed_in?
   # end
 
-  #新規登録時のストロングパラメーターに「nameカラム」の追加
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-  end
-
   #ログイン後のリダイレクト先
-  def after_sign_in_path_for(resource_or_scope)
+  def after_sign_in_path_for(resource)
     top_path
   end
 
   #ログアウト後のリダイレクト先
-  def after_sign_out_path_for(resource_or_scope)
+  def after_sign_out_path_for(resource)
     new_user_session_path
   end
 
@@ -28,6 +23,7 @@ class ApplicationController < ActionController::Base
   #ログイン時にnameパラメーターを許可する。
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
   end
 end

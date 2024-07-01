@@ -5,7 +5,15 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+# 事故防止の為RAILS_ENVの指定が無い場合にはdevelopmentを使用する
+rails_env = ENV['RAILS_ENV'] || :development
+
+set :environment, rails_env 
+set :output, "/path/to/my/cron_log.log"
+
+if rails_env.to_sym == :production
+  # production環境のみで設定
+end
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -17,11 +25,11 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 1.day do
+every 1.day, at: '10:00 am' do
   runner "NotificationSetting.send_daily_notifications"
 end
 
-every 1.week do
+every 1.week, at: '10:00am' do
   runner "NotificationSetting.send_week_notifications"
 end
 

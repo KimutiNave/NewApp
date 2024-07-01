@@ -2,25 +2,21 @@ class NotificationSetting < ApplicationRecord
   belongs_to :user
   belongs_to :post, optional: true
   belongs_to :another_post, optional: true
+  belongs_to :file_type, optional: true
+  has_many :bookmarks, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
-  def self.send_daily_notifications
-    NotificationSetting.find_each do |setting| #←は全てのデータを取得してしまう！ NotificationSetting.whereなどで取得したいデータを設定する。
-      # どの日付のデータを参考にするか（データベース設定）
 
-      user = setting.user
-      if setting.notify_days.present? && (Date.today - user.posts.last.created_at.to_date).to_i % setting.notify_days == 0
-        
-        # ユーザーが設定した日程に基づいて通知する記事を検索
-        posts = user.posts.where('created_at <= ?', setting.notify_after.days.ago)
-        # 通知用のカラム用のテーブル作成
-        # この機能は通知用の機能でいいね一覧用の通知のデータを保存するカラムは作成されていない。
-        # 通知の内容保存
-        posts.each do |post|
-          # NotificationSetting.create(user: user, post: post, message: "#{post.title}の作成した記事があります")
-        end
-      end
-    end
-  end
+  #def self.send_daily_notifications
+    #NotificationSetting.find_each do |setting|
+      #user = setting.user
+      #if setting.notify_days.present? && (Date.today - user.posts.last.created_at.to_date).to_i % setting.notify_days == 0
+       #Notification.create(user: user, post: setting.post, another_post: setting.another_post, file_type: setting.file_type, message: "#{setting.post.title}の作成した記事があります")
+      #else
+        #Rails.logger.info "通知の作成はありません"
+      #end
+    #end
+  #end
 
   def self.send_week_notifications
     NotificationSetting.find_each do |setting|

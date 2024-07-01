@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:name_confirm, :name_check]
+
   def check
     @user = User.find(current_user.id)
   end

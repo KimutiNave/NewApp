@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :file_type, optional: true
   has_many :notification_settings, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   
   validates :title, length: { maximum: 500 }, allow_blank: true
   validates :other_file_name, length: { maximum: 500 }, allow_blank: true
@@ -14,5 +15,9 @@ class Post < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     ["file_type", "user"]
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user)
   end
 end
