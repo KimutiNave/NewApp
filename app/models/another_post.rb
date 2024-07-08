@@ -1,7 +1,6 @@
 class AnotherPost < ApplicationRecord
   belongs_to :user
   belongs_to :file_type, optional: true
-  has_many :notification_settings, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
   validates :other_error_name, length: { maximum: 5000 }, allow_blank: true

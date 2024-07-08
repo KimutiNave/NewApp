@@ -1,7 +1,6 @@
 class NotificationSetting < ApplicationRecord
   belongs_to :user
   belongs_to :post, optional: true
-  belongs_to :another_post, optional: true
   belongs_to :file_type, optional: true
   has_many :bookmarks, dependent: :destroy
   has_many :favorites, dependent: :destroy

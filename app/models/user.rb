@@ -31,11 +31,9 @@ class User < ApplicationRecord
     id == object.user_id
   end
 
+  # メールの確認認証のスキップ
   def skip_confirmation!
-    super do |resource|
-      resource.skip_confirmation!
-      resource.save!
-    end
+    self.confirmed_at = Time.now
   end
  # post用のお気に入り
   def bookmark(post)
