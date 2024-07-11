@@ -1,15 +1,17 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:edit, :update, :destroy]
   def index
     @q = current_user.posts.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :file_type, :bookmarks).order(created_at: :desc).page(params[:page])
   end
 
   def new
-    @post = current_user.posts.build
+    @post = PostNotificationForm.new(user_id: current_user.id)
   end
   
   def create
-    @post = current_user.posts.build(post_params)
+    @post = PostNotificationForm.new(post_form_params)
+    @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path, notice: "メモが作成されました"
     else
@@ -19,12 +21,12 @@ class PostsController < ApplicationController
   end
 
   def edit 
-    @post = current_user.posts.find(params[:id])
+    @post= PostNotificationForm.new(@post.attributes)
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
-    if @post.update(post_params)
+    @post = PostNotificationForm.new(post_form_params.merge(user_id: current_user.id))
+    if @post.save
       redirect_to request.referer, notice: 'メモが更新されました'
     else
       render :edit, status: :unprocessable_entity
@@ -32,7 +34,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])
     @post.destroy
     redirect_to posts_path, notice: "メモが削除されました" 
   end
@@ -54,12 +55,16 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.postform.find(params[:id])
   end
 
   private
 
+  def set_post
+    @post = current_user.posts.find(params[:id])
+  end
+
   def post_params
-    params.require(:post).permit(:save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content)
+    params.require(:postform).permit(:save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :notify_days)
   end
 end
