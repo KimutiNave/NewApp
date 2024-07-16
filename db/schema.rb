@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_06_161614) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
   create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
@@ -67,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_06_161614) do
     t.integer "notify_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "check"
+    t.date "date"
     t.index ["file_type_id"], name: "index_notification_settings_on_file_type_id"
     t.index ["post_id"], name: "index_notification_settings_on_post_id"
     t.index ["user_id"], name: "index_notification_settings_on_user_id"

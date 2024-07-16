@@ -45,9 +45,8 @@
   <br>
   <div class="form-group">
     <%= f.label :notify_days, "通知を受け取る日程", class: "center mt-3" %><br>
-    <%= f.select :notify_days, options_for_select([['1日','1_day'], ['1週間', '1_week'], ['1ヶ月', '1_month']]) %>
+    <%= f.select :notify_days,  NotificationSetting.notify_days.keys.map {|k| [I18n.t("enums.notification_setting.notify_days.#{k}"), k]} %>
   </div>
-  <br>
   <div class="form-group">
     <%= f.submit 'メモを作成', class: "btn btn-primary" %>
   </div>

@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   belongs_to :file_type, optional: true
   has_many :notification_settings, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  
+
   validates :title, length: { maximum: 500 }, allow_blank: true
   validates :other_file_name, length: { maximum: 500 }, allow_blank: true
   validates :code_content, length: { maximum: 30000 }, allow_blank: true

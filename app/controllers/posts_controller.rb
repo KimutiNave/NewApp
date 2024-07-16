@@ -6,12 +6,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = PostNotificationForm.new(user_id: current_user.id)
+    @post = current_user.posts.build
   end
   
   def create
-    @post = PostNotificationForm.new(post_form_params)
-    @post.user_id = current_user.id
+    binding.pry
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to posts_path, notice: "メモが作成されました"
     else
@@ -21,12 +21,12 @@ class PostsController < ApplicationController
   end
 
   def edit 
-    @post= PostNotificationForm.new(@post.attributes)
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
-    @post = PostNotificationForm.new(post_form_params.merge(user_id: current_user.id))
-    if @post.save
+    @post = current_user.posts.find(params[:id])
+    if @post.update(post_params)
       redirect_to request.referer, notice: 'メモが更新されました'
     else
       render :edit, status: :unprocessable_entity
@@ -65,6 +65,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:postform).permit(:save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :notify_days)
+    params.require(:post_notification_form).permit(:save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content)
   end
 end
