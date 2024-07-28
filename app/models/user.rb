@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :another_posts, dependent: :destroy
-  has_many :notification_settings, dependent: :destroy
+  #通知機能
+  has_many :active_notification_settings, class_name: 'NotificationSetting', dependent: :destroy
   # お気に入り機能
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post

@@ -1,5 +1,6 @@
-<% if @notifications.present? %>
-  <%= render @notifications%>
+<h1 class="ml-4 mb-5">お知らせ</h1>
+<% if @notification_settings.present? %>
+  <%= render @notification_settings %>
 <% else %>
-  <%= "通知はありません"%>
+  <div class="center"><%= "通知はありません"%></div>
 <% end %>

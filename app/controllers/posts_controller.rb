@@ -1,18 +1,19 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
   def index
     @q = current_user.posts.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :file_type, :bookmarks).order(created_at: :desc).page(params[:page])
   end
 
   def new
-    @post = current_user.posts.build
+    @post_form = PostForm.new
   end
   
   def create
     binding.pry
-    @post = current_user.posts.build(post_params)
-    if @post.save
+    @post_form = PostForm.new(post_params)
+    if @post_form.save
+      @post = Post.find(params[:id])
+      @post.create_notification_setting!(current_user)
       redirect_to posts_path, notice: "メモが作成されました"
     else
       flash.now[:warning]= "メモの作成に失敗しました"
@@ -20,20 +21,20 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit 
+  def edit
     @post = current_user.posts.find(params[:id])
+    @post_form = PostForm.new(post: @post)
   end
 
   def update
     @post = current_user.posts.find(params[:id])
-    if @post.update(post_params)
-      redirect_to request.referer, notice: 'メモが更新されました'
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @post_form = PostForm.new(post_params, post: @post)
+    @post_form.update_post
+    redirect_to @post
   end
 
   def destroy
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     redirect_to posts_path, notice: "メモが削除されました" 
   end
@@ -55,16 +56,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = current_user.postform.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   private
 
-  def set_post
-    @post = current_user.posts.find(params[:id])
-  end
-
   def post_params
-    params.require(:post_notification_form).permit(:save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content)
+    params.require(:post_form).permit(:save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :notify_days).merge(user_id: current_user.id)
   end
 end

@@ -7,10 +7,17 @@
       <strong>カテゴリー:</strong>
       <p><%= @post.save_type_name %></p>
     </li>
+    <% if @post.file_type.present? %>
     <li class="list-group-item">
       <strong>ファイル名:</strong>
       <p><%= @post.file_type.file_name %></p>
     </li>
+    <% else %>
+    <li class="list-group-item">
+      <strong>ファイル名:</strong>
+      <p><%= " " %></p>
+    </li>
+    <%end%>
     <% if @post.other_file_name.present? %>
     <li class="list-group-item">
       <strong>その他のファイル名:</strong>
