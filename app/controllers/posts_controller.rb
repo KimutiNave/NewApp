@@ -12,8 +12,7 @@ class PostsController < ApplicationController
     binding.pry
     @post_form = PostForm.new(post_params)
     if @post_form.save
-      @post = Post.find(params[:id])
-      @post.create_notification_setting!(current_user)
+      @post_form.create_notification_setting!(current_user)
       redirect_to posts_path, notice: "メモが作成されました"
     else
       flash.now[:warning]= "メモの作成に失敗しました"

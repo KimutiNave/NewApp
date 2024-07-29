@@ -6,10 +6,6 @@ class NotificationSetting < ApplicationRecord
 
   enum notify_days: {default: 0, day: 1, week: 2, month: 3},  _prefix: true
 
-  def self.unread_notifications
-    where('date <= ?', Date.current).where(check: false)
-  end
-
   #def self.send_daily_notifications
     #NotificationSetting.find_each do |setting|
       #user = setting.user
