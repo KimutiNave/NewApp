@@ -37,5 +37,9 @@ Rails.application.routes.draw do
       get :favorites
     end
   end
-  resources :notification_settings
+  resources :notification_settings, only: [:index] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 end

@@ -4,7 +4,7 @@ class NotificationSetting < ApplicationRecord
   belongs_to :file_type, optional: true
   has_many :bookmarks, dependent: :destroy
 
-  enum notify_days: {default: 0, day: 1, week: 2, month: 3},  _prefix: true
+  enum notify_days: {default: 0, day: 1, week: 2, month: 3}
 
   #def self.send_daily_notifications
     #NotificationSetting.find_each do |setting|

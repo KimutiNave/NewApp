@@ -31,7 +31,8 @@ class PostForm
         code_content: code_content,
         other_content: other_content,
       )
-      NotificationSetting.create(post_id: post_id, notify_days: notify_days, date: Time.current.to_date)
+      self.post_id = post.id
+      @notification_settings = NotificationSetting.create(user_id: user_id, post_id: post_id, notify_days: notify_days, date: Time.current.to_date)
     end
   rescue ActiveRecord::RecordInvalid
     false
@@ -46,23 +47,22 @@ class PostForm
   end
   #通知用のメソッド
   def create_notification_setting!(current_user)
-    temp = NotificationSetting.where(["user_id = ? and post_id = ? and notify_days = ?", current_user.id, post_id, notify_days ])
-    if temp.blank? && @notify_days.present?
-      case @notify_days
+    temp = NotificationSetting.where(user_id: current_user.id, post_id: post_id)
+    .where(notify_days: [:day, :week, :month])
+    if temp.blank?
+      case @post_form.notify_days
       when 'day'
         notification_setting = current_user.active_notification_settings.new(
           user_id: current_user.id,
           post_id: post_id,
-          file_type_id: file_type_id,
           notify_days: notify_days,
-          date: Time.current + 1.minute
+          date: Time.current + 1.days
         )
         notification_setting.save if notification_setting.valid?
       when 'week'
         notification_setting = current_user.active_notification_settings.new(
           user_id: current_user.id,
           post_id: post_id,
-          file_type_id: file_type_id,
           notify_days: notify_days,
           date: Time.current + 1.week
         )
@@ -71,7 +71,6 @@ class PostForm
         notification_setting = current_user.active_notification_settings.new(
           user_id: current_user.id,
           post: post_id,
-          file_type_id: file_type_id,
           notify_days: notify_days,
           date: Time.current + 1.month
         )

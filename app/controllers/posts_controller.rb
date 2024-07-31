@@ -9,7 +9,6 @@ class PostsController < ApplicationController
   end
   
   def create
-    binding.pry
     @post_form = PostForm.new(post_params)
     if @post_form.save
       @post_form.create_notification_setting!(current_user)

@@ -67,8 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
     t.integer "notify_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "check", default: false
-    t.date "date"
+    t.boolean "check", default: false, null: false
+    t.date "date", null: false
     t.index ["file_type_id"], name: "index_notification_settings_on_file_type_id"
     t.index ["post_id"], name: "index_notification_settings_on_post_id"
     t.index ["user_id"], name: "index_notification_settings_on_user_id"
