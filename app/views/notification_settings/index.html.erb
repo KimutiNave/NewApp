@@ -10,4 +10,6 @@
   <%= render @notification_settings %>
 <% else %>
   <div class="center"><%= "通知はありません"%></div>
+  <br>
+  <div data-turbo="false"><div class="center"> <%=link_to "前の画面に戻る", posts_path, class: "btn btn-primary" %></div></div>
 <% end %>

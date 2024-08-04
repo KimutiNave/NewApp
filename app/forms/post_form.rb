@@ -47,32 +47,15 @@ class PostForm
   end
   #通知用のメソッド
   def create_notification_setting!(current_user)
-    temp = NotificationSetting.where(user_id: current_user.id, post_id: post_id)
-    .where(notify_days: [:day, :week, :month])
-    if temp.blank?
-      case @post_form.notify_days
-      when 'day'
+    #binding.pry
+    if @notification_settings.notify_days.present? && @notification_settings.notify_days.in?(%w[day week month])
+      temp = NotificationSetting.where(user_id: current_user.id, post_id: post_id, notify_days: notify_days).distinct
+      if temp.blank?
         notification_setting = current_user.active_notification_settings.new(
           user_id: current_user.id,
           post_id: post_id,
           notify_days: notify_days,
-          date: Time.current + 1.days
-        )
-        notification_setting.save if notification_setting.valid?
-      when 'week'
-        notification_setting = current_user.active_notification_settings.new(
-          user_id: current_user.id,
-          post_id: post_id,
-          notify_days: notify_days,
-          date: Time.current + 1.week
-        )
-        notification_setting.save if notification_setting.valid?
-      when 'month'
-        notification_setting = current_user.active_notification_settings.new(
-          user_id: current_user.id,
-          post: post_id,
-          notify_days: notify_days,
-          date: Time.current + 1.month
+          date: Time.current
         )
         notification_setting.save if notification_setting.valid?
       end

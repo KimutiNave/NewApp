@@ -10,11 +10,12 @@ class PostsController < ApplicationController
   
   def create
     @post_form = PostForm.new(post_params)
+    #binding.pry
     if @post_form.save
       @post_form.create_notification_setting!(current_user)
       redirect_to posts_path, notice: "メモが作成されました"
     else
-      flash.now[:warning]= "メモの作成に失敗しました"
+      flash.now[:warning] = "メモの作成に失敗しました"
       render :new, status: :unprocessable_entity
     end
   end
