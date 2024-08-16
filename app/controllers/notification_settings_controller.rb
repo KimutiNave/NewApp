@@ -1,20 +1,14 @@
 class NotificationSettingsController < ApplicationController
-  def new
-    @notification_setting = NotificationSetting.new
-  end
-
-  def create
-    @notification_setting = current_user.build_notification_setting(notification_setting_params)
-    if @notification_setting.save
-      redirect_to top_path(current_user), notice: '通知設定を保存しました。'
-    else
-      render :new
+  def index
+    @notification_settings = current_user.active_notification_settings.where.not(notify_days: "default").order(created_at: :desc).distinct.page(params[:page]).per(20)
+    # 未読の通知を「既読に更新」
+    @notification_settings.where(check: false).each do |notification_setting|
+      notification_setting.update(check: true)
     end
   end
 
-  private
-
-  def notification_setting_params
-    params.require(:notification_setting).permit(:notify_days, :post_id)
+  def destroy_all
+    @notification_settings = current_user.active_notification_settings.destroy_all
+    redirect_to notification_settings_path
   end
 end

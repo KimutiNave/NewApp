@@ -18,6 +18,10 @@
       <%= render "layouts/flash" %>
     </div>
     <%= yield %>
+    <%# deivseのフラッシュメッセージを表示 %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%# ログイン中のユーザーにフッターを表示%>
     <div class="container">
       <% if current_user %>
        <%= render "shared/footer"%>

@@ -15,8 +15,12 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'e0e24801006dfad6512adccd040d38fcaefef14495983b45f2463d35a62c5ba3144cee408743324be4c1f48d3aaf093c329da3c9cad8660041918b7b503095cd'
+  # if Rails.application.credentials.stripe
+    # Stripe.api_key = Rails.application.credentials.twitter
+    # config.omniauth :twitter2, Stripe.api_key[:twitter_id], Stripe.api_key[:twitter_api_secret], callback_path: "/users/auth/twitter2/callback"
+  # end
   config.omniauth :twitter2, Rails.application.credentials.twitter[:twitter_id], Rails.application.credentials.twitter[:twitter_api_secret], callback_path: "/users/auth/twitter2/callback"
-
+  
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -25,7 +29,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'no-reply@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -164,7 +168,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 1.weeks
 
   # Invalidates all the remember me tokens when the user signs out.
   config.expire_all_remember_me_on_sign_out = true
@@ -188,7 +192,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 1.month
+  config.timeout_in = 1.weeks
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -219,7 +223,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [:email]
+  config.reset_password_keys = [:email]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to

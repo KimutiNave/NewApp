@@ -7,8 +7,7 @@
 
 <body>
   <div class="font-arrange"><div class="text-left"><i class="fa-solid fa-wand-magic-sparkles"></i>保存用の記事一覧<i class="fas fa-dove"></i></div></div>
-  <div class="posts-container">
-    <div class="col-lg-5 offset-lg-1">
+    <div class="posts-container">
       <% if @posts.present? %>
         <% @posts.each do |post| %>
           <div class="card" style="width: 40rem;">
@@ -17,7 +16,7 @@
             <ul class="list-group list-group-flush">
               <% if post.file_type.present? %>
                 <li class="list-group-item"><%= post.file_type.file_name %></li>
-                <% else %>
+              <% else %>
                 <li class="list-group-item"><%= " " %></li>
               <% end %>
             </ul>
@@ -44,16 +43,23 @@
                 </li>
                 <li class="list-inline-item">
                   <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
-                  <i class="fa-solid fa-trash"></i>
+                    <i class="fa-solid fa-trash"></i>
                   <% end %>
                 </li>
               </ul>
+            </div>
+            <div class="card-body">
+              <div data-turbo="false">
+                <%= link_to "メモの詳細", post_path(post)%>
+                <% if current_user.own?(post) %>
+                  <%= render 'bookmarks/bookmark_button', post: post, data: { turbo: false} %>
+                <% end %>
+              </div>
             </div>
           </div>
         <%end%>
       <%end%>
     </div>
   </div>
-  <br />
   <div class="center"><%= paginate @posts, theme: 'bootstrap-5'%></div>
 </body>

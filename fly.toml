@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for railsnotame-memo on 2024-03-17T14:43:43+09:00
+# fly.toml app configuration file generated for rails-memo-neww on 2024-05-02T18:55:24+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'railsnotame-memo'
+app = 'rails-memo-neww'
 primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
@@ -13,7 +13,7 @@ console_command = '/rails/bin/rails console'
   release_command = './bin/rails db:prepare'
 
 [http_service]
-  internal_port = 3000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
@@ -22,6 +22,9 @@ console_command = '/rails/bin/rails console'
 
 [[vm]]
   size = 'shared-cpu-1x'
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1
 
 [[statics]]
   guest_path = '/rails/public'

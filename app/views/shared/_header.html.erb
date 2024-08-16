@@ -42,17 +42,34 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          通知設定
+          お気に入り
         </a>
         <ul class="dropdown-menu">
-          <% if user_signed_in? %>
-            <li><%= link_to '通知作成', new_notification_setting_path, class: "dropdown-item", data: { turbo: false } %></li>
-          <% end%>
+          <li><%= link_to '保存用メモお気に入り一覧', bookmarks_posts_path, class: "dropdown-item", data: { turbo: false } %></li>
         </ul>
       </li>
       <li class="nav-item">
         <%= link_to 'サインアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
       </li>
     </ul>
+    <nav class="navbar navbar-right">
+      <div data-turbo="false">
+        <div class="container-fluid">
+          <%= link_to notification_settings_path do %>
+            <% if unchecked_notifications.any? %>
+              <li class="nav-item">
+                <i class="fa fa-bell fa-lg fa-stack-2x" style="font-size: 0.8em;" ></i>
+                <i class="fa fa-circle fa-stack-1x" style="color: orange; position: absolute; padding-top: 0rem; padding-left: 2rem; font-size: 0.7em; "></i>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <i class="fa fa-bell fa-lg"></i>
+              </li>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
   </div>
 </nav>
+

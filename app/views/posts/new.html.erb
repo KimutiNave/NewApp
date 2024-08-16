@@ -4,14 +4,15 @@
 <div class="topright">
   <%= link_to "エラー用メモ作成", new_another_post_path,  class: "btn btn-primary" %>
 </div>
-<div class="form-group me-3">
-  <%= I18n.l Time.zone.now, format: :full_date  %>
+<div class="top-adjust"> 
+  <div class="form-group me-3">
+    <%= I18n.l Time.zone.now, format: :full_date  %>
+  </div>
 </div>
 <div class="form-group me-3">
   <%= link_to "保存用メモ一覧を見る", posts_path, class: "btn btn-secondary", data: { turbo: false } %>
 </div>
-<%= form_with model: @post, url: posts_path, local: true do |f| %>
-  <br>
+<%= form_with model: @post_form, url: posts_path, local: true do |f| %>
   <div class="form-group">
     <%= f.label :save_type_name, 'カテゴリー' %><br>
     <%= f.text_field :save_type_name, value: '保存用', style: "text-align: center;", readonly: true %>
@@ -39,6 +40,11 @@
   <div class="form-group">
     <%= f.label :other_content, 'その他' %><br>
     <%= f.text_area :other_content, style: "width:40%", rows: "10"  %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :notify_days, "通知を受け取る日程", class: "center mt-3" %><br>
+    <%= f.select :notify_days,  NotificationSetting.notify_days.keys.map {|k| [I18n.t("enums.notification_setting.notify_days.#{k}"), k]} %>
   </div>
   <br>
   <div class="form-group">
