@@ -1,3 +1,5 @@
-<%= link_to another_post_favorites_path(current_user.favorites.find_by(another_post_id: another_post.id)), id: "js-favorite-button-for-another_post-#{another_post.id}", method: :delete do %>
-  <%= icon 'far', 'star' %>
-<% end %>
+<div data-turbo="false">
+  <%= link_to favorite_path(current_user.favorites.find_by(another_post_id: another_post.id)), id: "js-favorite-button-for-another_post-#{another_post.id}", method: :delete, remote: true do %>
+    <i class="fa-solid fa-star"></i>
+  <% end %>
+</div>

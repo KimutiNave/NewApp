@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
   has_many :favorites, dependent: :destroy
-  has_many :favorites_anotherposts, through: :favorites, source: :another_post
+  has_many :favorite_another_posts, through: :favorites, source: :another_post
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, uniqueness: true
@@ -51,14 +51,14 @@ class User < ApplicationRecord
 
   # another_post用のお気に入り
   def favorite(another_post)
-    favorites_anotherposts << another_post
+    favorite_another_posts << another_post
   end
 
   def unfavorite(another_post)
-    favorites_anotherposts.destroy(another_post)
+    favorite_another_posts.destroy(another_post)
   end
 
-  def favorite?(post)
-    favorites_anotherposts.include?(another_post)
+  def favorite?(another_post)
+    favorite_another_posts.include?(another_post)
   end
 end

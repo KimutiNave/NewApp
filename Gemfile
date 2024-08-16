@@ -18,7 +18,6 @@ gem 'seed-fu'
 # Model
 gem 'active_hash'
 gem 'enum_help'
-gem 'sidekiq'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
