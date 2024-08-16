@@ -1,7 +1,7 @@
 class AnotherPostsController < ApplicationController
   def index
     @q = current_user.another_posts.ransack(params[:q])
-    @another_posts = @q.result(distinct: true).includes(:user, :file_type).order(created_at: :desc).page(params[:page])
+    @another_posts = @q.result(distinct: true).includes(:user, :file_type, :favorites).order(created_at: :desc).page(params[:page])
   end
   
   def new
@@ -45,6 +45,15 @@ class AnotherPostsController < ApplicationController
     end
   end
 
+  def favorites
+    @q = current_user.favorite_another_posts.ransack(params[:q])
+    @favorite_another_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+  end
+
+  def show
+    @another_post = current_user.another_posts.find(params[:id])
+  end
+  
   private
 
   def another_post_params

@@ -5,6 +5,8 @@
 
 # Example:
 #
+#Rails.rootを使用するために必要
+require.File.expand_path(File.dirname(__FILE__) + '/environment')
 # 事故防止の為RAILS_ENVの指定が無い場合にはdevelopmentを使用する
 rails_env = ENV['RAILS_ENV'] || :development
 

@@ -30,13 +30,15 @@ Rails.application.routes.draw do
     end
   end
   resources :bookmarks, only: %i[create destroy]
-  resources :another_posts, except: [:show ] do
+
+  resources :another_posts do
     get :search, on: :collection
-    resource :favorites, only: [:create, :destroy]
     collection do
       get :favorites
     end
   end
+  resources :favorites, only: %i[create destroy]
+  
   resources :notification_settings, only: [:index] do
     collection do
       delete 'destroy_all'

@@ -2,7 +2,7 @@ class PostForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  attr_accessor :user_id, :save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :post_id, :notify_days, :date
+  attr_accessor :user_id, :save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :post_id, :notification_setting_id, :notify_days, :date
 
   validates :title, length: { maximum: 500 }, allow_blank: true
   validates :other_file_name, length: { maximum: 500 }, allow_blank: true
@@ -32,7 +32,8 @@ class PostForm
         other_content: other_content,
       )
       self.post_id = post.id
-      @notification_settings = NotificationSetting.create(user_id: user_id, post_id: post_id, notify_days: notify_days, date: Time.current.to_date)
+      notification_setting = NotificationSetting.create(user_id: user_id, post_id: post_id, notify_days: notify_days, date: Time.current.to_date)
+      self.notification_setting_id = notification_setting.id
     end
   rescue ActiveRecord::RecordInvalid
     false
@@ -47,17 +48,24 @@ class PostForm
   end
   #通知用のメソッド
   def create_notification_setting!(current_user)
-    #binding.pry
-    if @notification_settings.notify_days.present? && @notification_settings.notify_days.in?(%w[day week month])
-      temp = NotificationSetting.where(user_id: current_user.id, post_id: post_id, notify_days: notify_days).distinct
+    temp = NotificationSetting.where(user_id: current_user.id, post_id: post_id, notify_days: notify_days).distinct
+    binding.pry
+    if notify_days.in?(%w[day week month])
       if temp.blank?
+        notification_setting = current_user.active_notification_settings.new(
+          user_id: current_user.id,
+          post_id: notification_setting.post_id,
+          notify_days: notification_setting.notify_days,
+          date: Time.current
+        )
+        notification_setting.save if notification_setting.valid?
+      else
         notification_setting = current_user.active_notification_settings.new(
           user_id: current_user.id,
           post_id: post_id,
           notify_days: notify_days,
           date: Time.current
         )
-        notification_setting.save if notification_setting.valid?
       end
     end
   end
