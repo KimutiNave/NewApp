@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_19_062025) do
+  create_table "alerms", force: :cascade do |t|
+    t.boolean "notice"
+    t.integer "another_post_id", null: false
+    t.integer "user_id", null: false
+    t.integer "file_type_id"
+    t.integer "notice_days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["another_post_id"], name: "index_alerms_on_another_post_id"
+    t.index ["file_type_id"], name: "index_alerms_on_file_type_id"
+    t.index ["user_id"], name: "index_alerms_on_user_id"
+  end
+
   create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
@@ -23,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
     t.string "other_error_name"
     t.integer "file_type_id"
     t.integer "user_id", null: false
+    t.boolean "confirmn"
     t.index ["user_id"], name: "index_another_posts_on_user_id"
   end
 
@@ -108,6 +122,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "alerms", "another_posts"
+  add_foreign_key "alerms", "file_types"
+  add_foreign_key "alerms", "users"
   add_foreign_key "another_posts", "users"
   add_foreign_key "bookmarks", "file_types"
   add_foreign_key "bookmarks", "notification_settings"
