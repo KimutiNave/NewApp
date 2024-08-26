@@ -2,6 +2,7 @@ class AnotherPost < ApplicationRecord
   belongs_to :user
   belongs_to :file_type, optional: true
   has_many :favorites, dependent: :destroy
+  has_many :alerms, dependent: :destroy
 
   def self.ransackable_attributes(auth_object = nil)
     ["error_type_name", "status_error_name", "other_error_name", "title", "file_type_id", "id", "title other_file_name", "code_content", "other_content", "created_at"]

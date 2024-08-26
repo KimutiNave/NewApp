@@ -13,7 +13,7 @@
   <%= link_to "エラー用メモ一覧を見る", another_posts_path, class: "btn btn-secondary", data: { turbo: false } %>
 </div>
 <br />
-<%= form_with model: @another_post, url: another_posts_path, local: true do |f| %>
+<%= form_with model: @another_post_form, url: another_posts_path, local: true do |f| %>
   <div class="form-group">
     <%= f.label :error_type_name, 'カテゴリー' %><br>
     <%= f.text_field :error_type_name, value: 'エラー用', style: "text-align: center;", readonly: true %>
@@ -50,6 +50,15 @@
   <div class="form-group">
     <%= f.label :other_content, 'その他' %><br>
     <%= f.text_area :other_content, style: "width:40%", rows: "10"  %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :notice_days, "通知を受け取る日程", class: "center mt-3"%>
+    <%= f.select :notice_days, Alerm.notice_days.keys.map {|k| [I18n.t("enums.alerm.notice_days.#{k}"), k]}%>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.hidden_field :confirmn, boolean: false %>
   </div>
   <br>
   <div class="form-group">

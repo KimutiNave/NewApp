@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2024_08_19_062025) do
   create_table "alerms", force: :cascade do |t|
-    t.boolean "notice"
+    t.boolean "notice", default: false
     t.integer "another_post_id", null: false
     t.integer "user_id", null: false
     t.integer "file_type_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_19_062025) do
     t.string "other_error_name"
     t.integer "file_type_id"
     t.integer "user_id", null: false
-    t.boolean "confirmn"
+    t.boolean "confirmn", default: false
     t.index ["user_id"], name: "index_another_posts_on_user_id"
   end
 

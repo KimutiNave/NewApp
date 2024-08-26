@@ -38,7 +38,8 @@ class PostForm
   rescue ActiveRecord::RecordInvalid
     false
   end
-  
+
+  #編集用のメソッド
   def update_post
     ActiveRecord::Base.transaction do
       post.update(user_id:, save_type_name:, title:, file_type_id:, other_file_name:, code_content:, other_content:)
@@ -50,7 +51,7 @@ class PostForm
   def create_notification_setting!(current_user)
     temp = NotificationSetting.where(user_id: current_user.id, post_id: post_id, notify_days: notify_days).distinct
     binding.pry
-    if notify_days.in?(%w[day week month])
+    if notify_days.in?(%w[minute day week month])
       if temp.blank?
         notification_setting = current_user.active_notification_settings.new(
           user_id: current_user.id,
