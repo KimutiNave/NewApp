@@ -2,42 +2,31 @@ class AnotherPostForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  attr_accessor :user_id, :another_post_id, :alerm_id, :error_type_name, :status_error_name, :other_error_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :confirmn, :notice_days
-
+  attr_accessor :user_id, :another_post_id, :error_type_name, :status_error_name, :other_error_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :confirmn, :notice_days
+  
+  validates :status_error_name, inclusion: { in: AnotherPost.status_error_names.keys }, allow_blank: true
   validates :other_error_name, length: { maximum: 5000 }, allow_blank: true
   validates :title, length: { maximum: 500 }, allow_blank: true
   validates :other_file_name, length: { maximum: 500 }, allow_blank: true
   validates :code_content, length: { maximum: 30000 }, allow_blank: true
   validates :other_content, length: { maximum: 10000 }, allow_blank: true
-  validates :confirmn, inclusion: {in: [false, true]}
 
   # another_postがすでに保存されているものか、新規のものかで、PUTとPATCHを分ける
   delegate :persisted?, to: :another_post
 
   # Formオブジェクトの初期化と更新の際にdefault_attributesを呼び出す設定
-  def initialize(attributes = nil, another_post: AnotherPost.new)
+  def initialize(attributes = nil, another_post: AnotherPost.new, alerm: Alerm.new)
     @another_post = another_post
+    @alerm = alerm
     attributes ||= default_attributes
     super(attributes)
   end
 
   def save
     ActiveRecord::Base.transaction do
-      another_post = AnotherPost.create(
-        user_id: user_id,
-        error_type_name: error_type_name,
-        status_error_name: status_error_name,
-        other_error_name: other_error_name,
-        title: title,
-        file_type_id: file_type_id,
-        other_file_name: other_file_name,
-        code_content: code_content,
-        other_content: other_content,
-        confirmn: false
-      )
+      another_post = AnotherPost.create(user_id:, error_type_name:, status_error_name:, other_error_name:, title:, file_type_id:, other_file_name:, code_content:, other_content:, confirmn: false)
       self.another_post_id = another_post.id
       alerm = Alerm.create(user_id: user_id, another_post_id: another_post_id, notice_days: notice_days)
-      self.alerm_id = alerm.id
     end
   rescue ActiveRecord::RecordInvalid
     false
@@ -83,7 +72,7 @@ class AnotherPostForm
 
   private
 
-  attr_reader :another_post
+  attr_reader :another_post, :alerm
 
   def default_attributes
     {
@@ -96,7 +85,8 @@ class AnotherPostForm
       other_file_name: another_post.other_file_name,
       code_content: another_post.code_content,
       other_content: another_post.other_content,
-      confirmn: another_post.confirmn
+      confirmn: another_post.confirmn, 
+      notice_days: alerm.notice_days
     }
   end
 end

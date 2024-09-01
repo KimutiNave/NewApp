@@ -1,5 +1,5 @@
 document.addEventListener('turbo:load', function() {
-  var fileTypeElement = document.getElementById('file_type_id');
+  var fileTypeElement = document.getElementById('another_post_form_file_type_id');
   if (fileTypeElement) {
     fileTypeElement.addEventListener('change', function() {
       var value = this.value;

@@ -1,0 +1,68 @@
+<div class="center">
+  <div class="card" style="width: 50rem;">
+    <div class="card-body">
+      <h1><%= @another_post.title %></h1>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>カテゴリー:</strong>
+        <p><%= @another_post.error_type_name %></p>
+      </li>
+      <br>
+      <li class="list-group-item">
+      <!--%binding.pry%-->
+        <strong>エラー名:</strong>
+        <% if @another_post.status_error_name.present? %>
+          <p><%= @another_post.status_error_name %></p>
+        <%else%>
+          <p><%= " " %></p>
+        <% end %>
+      </li>
+      <% if @another_post.other_error_name.present? %>
+        <li class="list-group-item">
+          <strong>その他のエラー名:</strong>
+          <p><%= @another_post.other_error_name %></p>
+        </li>
+      <%else%>
+        <li class="list-group-item">
+          <p><%= " " %></p>
+        </li>
+      <%end%>
+      <br>
+      <% if @another_post.file_type.present? %>
+        <li class="list-group-item">
+          <strong>ファイル名:</strong>
+          <p><%= @another_post.file_type.file_name %></p>
+        </li>
+      <% else %>
+        <li class="list-group-item">
+          <strong>ファイル名:</strong>
+          <p><%= " " %></p>
+        </li>
+      <%end%>
+      <% if @another_post.other_file_name.present? %>
+        <li class="list-group-item">
+          <strong>その他のファイル名:</strong>
+          <p><%= @another_post.other_file_name %></p>
+        </li>
+      <% end %>
+      <br>
+      <p class="card-text">
+        <strong>コード内容:</strong>
+        <%= @another_post.code_content %>
+      </p>
+      <br>
+      <p class="card-text">
+        <strong>その他:</strong>
+        <%= @another_post.other_content %>
+      </p>
+      <div class="card-body"> 
+        <%= link_to edit_another_post_path(@another_post), id: "button-edit-#{@another_post.id}", data: { turbo: false } do%> 
+          <i class="fa-solid fa-pen-nib"></i>
+        <% end %>
+        <%= link_to another_posts_path, data: { turbo: false }  do%>
+          <i class="fa-solid fa-right-to-bracket"></i>戻る
+        <% end%>
+      </div>
+    </div>
+  </div>
+</div>

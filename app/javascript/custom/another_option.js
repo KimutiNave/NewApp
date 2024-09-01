@@ -1,5 +1,5 @@
 document.addEventListener('turbo:load', function() {
-  var statusErrorElement = document.getElementById('status_error_name');
+  var statusErrorElement = document.getElementById('another_post_form_status_error_name');
   if (statusErrorElement) {
     statusErrorElement.addEventListener('change', function() {
       var value = this.value;

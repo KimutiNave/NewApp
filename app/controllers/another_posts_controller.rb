@@ -5,8 +5,8 @@ class AnotherPostsController < ApplicationController
   end
   
   def new
-    binding.pry
-    @another_post = AnotherPostForm.new
+    #binding.pry
+    @another_post_form = AnotherPostForm.new
   end
 
   def create
@@ -22,6 +22,7 @@ class AnotherPostsController < ApplicationController
   end
 
   def edit
+    #binding.pry
     @another_post = current_user.another_posts.find(params[:id])
     @another_post_form = AnotherPostForm.new(another_post: @another_post)
   end
