@@ -1,26 +1,26 @@
 <div class="center">
-  <div class="card" style="width: 50rem;">
+  <div class="card" style="width: 80rem; margin: 10px">
     <div class="card-body">
-      <h1><%= @another_post.title %></h1>
+      <div class="fo1"><%= @another_post.title %></div>
       <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <strong>カテゴリー:</strong>
-        <p><%= @another_post.error_type_name %></p>
+        <div class="fo2">カテゴリー:</div>
+        <p><div class="fo3"><%= @another_post.error_type_name %></div></p>
       </li>
       <br>
       <li class="list-group-item">
       <!--%binding.pry%-->
-        <strong>エラー名:</strong>
+        <div class="fo2">エラー名:</div>
         <% if @another_post.status_error_name.present? %>
-          <p><%= @another_post.status_error_name %></p>
+          <p><div class="fo2"><%= @another_post.status_error_name %></div></p>
         <%else%>
           <p><%= " " %></p>
         <% end %>
       </li>
       <% if @another_post.other_error_name.present? %>
         <li class="list-group-item">
-          <strong>その他のエラー名:</strong>
-          <p><%= @another_post.other_error_name %></p>
+          <div class="fo2">その他のエラー名:</div>
+          <p><div class="fo2"><%= @another_post.other_error_name %></div></p>
         </li>
       <%else%>
         <li class="list-group-item">
@@ -30,30 +30,30 @@
       <br>
       <% if @another_post.file_type.present? %>
         <li class="list-group-item">
-          <strong>ファイル名:</strong>
-          <p><%= @another_post.file_type.file_name %></p>
+          <div class="fo2">ファイル名:</div>
+          <p><div class="fo3"><%= @another_post.file_type.file_name %></div></p>
         </li>
       <% else %>
         <li class="list-group-item">
-          <strong>ファイル名:</strong>
+          <div class="fo2">ファイル名:</div>
           <p><%= " " %></p>
         </li>
       <%end%>
       <% if @another_post.other_file_name.present? %>
         <li class="list-group-item">
-          <strong>その他のファイル名:</strong>
-          <p><%= @another_post.other_file_name %></p>
+          <div class="fo2">その他のファイル名:</div>
+          <p><div class="fo3"><%= @another_post.other_file_name %></div></p>
         </li>
       <% end %>
       <br>
       <p class="card-text">
-        <strong>コード内容:</strong>
-        <%= @another_post.code_content %>
+        <div class="fo2">コード内容:</div>
+        <div class="fo3"><%= @another_post.code_content %></div>
       </p>
       <br>
       <p class="card-text">
-        <strong>その他:</strong>
-        <%= @another_post.other_content %>
+        <div class="fo2">その他:</div>
+        <div class="fo3"><%= @another_post.other_content %></div>
       </p>
       <div class="card-body"> 
         <%= link_to edit_another_post_path(@another_post), id: "button-edit-#{@another_post.id}", data: { turbo: false } do%> 

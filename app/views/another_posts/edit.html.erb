@@ -9,7 +9,7 @@
   <br>
   <div class="form-group">
     <%= f.label :status_error_name, 'エラー名' %><br>
-    <%= f.select :status_error_name, options_for_select(AnotherPost.status_error_names.keys.map { |k| [k.humanize, k] }), include_blank: true%>
+    <%= f.select :status_error_name, AnotherPost.status_error_names.keys.map { |k| [k.humanize, k] }, include_blank: true %>
   </div>
   <br>
   <div class="form-group">

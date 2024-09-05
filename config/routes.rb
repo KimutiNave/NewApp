@@ -44,4 +44,10 @@ Rails.application.routes.draw do
       delete 'destroy_all'
     end
   end
+
+  resources :alerms, only: [:index] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 end

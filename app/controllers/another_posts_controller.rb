@@ -11,7 +11,7 @@ class AnotherPostsController < ApplicationController
 
   def create
     @another_post_form = AnotherPostForm.new(another_post_params)
-    binding.pry
+    #binding.pry
     if @another_post_form.valid?
       @another_post_form.save
       redirect_to another_posts_path, notice: "メモが作成されました"
@@ -41,8 +41,7 @@ class AnotherPostsController < ApplicationController
   end
 
   def search
-    @another_posts = AnotherPost.includes(:user, :file_type).joins(:file_type).where("CAST(status_error_name AS text) LIKE ? OR CAST(other_error_name AS text) LIKE ? OR CAST(title AS text) LIKE ?  OR CAST(other_file_name AS text) LIKE ? OR CAST(file_types.file_name AS text) LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
-    .distinct
+    @another_posts = current_user.another_posts.includes(:user, :file_type).joins(:file_type).where("CAST(status_error_name AS text) LIKE ? OR CAST(other_error_name AS text) LIKE ? OR CAST(title AS text) LIKE ?  OR CAST(other_file_name AS text) LIKE ? OR CAST(file_types.file_name AS text) LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%").distinct
     respond_to do |format|
       format.js
     end
