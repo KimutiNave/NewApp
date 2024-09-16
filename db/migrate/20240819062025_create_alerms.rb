@@ -5,7 +5,6 @@ class CreateAlerms < ActiveRecord::Migration[7.0]
       t.references :another_post, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.references :file_type, foreign_key: true
-      t.integer :notice_days
 
       t.timestamps
     end

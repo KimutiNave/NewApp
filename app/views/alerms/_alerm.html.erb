@@ -1,0 +1,14 @@
+<div class="center">
+  <form class="form-inline">
+    <span>
+      <% if alerm.another_post.user_id == current_user.id %>
+        <%= link_to "通知を設定した投稿", alerm.another_post, style: "font-weight: bold;"%>
+        <p>があります</p>
+      <%end%>
+    </span>
+    <small class="text-muted text-right">
+      <%= time_ago_in_words(alerm.created_at).upcase %>
+    </small>
+    <hr>
+  </form>
+</div>

@@ -4,6 +4,8 @@ class AnotherPost < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :alerms, dependent: :destroy
 
+  enum notice_days: { noalerm: 0, minute: 1, day: 2, week: 3, month: 4 }
+
   enum status_error_name: {"Name Error" => "Name Error", "No Method Error" => "No Method Error",
     "Template is missing" => "Template is missing", "LoadError" => "LoadError", "Actioncontroller::UnknownFormat" => "Actioncontroller::UnknownFormat", 
     "ArgumentError" => "ArgumentError", "Syntax error" => "Syntax error", "その他" => "その他"

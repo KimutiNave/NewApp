@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_19_062025) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_10_141803) do
   create_table "alerms", force: :cascade do |t|
     t.boolean "notice", default: false
     t.integer "another_post_id", null: false
     t.integer "user_id", null: false
     t.integer "file_type_id"
-    t.integer "notice_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["another_post_id"], name: "index_alerms_on_another_post_id"
@@ -37,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_19_062025) do
     t.integer "file_type_id"
     t.integer "user_id", null: false
     t.boolean "confirmn", default: false
+    t.integer "notice_days", default: 0
     t.index ["user_id"], name: "index_another_posts_on_user_id"
   end
 

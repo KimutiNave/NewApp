@@ -184,9 +184,9 @@ ja:
         day: "1日後"
         week: "1週間後"
         month: "1ヶ月後"
-    alerm:
+    another_post:
       notice_days:
-        default: "通知の設定なし"
+        noalerm: "通知の設定なし"
         minute: "30分後"
         day: "1日後"
         week: "1週間後"

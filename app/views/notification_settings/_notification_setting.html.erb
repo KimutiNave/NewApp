@@ -1,7 +1,7 @@
 <div class="center">
   <form class="form-inline">
     <span>
-      <% if notification_setting.user_id == current_user.id %>
+      <% if notification_setting.post.user_id == current_user.id %>
         <%= link_to "通知を設定した投稿", notification_setting.post, style: "font-weight: bold;"%>
         <p>があります</p>
       <%end%>

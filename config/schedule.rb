@@ -6,37 +6,51 @@
 # Example:
 #
 #Rails.rootを使用するために必要
-require.File.expand_path(File.dirname(__FILE__) + '/environment')
+require File.expand_path(File.dirname(__FILE__) + '/environment')
 # 事故防止の為RAILS_ENVの指定が無い場合にはdevelopmentを使用する
 rails_env = ENV['RAILS_ENV'] || :development
 
 set :environment, rails_env 
-set :output, "/path/to/my/cron_log.log"
+set :output, "#{Rails.root}/log/cron.log"
 
 if rails_env.to_sym == :production
   # production環境のみで設定
 end
-#
-# every 2.hours do
-#   command "/usr/bin/some_great_command"
-#   runner "MyModel.some_method"
-#   rake "some:great:rake:task"
-# end
-#
-# every 4.days do
-#   runner "AnotherModel.prune_old_records"
-# end
 
-every 1.day, at: '10:00 am' do
-  runner "NotificationSetting.send_daily_notifications"
+#AnotherPostFormでのAlerm通知
+
+every 1.minute do
+  rake 'alerm:create_alerm_timely'
 end
 
-every 1.week, at: '10:00am' do
-  runner "NotificationSetting.send_week_notifications"
+every 1.day do
+  rake 'alerm:create_alarm_daily'
 end
 
-every 1.month, at: '10:00 am' do
-  runner "NotificationSetting.send_monthly_notifications"
+every 1.week do
+  rake 'alerm:create_alarm_weekly'
+end
+
+every 1.month do
+  rake 'alerm:create_alerm_monthly'
 end 
+
+#NotificationSettingの通知モデル
+
+#every 1.minute do
+  #runner "NotificationSetting.send_timey_notifications"
+#end
+
+#every 1.day do
+  #runner "NotificationSetting.send_daily_notifications"
+#end
+
+#every 1.week do
+  #runner "NotificationSetting.send_week_notifications"
+#end
+
+#every 1.month do
+  #runner "NotificationSetting.send_monthly_notifications"
+#end 
 
 # Learn more: http://github.com/javan/whenever
