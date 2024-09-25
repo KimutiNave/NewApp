@@ -44,7 +44,7 @@
   <br>
   <div class="form-group">
     <%= f.label :notify_days, "通知を受け取る日程", class: "center mt-3" %><br>
-    <%= f.select :notify_days,  NotificationSetting.notify_days.keys.map {|k| [I18n.t("enums.notification_setting.notify_days.#{k}"), k]} %>
+    <%= f.select :notify_days,  Post.notify_days.keys.map {|k| [I18n.t("enums.post.notify_days.#{k}"), k]} %>
   </div>
   <br>
   <div class="form-group">

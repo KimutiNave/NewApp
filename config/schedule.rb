@@ -37,20 +37,20 @@ end
 
 #NotificationSettingの通知モデル
 
-#every 1.minute do
-  #runner "NotificationSetting.send_timey_notifications"
-#end
+every 1.minute do
+  rake 'notification_setting:create_notification_setting_timely'
+end
 
-#every 1.day do
-  #runner "NotificationSetting.send_daily_notifications"
-#end
+every 1.day do
+  rake 'notification_setting:create_notification_setting_daily'
+end
 
-#every 1.week do
-  #runner "NotificationSetting.send_week_notifications"
-#end
+every 1.week do
+  rake 'notification_setting:create_notification_setting_weekly'
+end
 
-#every 1.month do
-  #runner "NotificationSetting.send_monthly_notifications"
-#end 
+every 1.month do
+  rake 'notification_setting:create_notification_setting_monthly'
+end 
 
 # Learn more: http://github.com/javan/whenever

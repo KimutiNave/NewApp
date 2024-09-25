@@ -177,7 +177,6 @@ ja:
         gemfile: "Gemfile"
         rakefile: "Rakefile"
         read_me: "Read.me"
-    notification_setting:
       notify_days:
         default: "通知の設定なし"
         minute: "30分後"

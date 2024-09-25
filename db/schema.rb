@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_10_141803) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_25_134444) do
   create_table "alerms", force: :cascade do |t|
     t.boolean "notice", default: false
     t.integer "another_post_id", null: false
@@ -78,11 +78,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_10_141803) do
     t.integer "user_id", null: false
     t.integer "post_id"
     t.integer "file_type_id"
-    t.integer "notify_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "check", default: false, null: false
-    t.date "date", null: false
     t.index ["file_type_id"], name: "index_notification_settings_on_file_type_id"
     t.index ["post_id"], name: "index_notification_settings_on_post_id"
     t.index ["user_id"], name: "index_notification_settings_on_user_id"
@@ -98,6 +96,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_10_141803) do
     t.string "other_file_name"
     t.integer "file_type_id"
     t.integer "user_id", null: false
+    t.integer "notify_days", default: 0
+    t.boolean "verify", default: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

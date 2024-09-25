@@ -11,8 +11,8 @@ class PostsController < ApplicationController
   def create
     @post_form = PostForm.new(post_params)
     #binding.pry
-    if @post_form.save
-      @post_form.create_notification_setting!(current_user)
+    if @post_form.valid?
+      @post_form.save
       redirect_to posts_path, notice: "メモが作成されました"
     else
       flash.now[:warning] = "メモの作成に失敗しました"
@@ -61,6 +61,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post_form).permit(:save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :notify_days).merge(user_id: current_user.id)
+    params.require(:post_form).permit(:save_type_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :notify_days, :verify).merge(user_id: current_user.id)
   end
 end
