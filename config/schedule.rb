@@ -9,8 +9,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/environment')
 # 事故防止の為RAILS_ENVの指定が無い場合にはdevelopmentを使用する
 rails_env = ENV['RAILS_ENV'] || :development
-
-set :environment, rails_env 
+#開発環境用に設定
+#set :environment, rails_env
+set :environment, :production #本番環境用
 set :output, "#{Rails.root}/log/cron.log"
 
 if rails_env.to_sym == :production
@@ -19,7 +20,7 @@ end
 
 #AnotherPostFormでのAlerm通知
 
-every 1.minute do
+every 30.minute do
   rake 'alerm:create_alerm_timely'
 end
 
@@ -37,7 +38,7 @@ end
 
 #NotificationSettingの通知モデル
 
-every 1.minute do
+every 30.minute do
   rake 'notification_setting:create_notification_setting_timely'
 end
 

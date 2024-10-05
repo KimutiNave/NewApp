@@ -16,10 +16,10 @@ class User < ApplicationRecord
   has_many :favorite_another_posts, through: :favorites, source: :another_post
 
   validates :name, presence: true, length: { maximum: 50 }
-  validates :email, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && (self.is_deleted == false)
   end
 
   def self.from_omniauth(auth)
