@@ -1,21 +1,23 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # before_action :set_notifications
-
-  # def set_notifications
-   #ユーザーが通知を受け取る日程を設定
-    # @notification_settings = current_user.notification_settings.where(read: false) if user_signed_in?
-  # end
-
   #ログイン後のリダイレクト先
-  def after_sign_in_path_for(resource)
-    top_path
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope.is_a?(Admin)
+      board_path
+    else
+      top_path
+    end
   end
 
   #ログアウト後のリダイレクト先
-  def after_sign_out_path_for(resource)
-    new_user_session_path
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :user
+      new_user_session_path
+    elsif resource_or_scope == :admin
+      new_admin_session_path
+    else
+      root_path
+    end
   end
 
   protected

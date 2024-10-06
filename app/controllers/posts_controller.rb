@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @q = current_user.posts.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :file_type, :bookmarks).order(created_at: :desc).page(params[:page])

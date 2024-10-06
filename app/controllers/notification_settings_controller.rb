@@ -1,4 +1,5 @@
 class NotificationSettingsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @notification_settings = current_user.notification_settings.order(created_at: :desc).distinct.page(params[:page]).per(20)
     # 未読の通知を「既読に更新」

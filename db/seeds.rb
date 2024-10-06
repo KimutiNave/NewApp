@@ -17,3 +17,6 @@ file_type_names = [
 file_type_names.each do |file|
   FileType.find_or_create_by!(file_name: file)
 end
+
+Admin.create!(name: ENV["NAME"], email: ENV["MAIL_PASS"], password: ENV["SECRET_KEY"], password_confirmation: ENV["SECRET_KEY"])
+  

@@ -26,8 +26,6 @@ class Users::SessionsController < Devise::SessionsController
       if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
         flash[:error] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to new_user_session_path
-      else
-        flash[:error] = "項目を入力してください"
       end
     else
       flash[:error] = "該当するユーザーが見つかりません"

@@ -1,4 +1,5 @@
 class AnotherPostsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @q = current_user.another_posts.ransack(params[:q])
     @another_posts = @q.result(distinct: true).includes(:user, :file_type, :favorites).order(created_at: :desc).page(params[:page])
