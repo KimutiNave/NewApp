@@ -1,0 +1,2 @@
+module AnotherPostsHelper
+end

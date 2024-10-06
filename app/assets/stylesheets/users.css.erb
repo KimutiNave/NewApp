@@ -1,0 +1,57 @@
+.card {
+  display: flex; /* Flexboxを有効にする */
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center; /* 垂直方向の中央揃え */
+  margin-top: 50px; 
+  border-radius: 10px;
+}
+
+.main-container {
+  background-image: url("<%= asset_path('notebook-3820634_1920.jpg') %>");
+  background-size: cover;
+  background-repeat: no-repeat; /* 画像が繰り返し表示されないようにする */
+  background-position: center center; /* 背景画像がコンテナの中心に位置する */
+  height: 100vh; /* ビューポートの高さ全体をカバー */
+  width: 100vw; /* ビューポートの幅全体をカバー */
+}
+
+.sub-container {
+  background-image: url("<%= asset_path('pen-1215435_1920.jpg') %>");
+  background-size: cover;
+  background-repeat: no-repeat; /* 画像が繰り返し表示されないようにする */
+  background-position: center center; /* 背景画像がコンテナの中心に位置する */
+  height: 100vh; /* ビューポートの高さ全体をカバー */
+  width: 100vw; /* ビューポートの幅全体をカバー */
+}
+
+h2 {
+    padding: 0.8rem 0;
+    margin-bottom: 0.2rem;
+    background-image: linear-gradient(90deg, #b2d5de 0 20%, #dedede 20%);
+    background-repeat: no-repeat;
+    background-size: 100% 10%;
+    background-position: bottom;
+    color: #323232;
+    font-weight: bold;
+    font-size: 26px;
+}
+.wrapper{
+    min-height: 60vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+footer{
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #1955a6;
+    text-align: center;
+    padding: 30px 0;
+    position: absolute;/*←絶対位置にする*/
+    bottom: 0; /*下に固定する*/
+}
+
+.top-adjust{
+  margin-top: 100px;
+}
