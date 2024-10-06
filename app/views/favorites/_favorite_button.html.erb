@@ -1,5 +1,0 @@
-<% if current_user.favorite?(another_post) %>
-  <%= render 'favorites/unfavorite', { another_post: another_post }%>
-<% else %>
-  <%= render 'favorites/favorite', { another_post: another_post } %>
-<% end %>
