@@ -1,7 +1,7 @@
 <div class="topleft">
   <%= link_to "記事一覧へ戻る", another_posts_path, class: "btn btn-primary" %>
 </div>
-<%= form_with model: @another_post, local: true do |f| %>
+<%= form_with model: @another_post_form, url: @another_post_form.persisted? ? another_post_path : another_posts_path, local: true do |f| %>
   <div class="form-group">
     <%= f.label :error_type_name, 'カテゴリー' %><br>
     <%= f.text_field :error_type_name, value: 'エラー用', style: "text-align: center;", readonly: true %>
@@ -9,11 +9,15 @@
   <br>
   <div class="form-group">
     <%= f.label :status_error_name, 'エラー名' %><br>
-    <%= f.select :status_error_name, options_for_select(AnotherPost.status_error_names.keys.map { |k| [k.humanize, k] }) , include_blank: true%>
+    <%= f.select :status_error_name, AnotherPost.status_error_names.keys.map { |k| [k.humanize, k] }, include_blank: true %>
   </div>
   <br>
   <div class="form-group">
-    <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px", class: "hidden" %>
+    <% if @another_post_form.other_error_name.present? %>
+      <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px" %>
+    <% else %>
+      <%= f.text_area :other_error_name, id: "error_post_other_content", style: "min-width: 550px", class: "hidden" %>
+    <% end %>
   </div>
   <br>
   <div class="form-group">
@@ -27,7 +31,11 @@
     </div>
   <br><br>
     <div class="form-group">
-      <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px", class: "hidden"  %>
+      <% if @another_post_form.other_file_name.present? %>
+        <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px" %>
+      <% else %>
+        <%= f.text_area :other_file_name, id: "another_post_other_content", style: "min-width: 250px", class: "hidden"  %>
+      <% end %>
     </div>
   <br>
     <div class="form-group">

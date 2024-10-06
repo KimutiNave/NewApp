@@ -7,7 +7,8 @@ ja:
 #      already_confirmed: "was already confirmed"
       not_locked: "は凍結されていません"
 #      not_locked: "was not locked"
-
+      taken: "は使用できません"
+#      presence: ture message
   devise:
     failure:
       unauthenticated: 'ログインしてください。'

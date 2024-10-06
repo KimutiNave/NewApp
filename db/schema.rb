@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_05_160615) do
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "alerms", force: :cascade do |t|
+    t.boolean "notice", default: false
+    t.integer "another_post_id", null: false
+    t.integer "user_id", null: false
+    t.integer "file_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["another_post_id"], name: "index_alerms_on_another_post_id"
+    t.index ["file_type_id"], name: "index_alerms_on_file_type_id"
+    t.index ["user_id"], name: "index_alerms_on_user_id"
+  end
+
   create_table "another_posts", force: :cascade do |t|
     t.string "error_type_name"
     t.string "status_error_name"
@@ -23,6 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
     t.string "other_error_name"
     t.integer "file_type_id"
     t.integer "user_id", null: false
+    t.boolean "confirmn", default: false
+    t.integer "notice_days", default: 0
     t.index ["user_id"], name: "index_another_posts_on_user_id"
   end
 
@@ -64,11 +91,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
     t.integer "user_id", null: false
     t.integer "post_id"
     t.integer "file_type_id"
-    t.integer "notify_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "check", default: false, null: false
-    t.date "date", null: false
     t.index ["file_type_id"], name: "index_notification_settings_on_file_type_id"
     t.index ["post_id"], name: "index_notification_settings_on_post_id"
     t.index ["user_id"], name: "index_notification_settings_on_user_id"
@@ -84,6 +109,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
     t.string "other_file_name"
     t.integer "file_type_id"
     t.integer "user_id", null: false
+    t.integer "notify_days", default: 0
+    t.boolean "verify", default: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -104,10 +131,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_144340) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "alerms", "another_posts"
+  add_foreign_key "alerms", "file_types"
+  add_foreign_key "alerms", "users"
   add_foreign_key "another_posts", "users"
   add_foreign_key "bookmarks", "file_types"
   add_foreign_key "bookmarks", "notification_settings"

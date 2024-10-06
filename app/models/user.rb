@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :another_posts, dependent: :destroy
   #通知機能
-  has_many :active_notification_settings, class_name: 'NotificationSetting', dependent: :destroy
+  has_many :notification_settings, dependent: :destroy
+  has_many :alerms, dependent: :destroy
   # お気に入り機能
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
@@ -15,10 +16,10 @@ class User < ApplicationRecord
   has_many :favorite_another_posts, through: :favorites, source: :another_post
 
   validates :name, presence: true, length: { maximum: 50 }
-  validates :email, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && (self.is_deleted == false)
   end
 
   def self.from_omniauth(auth)

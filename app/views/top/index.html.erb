@@ -1,17 +1,18 @@
 <div class="bg_pattern Paper_v2"></div>
-
-<div class="center-text">
-  <div class="text-label">
-    <%= link_to "新しいメモを作る", category_path%>
+<div class="tophead">
+  <div class="center-text">
+    <div class="text-label">
+      <%= link_to "新しいメモを作る", category_path%>
+    </div>
+    <p>
+      <div class="text-label">
+        <%= link_to "保存用メモの投稿を見る", posts_path, data: { turbo: false } %>
+      </div>
+    </p>
+    <p>
+      <div class="text-label">
+        <%= link_to "エラー用メモの投稿を見る", another_posts_path, data: { turbo: false }%>
+      </div>
+    </p>
   </div>
-  <p>
-  <div class="text-label">
-    <%= link_to "保存用メモの投稿を見る", posts_path, data: { turbo: false } %>
-  </div>
-  </p>
-  <p>
-  <div class="text-label">
-    <%= link_to "エラー用メモの投稿を見る", another_posts_path, data: { turbo: false }%>
-  </div>
-  </p>
 </div>

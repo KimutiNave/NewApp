@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: { sessions: 'admins/sessions', passwords: 'admins/passwords', confirmations: "admins/confirmations" }
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', passwords: 'users/passwords',  omniauth_callbacks: 'users/omniauth_callbacks' }
   
   # 退会確認画面
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
     post '/users/name_check' => 'users#name_check', as: 'create_name_check'
     delete '/users/:id/name_check' => 'users#name_check', as: 'destroy_name_check'
   end
+
+  #管理者用画面
+  get 'board' => 'boads#index'
 
   root to: 'homes#home'
   get "top" => 'top#index'
@@ -40,6 +44,12 @@ Rails.application.routes.draw do
   resources :favorites, only: %i[create destroy]
   
   resources :notification_settings, only: [:index] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
+
+  resources :alerms, only: [:index] do
     collection do
       delete 'destroy_all'
     end

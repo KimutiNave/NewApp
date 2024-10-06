@@ -17,10 +17,13 @@
     <div class="flash">
       <%= render "layouts/flash" %>
     </div>
-    <%= yield %>
     <%# deivseのフラッシュメッセージを表示 %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+        <%= value %>
+      </div>
+    <%end%>
+    <%= yield %>
     <%# ログイン中のユーザーにフッターを表示%>
     <div class="container">
       <% if current_user %>

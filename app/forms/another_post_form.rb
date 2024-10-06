@@ -1,9 +1,10 @@
-class AanotherPostForm
+class AnotherPostForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  attr_accessor :user_id, :error_type_name, :status_error_name, :other_error_name, :title, :file_type_id, :other_file_name, :code_content, :other_content
-
+  attr_accessor :user_id, :error_type_name, :status_error_name, :other_error_name, :title, :file_type_id, :other_file_name, :code_content, :other_content, :confirmn, :notice_days
+  
+  validates :status_error_name, inclusion: { in: AnotherPost.status_error_names.keys }, allow_blank: true
   validates :other_error_name, length: { maximum: 5000 }, allow_blank: true
   validates :title, length: { maximum: 500 }, allow_blank: true
   validates :other_file_name, length: { maximum: 500 }, allow_blank: true
@@ -22,7 +23,16 @@ class AanotherPostForm
 
   def save
     ActiveRecord::Base.transaction do
-      AnotherPost.create(
+      another_post = AnotherPost.create(user_id:, error_type_name:, status_error_name:, other_error_name:, title:, file_type_id:, other_file_name:, code_content:, other_content:, notice_days:, confirmn: false)
+    end
+  rescue ActiveRecord::RecordInvalid
+    false
+  end
+
+  #編集用のメソッド
+  def update_another_post
+    ActiveRecord::Base.transaction do
+      another_post.update(
         user_id:,
         error_type_name:,
         status_error_name:,
@@ -31,12 +41,68 @@ class AanotherPostForm
         file_type_id:,
         other_file_name:,
         code_content:,
-        other_content:
+        other_content:,
+        notice_days:
       )
-      #self.another_post_id = another_post.id(attr_accessorにanother_post_idを入れること)
     end
   rescue ActiveRecord::RecordInvalid
     false
+  end
+ #通知用のメソッド
+  def self.create_timey_alerms(current_user)
+    temp = AnotherPost.where(confirmn: false)
+    if temp.present?
+      if notice_days.in?(%w[minute day week month])
+        alerm = current_user.active_alerms.new(
+          user_id: current_user.id,
+          another_post_id: alerm.another_post_id
+        )
+        alerm.save if alerm.valid?
+        temp.update(confirmn: true)
+      end
+    end
+  end
+
+  def self.create_daily_alerms(current_user)
+    temp = AnotherPost.where(confirmn: false)
+    if temp.present?
+      if notice_days.in?(%w[minute day week month])
+        alerm = current_user.active_alerms.new(
+          user_id: current_user.id,
+          another_post_id: alerm.another_post_id
+        )
+        alerm.save if alerm.valid?
+        temp.update(confirmn: true)
+      end
+    end
+  end
+
+  def self.create_week_alerms(current_user)
+    temp = AnotherPost.where(confirmn: false)
+    if temp.present?
+      if notice_days.in?(%w[minute day week month])
+        alerm = current_user.active_alerms.new(
+          user_id: current_user.id,
+          another_post_id: alerm.another_post_id
+        )
+        alerm.save if alerm.valid?
+        temp.update(confirmn: true)
+      end
+    end
+  end
+
+  def self.create_monthly_alerms(current_user)
+    temp = AnotherPost.where(confirmn: false)
+    if temp.present?
+      if notice_days.in?(%w[minute day week month])
+        alerm = current_user.active_alerms.new(
+          user_id: current_user.id,
+          another_post_id: alerm.another_post_id
+        )
+        alerm.save if alerm.valid?
+        temp.update(confirmn: true)
+      end
+    end
   end
 
   private
@@ -53,7 +119,9 @@ class AanotherPostForm
       file_type_id: another_post.file_type_id,
       other_file_name: another_post.other_file_name,
       code_content: another_post.code_content,
-      other_content: another_post.other_content
+      other_content: another_post.other_content,
+      confirmn: another_post.confirmn,
+      notice_days: another_post.notice_days
     }
   end
 end

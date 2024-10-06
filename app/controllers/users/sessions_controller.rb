@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_user, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -21,16 +21,14 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def reject_user
-    @user = User.find_by(name: params[:user][:name], email: params[:user][:email])
+    @user = User.find_by(name: params[:user][:name], email: params[:user][:email].downcase)
     if @user
-      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_user_registration_path
-      else
-        flash[:notice] = "項目を入力してください"
+      if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
+        flash[:error] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_user_session_path
       end
     else
-      flash[:notice] = "該当するユーザーが見つかりません"
+      flash[:error] = "該当するユーザーが見つかりません"
     end
   end
 
