@@ -24,5 +24,6 @@ module NewApp
     #
     config.time_zone = 'Tokyo'
     # config.eager_load_paths << Rails.root.join("extras")
+    config.secret_key_base = ENV['SECRET_KEY_BASE']
   end
 end
