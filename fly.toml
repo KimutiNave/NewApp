@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for new-rails-memo-app-billowing-lake-1382 on 2024-10-06T23:32:09+09:00
+# fly.toml app configuration file generated for new-rails-memo-app on 2024-10-10T00:59:51+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'new-rails-memo-app-billowing-lake-1382'
+app = 'new-rails-memo-app'
 primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
@@ -22,6 +22,9 @@ console_command = '/rails/bin/rails console'
 
 [[vm]]
   size = 'shared-cpu-1x'
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1
 
 [[statics]]
   guest_path = '/rails/public'

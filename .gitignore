@@ -37,7 +37,7 @@
 /config/initializers
 /config/credentials.yml.enc
 /config/credentials/production.yml.enc
-/config/credentials/webpack
+/config/webpack
 /public/packs
 /public/packs-test
 /node_modules

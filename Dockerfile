@@ -67,12 +67,9 @@ RUN bundle exec bootsnap precompile app/ lib/
 RUN grep -l '#!/usr/bin/env ruby' /rails/bin/* | xargs sed -i '/^#!/aDir.chdir File.expand_path("..", __dir__)'
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN --mount=type=secret,id=master_key,target=/rails/config/credentials/production.key,required=true \
+/bin/sh -c SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 #RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
-ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
-ARG RAILS_MASTER_KEY
-
-ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
-ARG SECRET_KEY_BASE
 # Final stage for app image
 FROM base
 
