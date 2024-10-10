@@ -31,7 +31,6 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
     rm -rf /tmp/node-build-master
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -47,10 +46,16 @@ RUN npm install -g yarn@$YARN_VERSION
 ENV PATH="/usr/local/node/bin:$PATH"
 
 # Install application gems
-COPY --link Gemfile Gemfile.lock ./
+#COPY --link Gemfile Gemfile.lock ./
+# ローカルのGemfileをコンテナへコピー
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install && \
     bundle exec bootsnap precompile --gemfile && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+
+# ソースコードをコンテナへコピー
+COPY . /app
 
 # Install node modules
 COPY --link .yarnrc package.json yarn.lock ./
@@ -67,9 +72,9 @@ RUN bundle exec bootsnap precompile app/ lib/
 RUN grep -l '#!/usr/bin/env ruby' /rails/bin/* | xargs sed -i '/^#!/aDir.chdir File.expand_path("..", __dir__)'
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN --mount=type=secret,id=master_key,target=/rails/config/credentials/production.key,required=true \
-/bin/sh -c SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-#RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
+#RUN --mount=type=secret,id=master_key,target=/rails/config/credentials/production.key,required=true \
+#/bin/sh -c SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
 # Final stage for app image
 FROM base
 
@@ -97,4 +102,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
