@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notice: false
+  another_post: one
+  user: one
+  file_type: one
+  notice_days: 1
+
+two:
+  notice: false
+  another_post: two
+  user: two
+  file_type: two
+  notice_days: 1

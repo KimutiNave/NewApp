@@ -1,0 +1,47 @@
+<div class="center">
+<div class="card" style="width: 50rem;">
+  <div class="card-body">
+    <h1><%= @post.title %></h1>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <strong>カテゴリー:</strong>
+      <p><%= @post.save_type_name %></p>
+    </li>
+    <% if @post.file_type.present? %>
+    <li class="list-group-item">
+      <strong>ファイル名:</strong>
+      <p><%= @post.file_type.file_name %></p>
+    </li>
+    <% else %>
+    <li class="list-group-item">
+      <strong>ファイル名:</strong>
+      <p><%= " " %></p>
+    </li>
+    <%end%>
+    <% if @post.other_file_name.present? %>
+    <li class="list-group-item">
+      <strong>その他のファイル名:</strong>
+      <p><%= @post.other_file_name %></p>
+    </li>
+    <% end %>
+    <p class="card-text">
+      <strong>コード内容:</strong>
+      <%= @post.code_content %>
+    </p>
+    <br>
+    <p class="card-text">
+      <strong>その他:</strong>
+      <%= @post.other_content %>
+    </p>
+    <div class="card-body"> 
+      <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}", data: { turbo: false } do%> 
+        <i class="fa-solid fa-pen-nib"></i>
+      <% end %>
+      |
+      <%= link_to posts_path, data: { turbo: false }  do%>
+        <i class="fa-solid fa-right-to-bracket"></i>戻る
+      <% end%>
+    </div>
+  </div>
+</div>
+</div>
