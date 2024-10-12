@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for new-rails-memo-app on 2024-10-10T00:59:51+09:00
+# fly.toml app configuration file generated for rails-memo-app-renew on 2024-10-12T21:20:28+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'new-rails-memo-app'
+app = 'rails-memo-app-renew'
 primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
@@ -12,13 +12,17 @@ console_command = '/rails/bin/rails console'
 [deploy]
   release_command = './bin/rails db:prepare'
 
+[processes]
+  cron = 'supercronic /rails/crontab'
+  web = 'bundle exec rails server -b [::] -p 8080'
+
 [http_service]
   internal_port = 8080
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-  processes = ['app']
+  processes = ['web']
 
 [[vm]]
   size = 'shared-cpu-1x'
