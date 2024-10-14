@@ -31,6 +31,7 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
     rm -rf /tmp/node-build-master
 
+
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -63,6 +64,7 @@ COPY --link . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+#RUN SECRET_KEY_BASE=$PRODUCTION_SECRET_KEY ./bin/rails assets:precompile
 RUN /bin/sh -c SECRET_KEY_BASE=$PRODUCTION_SECRET_KEY ./bin/rails assets:precompile
 
 # Final stage for app image
@@ -105,8 +107,5 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
-#EXPOSE 3000
-#CMD ["./bin/rails", "server"]
-# Run and own the application files as a non-root user for security
-RUN useradd rails --home /rails --shell /bin/bash
-USER rails:rails
+EXPOSE 3000
+CMD ["./bin/rails", "server"]

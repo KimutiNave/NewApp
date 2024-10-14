@@ -1,6 +1,7 @@
-<div class="topleft mt-3">
-  <%= link_to "記事一覧へ戻る", posts_path, class: "btn btn-primary", data: { turbo: false } %>
+<div class="center">
+  <%= link_to "記事一覧へ戻る", posts_path, class: "btn btn-primary mt-3", data: { turbo: false } %>
 </div>
+<br>
 <%= form_with model: @post_form, url: @post_form.persisted? ? post_path : posts_path, local: true do |f| %>
   <br>
   <div class="form-group">

@@ -70,6 +70,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    airbrussh (1.5.3)
+      sshkit (>= 1.6.1, != 1.7.0)
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
     base64 (0.2.0)
@@ -94,6 +96,21 @@ GEM
       rails (>= 3.1)
     builder (3.2.4)
     byebug (11.1.3)
+    capistrano (3.19.1)
+      airbrussh (>= 1.0.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (2.1.1)
+      capistrano (~> 3.1)
+    capistrano-rails (1.6.3)
+      capistrano (~> 3.1)
+      capistrano-bundler (>= 1.1, < 3)
+    capistrano-rbenv (2.2.0)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
+    capistrano3-unicorn (0.2.1)
+      capistrano (~> 3.1, >= 3.1.0)
     capybara (3.39.2)
       addressable
       matrix
@@ -254,8 +271,13 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
+    net-scp (4.0.0)
+      net-ssh (>= 2.6.5, < 8.0.0)
+    net-sftp (4.0.0)
+      net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.4.0)
       net-protocol
+    net-ssh (7.3.0)
     nio4r (2.7.0)
     nokogiri (1.15.5-aarch64-linux)
       racc (~> 1.4)
@@ -284,6 +306,7 @@ GEM
       omniauth
       omniauth-oauth2 (~> 1.0)
     orm_adapter (0.5.0)
+    ostruct (0.6.0)
     pg (1.5.6)
     popper_js (2.11.8)
     pry (0.14.2)
@@ -398,6 +421,12 @@ GEM
     sqlite3 (1.6.9-aarch64-linux)
     sqlite3 (1.6.9-arm64-darwin)
     sqlite3 (1.6.9-x86_64-linux)
+    sshkit (1.23.1)
+      base64
+      net-scp (>= 1.1.2)
+      net-sftp (>= 2.1.2)
+      net-ssh (>= 2.8.0)
+      ostruct
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.1.0)
@@ -451,6 +480,11 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap5-kaminari-views
   byebug
+  capistrano
+  capistrano-bundler
+  capistrano-rails
+  capistrano-rbenv
+  capistrano3-unicorn
   capybara
   cocoon
   config
