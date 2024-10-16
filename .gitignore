@@ -32,11 +32,19 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
-
+/config
 /public/packs
 /public/packs-test
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/vendor
+/.env
+/config/credentials/production.key
+/db/seeds.rb
+/Capfile
+/config.ru
+/fly.toml
+/bin
+/lib

@@ -5,7 +5,6 @@ class CreateNotificationSettings < ActiveRecord::Migration[7.0]
       t.references :post, foreign_key: true
       t.references :another_post, foreign_key: true
       t.references :file_type, foreign_key: true
-      t.integer :notify_days
 
       t.timestamps
     end

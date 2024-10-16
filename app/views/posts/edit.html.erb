@@ -1,7 +1,8 @@
-<div class="topleft">
-  <%= link_to "記事一覧へ戻る", posts_path, class: "btn btn-primary" %>
+<div class="center">
+  <%= link_to "記事一覧へ戻る", posts_path, class: "btn btn-primary mt-3", data: { turbo: false } %>
 </div>
-<%= form_with model: @post, local: true do |f| %>
+<br>
+<%= form_with model: @post_form, url: @post_form.persisted? ? post_path : posts_path, local: true do |f| %>
   <br>
   <div class="form-group">
     <%= f.label :save_type_name, 'カテゴリー' %><br>
@@ -19,7 +20,11 @@
   </div>
   <br><br>
   <div class="form-group">
-    <%= f.text_area :other_file_name, id: "post_other_content", style: "min-width: 250px", class: "hidden" %>
+    <% if @post_form.other_file_name.present? %>
+      <%=f.text_area :other_file_name, id: "post_other_content", style: "min-width: 250px" %>
+    <%else%>
+      <%= f.text_area :other_file_name, id: "post_other_content", style: "min-width: 250px", class: "hidden" %>
+    <% end %>
   </div>
   <br>
   <div class="form-group">

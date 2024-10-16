@@ -1,0 +1,75 @@
+<div class="font-arrange">
+  <div class="text-left"><i class="fas fa-tags"></i>お気に入りの記事一覧<i class="fas fa-thumbs-up"></i></div>
+</div>
+<div class="center">
+  <%= search_form_for @q, url: bookmarks_posts_path do |f| %>
+    <div data-controller="autocomplete" data-autocomplete-url-value="/posts/search" role="combobox">
+      <%= f.search_field :save_type_name_or_title_or_file_type_file_name_or_other_file_name_or_code_content_or_other_content_cont, type: "text", data: { autocomplete_target: "input" }, class: "form-control", placeholder: "フリーワード検索" %>
+      <%= f.hidden_field :title_or_file_type_file_name_or_other_file_name, type: "hidden", data: { autocomplete_target: 'hidden' } %>
+      <ul class="list-group" style="max-height: 10rem; overflow-y: scroll;" data-autocomplete-target="results"></ul>
+    </div>
+    <%= f.label :created_at_gteq, '投稿日から' %>
+    <%= f.date_field :created_at_gteq %>
+    <%= f.label :created_at_lteq, '投稿日まで' %>
+    <%= f.date_field :created_at_lteq, class: "mt-2"%>
+    <%= f.submit "検索", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div class="text-left"><%= link_to "保存用メモ一覧に戻る", posts_path, data: { turbo: false },  class: "btn btn-primary mt-5 " %> </div>
+
+<div class="bookmark-box">
+  <% @bookmark_posts.each do |post| %> 
+    <div class="bookmark-box">
+      <div class="card" style="width: 40rem;">
+        <h5 class="card-title"><%= post.title %></h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.save_type_name %></h6>
+        <ul class="list-group list-group-flush">
+          <% if post.file_type.present? %>
+            <li class="list-group-item"><%= post.file_type.file_name %></li>
+          <% else %>
+            <li class="list-group-item"><%= " " %></li>
+          <% end %>
+        </ul>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= post.other_file_name %></li>
+        </ul>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p class="card-text"><%= post.code_content %></p>
+          </blockquote>
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p class="card-text"><%= post.other_content %></p>
+          </blockquote>
+        </div>
+        <div class="card-body"><%= post.created_at.strftime("%B %d, %Y %H:%M") %></div>
+          <div class="card-body">
+            <ul class='crud-menu-btn list-inline float-right'>
+              <li class="list-inline-item">
+                <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
+                  <i class="fa-solid fa-pen-nib"></i>
+                <% end %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete } do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <%= link_to "メモの詳細", post_path(post)%>
+          </div>
+          <div class="card-body">
+            <% if current_user.own?(post) %>
+              <%= render 'bookmarks/bookmark_button', post: post %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <div class="center"><%= paginate @bookmark_posts, theme: 'bootstrap-5'%></div>
+</div>
