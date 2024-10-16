@@ -1,6 +1,7 @@
-<div class="topleft">
-  <%= link_to "記事一覧へ戻る", another_posts_path, class: "btn btn-primary" %>
+<div class="center">
+  <%= link_to "記事一覧へ戻る", another_posts_path, data: { turbo: false }, class: "btn btn-primary mt-3" %>
 </div>
+<br>
 <%= form_with model: @another_post_form, url: @another_post_form.persisted? ? another_post_path : another_posts_path, local: true do |f| %>
   <div class="form-group">
     <%= f.label :error_type_name, 'カテゴリー' %><br>

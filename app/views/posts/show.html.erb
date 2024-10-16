@@ -1,16 +1,16 @@
 <div class="center">
-<div class="card" style="width: 50rem;">
+<div class="card" style="width: 80rem; margin: 10px;">
   <div class="card-body">
-    <h1><%= @post.title %></h1>
+    <div class="fo1"><%= @post.title %></div>
     <ul class="list-group list-group-flush">
     <li class="list-group-item">
-      <strong>カテゴリー:</strong>
-      <p><%= @post.save_type_name %></p>
+      <div class="fo2">カテゴリー:</div>
+      <p><div class="fo3"><%= @post.save_type_name %></div></p>
     </li>
     <% if @post.file_type.present? %>
     <li class="list-group-item">
-      <strong>ファイル名:</strong>
-      <p><%= @post.file_type.file_name %></p>
+      <div class="fo2">ファイル名:</div>
+      <p><div class="fo3"><%= @post.file_type.file_name %></div></p>
     </li>
     <% else %>
     <li class="list-group-item">
@@ -20,18 +20,18 @@
     <%end%>
     <% if @post.other_file_name.present? %>
     <li class="list-group-item">
-      <strong>その他のファイル名:</strong>
-      <p><%= @post.other_file_name %></p>
+      <div class="fo2">その他のファイル名:</div>
+      <p><div class="fo3"><%= @post.other_file_name %></div></p>
     </li>
     <% end %>
     <p class="card-text">
-      <strong>コード内容:</strong>
-      <%= @post.code_content %>
+      <div class="fo2">コード内容:</div>
+      <div class="fo3"><%= @post.code_content %></div>
     </p>
     <br>
     <p class="card-text">
-      <strong>その他:</strong>
-      <%= @post.other_content %>
+      <div class="fo2">その他:</div>
+      <div class="fo3"><%= @post.other_content %></div>
     </p>
     <div class="card-body"> 
       <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}", data: { turbo: false } do%> 
