@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :favorite_another_posts, through: :favorites, source: :another_post
 
   validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, unless: :uid? 
 
   def active_for_authentication?
     super && (self.is_deleted == false)
@@ -24,7 +24,9 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
-      user.email = auth.info.email
+      user.skip_confirmation!
+      user.email = dummy_email(auth)
+      user.name = auth.info.name
       user.password = Devise.friendly_token[0, 20]
     end
   end
@@ -61,5 +63,11 @@ class User < ApplicationRecord
 
   def favorite?(another_post)
     favorite_another_posts.include?(another_post)
+  end
+
+  private
+  #X(Twitter)用のダミーメールの作成
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
   end
 end
