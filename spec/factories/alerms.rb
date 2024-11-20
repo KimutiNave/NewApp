@@ -1,5 +1,6 @@
 FactoryBot.define do
-  factory :another_post_form do
+  factory :alerm do
+    association :user
     association :another_post
   end
 end

@@ -11,7 +11,8 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 #Devise
 require 'devise'
-require 'rake'
+#Rspec
+require 'rake_helper'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -34,6 +35,9 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+# OmniAuthをテストモードに変更
+OmniAuth.config.test_mode = true
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = Rails.root.join('spec/fixtures')
@@ -77,7 +81,6 @@ RSpec.configure do |config|
   #Devise
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
-  config.before(:each) do
-    Rake.application.tasks.each(&:reenable)
-  end
+  # サポートモジュールの読み込み（テストで使う仮のユーザーデータ）
+  config.include OmniauthMocks
 end

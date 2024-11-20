@@ -12,7 +12,6 @@ class AnotherPostsController < ApplicationController
 
   def create
     @another_post_form = AnotherPostForm.new(another_post_params)
-    #binding.pry
     if @another_post_form.valid?
       @another_post_form.save
       redirect_to another_posts_path, notice: "メモが作成されました"

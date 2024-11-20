@@ -8,16 +8,14 @@ RSpec.describe AnotherPostForm, type: :model do
         {error_type_name: 'エラー用',
         status_error_name: 'Name Error',
         title: 'テスト',
-        user_id: 1,
-        file_type_id: 1,
         code_content: 'code_content',
         other_content: 'other_content',
         notice_days: 0,
         confirmn: [false]}
       }
       it '保存に成功する' do
-        another_post_form.valid?
-        expect(another_post_form).to be_valid
+        another_post_form.assign_attributes(attributes)
+        expect(another_post_form.save).to be_truthy
       end
     end
 
@@ -33,8 +31,8 @@ RSpec.describe AnotherPostForm, type: :model do
         confirmn: [false]}
       }
       it '保存に成功する' do
-        another_post_form.valid?
-        expect(another_post_form).to be_valid
+        another_post_form.assign_attributes(attributes)
+        expect(another_post_form.save).to be_truthy
       end
     end
   end

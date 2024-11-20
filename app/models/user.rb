@@ -25,7 +25,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.skip_confirmation!
-      user.email = dummy_email(auth)
+      user.email = auth.info.email || User.dummy_email(auth)
       user.name = auth.info.name
       user.password = Devise.friendly_token[0, 20]
     end

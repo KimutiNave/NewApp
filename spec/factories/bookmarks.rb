@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :bookmark do
-    #association :user
-    #association :post
-    post {build(:post)}
+    association :user
+    association :post
   end
 end
