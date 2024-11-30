@@ -24,29 +24,22 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          メモの作成
+          エラー用メモ
         </a>
         <ul class="dropdown-menu">
-          <li><%= link_to '保存用メモ作成', new_post_path, class: "dropdown-item", data: { turbo: false } %></li>
-          <li><%= link_to 'エラー用メモ作成', new_another_post_path , class: "dropdown-item", data: { turbo: false } %></li>
+          <li><%= link_to 'メモ作成（エラー用）', new_another_post_path , class: "dropdown-item", data: { turbo: false } %></li>
+          <li><%= link_to '投稿一覧（エラー用）', another_posts_path , class: "dropdown-item", data: { turbo: false } %></li>
+          <li><%= link_to 'お気に入り一覧（エラー用）', favorites_another_posts_path, class: "dropdown-item", data: { turbo: false } %></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          投稿一覧
+          保存用メモ
         </a>
         <ul class="dropdown-menu">
-          <li><%= link_to '保存用の投稿一覧', posts_path, class: "dropdown-item", data: { turbo: false } %></li>
-          <li><%= link_to 'エラー用の投稿一覧', another_posts_path , class: "dropdown-item", data: { turbo: false } %></li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          お気に入り
-        </a>
-        <ul class="dropdown-menu">
-          <li><%= link_to '保存用メモお気に入り一覧', bookmarks_posts_path, class: "dropdown-item", data: { turbo: false } %></li>
-          <li><%= link_to 'エラー用メモお気に入り一覧', favorites_another_posts_path, class: "dropdown-item", data: { turbo: false } %></li>
+          <li><%= link_to 'メモ作成（保存用）', new_post_path, class: "dropdown-item", data: { turbo: false } %></li>
+          <li><%= link_to '投稿一覧（保存用）', posts_path, class: "dropdown-item", data: { turbo: false } %></li>
+          <li><%= link_to 'お気に入り一覧（保存用）', bookmarks_posts_path, class: "dropdown-item", data: { turbo: false } %></li>
         </ul>
       </li>
       <li class="nav-item">

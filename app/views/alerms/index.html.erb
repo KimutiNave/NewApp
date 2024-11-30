@@ -4,7 +4,7 @@
     <%= link_to destroy_all_alerms_path, data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete },class:"btn btn-light" do %>
       <i class="fas fa-trash" style="color: black;"></i>全削除
     <% end %>
-    <div data-turbo="false"><%=link_to "前の画面に戻る", another_posts_path, class: "btn btn-primary" %></div>
+    <div data-turbo="false"><%=link_to "投稿一覧に戻る", another_posts_path, class: "btn btn-primary" %></div>
   </div>
   <br>
   <%= render @alerms %>

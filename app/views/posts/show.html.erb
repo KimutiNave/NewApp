@@ -37,9 +37,11 @@
       <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}", data: { turbo: false } do%> 
         <i class="fa-solid fa-pen-nib"></i>
       <% end %>
-      |
       <%= link_to posts_path, data: { turbo: false }  do%>
-        <i class="fa-solid fa-right-to-bracket"></i>戻る
+        <i class="fa-solid fa-right-to-bracket"></i>投稿一覧へ戻る
+      <% end%>
+      <%= link_to notification_settings_path, data: { turbo: false }  do%>
+        <i class="fa-solid fa-right-to-bracket"></i>通知画面に戻る
       <% end%>
     </div>
   </div>
