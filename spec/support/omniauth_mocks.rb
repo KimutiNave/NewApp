@@ -32,4 +32,22 @@ module OmniauthMocks
   def twitter_invalid_mock
     OmniAuth.config.mock_auth[:twitter2] = :invalid_credentails
   end
+
+  def google_mock
+    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+      "provider" => "google_oauth2",
+      "uid" => "000000",
+      "info" => {
+        "email" => "tester1@example.com",
+        "name" => "test employee"
+      },
+      "credentials" => {
+        "token" => "google_oauth2_test"
+      }
+    })
+  end
+
+  def google_invalid_mock
+    OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentails
+  end
 end

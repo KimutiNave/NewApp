@@ -60,6 +60,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem "omniauth-twitter2" ## Twitter認証
+gem 'omniauth-google-oauth2' ## Google認証
 gem "omniauth-rails_csrf_protection"
 
 # Search

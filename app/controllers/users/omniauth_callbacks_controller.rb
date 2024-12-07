@@ -9,6 +9,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:twitter2)
   end
 
+  def google
+    callback_for(:google_oauth2)
+  end
+
   def callback_for(provider)
     @user = User.from_omniauth(request.env['omniauth.auth'])
     @user.save!
@@ -21,7 +25,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to root_path, alert: "Twitterでのログインに失敗しました。"
+    redirect_to root_path, alert: "ログインに失敗しました。"
   end
 
   # More info at:

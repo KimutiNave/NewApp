@@ -48,3 +48,7 @@ yarn-debug.log*
 /fly.toml
 /bin
 /lib
+
+/config/credentials/development.key
+
+/config/credentials/environment.key

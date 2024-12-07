@@ -1,7 +1,10 @@
-.container{
+
+@media screen and (min-width: 481px) {
+  .container{
   display: flex;
   flex-wrap: wrap; /* 要素が収まらない場合、折り返す */
   justify-content: center; /* 中央に配置 */
+  }
 }
 
 .topleft{
@@ -36,6 +39,12 @@ h1 {
   background: #fff;
 }
 
+.bg .bg-wrap {
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+}
+
 @media screen and (min-width: 481px) {
 
   .line-block{
@@ -43,36 +52,60 @@ h1 {
     flex-wrap: wrap; /* 要素が収まらない場合、折り返す */
     justify-content: center; /* 中央に配置 */
   }
-  .boxmi11 {
+  .memo {
     position: relative;
-    /* margin: 2em 0 1em 0; */
-    background: #fff6e6;
-    box-shadow: 0 2px 3px rgba(0,0,0,.22);
-    /* padding: 15px 5px 15px 5px; */
-    background-color: #fff6e6;
-    font-weight: bold;
-    min-width: 280px;
-    min-height: 130px;
+    background: #F8F0D7;
+    border-left:4px dotted rgba(0,0,0,.1);
+    border-right:4px dotted rgba(0,0,0,.1);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+    padding: 1em;
+    color: #65513f;
+    width: 300px;
+    margin: 1em;
   }
-  .boxmi11-title {
-    background: #fff6e6;
-    font-size: 1.5em;
-    text-align: center;
-    color: #00010a;
-    /* margin-top: 30px;*/
-    font-weight:bold;
-  }
-  .boxmi11:after {
+  .masking-tape{
     position: absolute;
-    /* content: "";*/
-    /* top: 25px;*/
-    min-width: 30%;
-    min-height: 35px;
-    opacity: 0.3;
-    /* margin: -35px auto 10px 35%;*/
-    background: #74abcd;
-    transform: rotate(-2deg);
-    /* left: 10px; */
-    /* right: 10px; */
-  }  
+    top: -1em;
+    left: 26%;
+    width:100px;
+    height:30px;
+    background-image: linear-gradient(-45deg, rgba(140, 170, 227, 0.4) 25%, transparent 25%, transparent 50%, rgba(140, 170, 227, 0.4) 50%, rgba(140, 170, 227, 0.4) 75%, transparent 75%, transparent 100%);
+    background-size: 20px 20px;
+    border-left:2px dotted rgba(0,0,0,.1);
+    border-right:2px dotted rgba(0,0,0,.1);
+    box-shadow:0 0 5px rgba(0,0,0,.2);
+    padding: 0.25em 2em;
+    color: #65513f;
+    transform: rotate(-4deg); 
+  }
+  .memo p {
+    color: #65513f;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.planePath {
+  stroke: #D9DADA;
+  stroke-width: .1%;
+  stroke-width: .5%;
+  stroke-dasharray: 1% 2%;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.fil1 {
+  fill: #D9DADA;
+}
+
+.fil2 {
+  fill: #C5C6C6;
+}
+
+.fil4 {
+  fill: #9D9E9E;
+}
+
+.fil3 {
+  fill: #AEAFB0;
 }
