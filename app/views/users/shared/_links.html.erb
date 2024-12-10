@@ -3,9 +3,12 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "新規登録", new_registration_path(resource_name) %><br />
+  <div style="text-align: left;">
+    アカウントが未登録ですか？&nbsp;&nbsp;
+    <%= link_to "アカウントの作成", new_registration_path(resource_name) %>
+  </div>
 <% end %>
 
 <%= link_to "名前とパスワードをお忘れの方", new_user_password_path %><br />
 
-<%= link_to "利用規約", policy_path %>
+<%= link_to "プライバシーポリシー", policy_path %>

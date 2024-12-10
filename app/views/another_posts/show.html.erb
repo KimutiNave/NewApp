@@ -9,7 +9,6 @@
       </li>
       <br>
       <li class="list-group-item">
-      <!--%binding.pry%-->
         <div class="fo2">エラー名:</div>
         <% if @another_post.status_error_name.present? %>
           <p><div class="fo2"><%= @another_post.status_error_name %></div></p>
@@ -60,7 +59,10 @@
           <i class="fa-solid fa-pen-nib"></i>
         <% end %>
         <%= link_to another_posts_path, data: { turbo: false }  do%>
-          <i class="fa-solid fa-right-to-bracket"></i>戻る
+          <i class="fa-solid fa-right-to-bracket"></i>投稿一覧へ戻る
+        <% end%>
+        <%= link_to alerms_path, data: { turbo: false }  do%>
+          <i class="fa-solid fa-right-to-bracket"></i>通知画面へ戻る
         <% end%>
       </div>
     </div>

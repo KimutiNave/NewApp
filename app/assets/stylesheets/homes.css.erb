@@ -1,7 +1,10 @@
-.midashi{
+.midashi {
   font-size: 35px;
   margin-top: 10px;
+  animation: bounce;
+  animation-duration: 0.8s;
 }
+
 .cent-text{
   text-align: center;
   display: flex;
@@ -23,4 +26,34 @@ ul{
 }
 li{
   list-style:none;
+}
+
+.shinki-page{
+
+  background: linear-gradient(-45deg, #cf86a1, #7fb3c5, #98cbbf);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.homepage-content {
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+  background-size: 42px 20px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

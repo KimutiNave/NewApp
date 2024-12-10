@@ -32,12 +32,7 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/environments
-/config/master.key
-/config/initializers
-/config/credentials.yml.enc
-/config/credentials/production.yml.enc
-/config/credentials/webpack
+/config
 /public/packs
 /public/packs-test
 /node_modules
@@ -48,3 +43,12 @@ yarn-debug.log*
 /.env
 /config/credentials/production.key
 /db/seeds.rb
+/Capfile
+/config.ru
+/fly.toml
+/bin
+/lib
+
+/config/credentials/development.key
+
+/config/credentials/environment.key

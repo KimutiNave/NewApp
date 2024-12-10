@@ -6,4 +6,9 @@ class AlermsController < ApplicationController
       alerm.update(notice: true)
     end
   end
+
+  def destroy_all
+    @alerms = current_user.alerms.destroy_all
+    redirect_to alerms_path
+  end
 end

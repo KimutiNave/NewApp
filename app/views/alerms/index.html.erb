@@ -1,12 +1,15 @@
 <h1 class="ml-4 mb-5">お知らせ</h1>
 <% if @alerms.exists? %>
-  <div calss="center">
-    <div data-turbo="false"> <%=link_to "前の画面に戻る", another_posts_path, class: "btn btn-primary" %></div>
+  <div class="center">
+    <%= link_to destroy_all_alerms_path, data: { turbo_confirm: "削除してもよろしいですか？", turbo_method: :delete },class:"btn btn-light" do %>
+      <i class="fas fa-trash" style="color: black;"></i>全削除
+    <% end %>
+    <div data-turbo="false"><%=link_to "投稿一覧に戻る", another_posts_path, class: "btn btn-primary" %></div>
   </div>
   <br>
   <%= render @alerms %>
 <% else %>
   <div class="center"><%= "通知はありません"%></div>
   <br>
-  <div data-turbo="false"> <%=link_to "前の画面に戻る", another_posts_path, class: "btn btn-primary" %></div>
+  <div class="center"><%=link_to "前の画面に戻る", another_posts_path, data: { turbo: false }, class: "btn btn-primary" %></div>
 <% end %>
