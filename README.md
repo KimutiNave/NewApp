@@ -34,8 +34,6 @@ controller‥など記載しなくても選択でcontrollerやmodelなど記載�
 - 通知作成(Rakeタスク & cron)
 - お気に入り機能(Ajax)
 - ページネーション機能(kaminari)
-- FaaS
-  - fly.io
 
 ## ■ 使用技術
 - Ruby 3.2.2
@@ -43,6 +41,8 @@ controller‥など記載しなくても選択でcontrollerやmodelなど記載�
 - Puma
 - Bootstrap 4(CSSフレームワーク)
 - Rspec
+- FaaS
+  - fly.io
 
 ## ■ テスト(Rspec)
 - 統合テスト(system spec model)
