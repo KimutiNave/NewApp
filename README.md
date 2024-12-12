@@ -27,17 +27,23 @@ controller‥など記載しなくても選択でcontrollerやmodelなど記載�
 ## ■ おすすめしたいユーザー
 記載したコードを消さずに取っておきたい人、メモに保存してもメモの量が多くなりコードをどこに記載したか分からなくなってしまう人向け
 
-## ■ 機能候補
-- TwitterおよびGoogleログイン(TwitterAPI+GoogleAPI+Devise)
-- マルチ検索機能（Stimulus Autocomplete（Rails7 ）& JQuery）
-- 通知作成(Rakeタスク+cron)
-- お気に入り機能
+## ■ 機能一覧
+- 投稿機能
+- TwitterおよびGoogleログイン(TwitterAPI+GoogleAPI & Devise)
+- マルチ検索機能（ransack & rails-autocomplete & JQuery）
+- 通知作成(Rakeタスク & cron)
+- お気に入り機能(Ajax)
+- ページネーション機能(kaminari)
+- FaaS
+  - fly.io
+
 
 ## ■ 使用技術
-- 言語フレームワーク
 - Ruby 3.2.2
 - Ruby on Rails 7.0.5
+- Puma
 - Bootstrap 4(CSSフレームワーク)
+- Rspec
 
 ## ■ テスト(Rspec)
 - 統合テスト(system spec)
