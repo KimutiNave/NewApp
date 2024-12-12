@@ -37,7 +37,6 @@ controller‥など記載しなくても選択でcontrollerやmodelなど記載�
 - FaaS
   - fly.io
 
-
 ## ■ 使用技術
 - Ruby 3.2.2
 - Ruby on Rails 7.0.5
@@ -46,4 +45,4 @@ controller‥など記載しなくても選択でcontrollerやmodelなど記載�
 - Rspec
 
 ## ■ テスト(Rspec)
-- 統合テスト(system spec)
+- 統合テスト(system spec model)
