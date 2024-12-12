@@ -10,6 +10,8 @@ Railsでエラーが出た時や各ファイルで記載したコードを消さ
 コードの保存やお気に入り、リマインド通知の作成などが可能なメモ形式のサービスです。
 どこにコードを保存したのかを見つけやすく、いつでもコードを見返す事ができるのが特徴です。
 
+## ■Railsに絞った理由
+Rails on Ruby を学習しているためエラーの内容やコードを保存する際に必要な事項をイメージがしやすいかったことです。rubyではなくrailsなのはファイル数やファイル名など複数あり、コードを保存する際に予めファイル名などが付いていれば自分で命名する手間が減るなどコード保存アプリとしてメリットがあるためです。
 
 ## ■ 問題
 
@@ -25,17 +27,23 @@ controller‥など記載しなくても選択でcontrollerやmodelなど記載�
 ## ■ おすすめしたいユーザー
 記載したコードを消さずに取っておきたい人、メモに保存してもメモの量が多くなりコードをどこに記載したか分からなくなってしまう人向け
 
-## ■ 機能候補
-- TwitterおよびGoogleログイン(TwitterAPI+GoogleAPI+Devise)
-- マルチ検索機能（Stimulus Autocomplete（Rails7 ）& JQuery）
-- 通知作成(Rakeタスク+cron)
-- お気に入り機能
+## ■ 機能一覧
+- 投稿機能
+- TwitterおよびGoogleログイン(TwitterAPI+GoogleAPI & Devise)
+- マルチ検索機能（ransack & rails-autocomplete & JQuery）
+- 通知作成(Rakeタスク & cron)
+- お気に入り機能(Ajax)
+- ページネーション機能(kaminari)
+- FaaS
+  - fly.io
+
 
 ## ■ 使用技術
-- 言語フレームワーク
 - Ruby 3.2.2
 - Ruby on Rails 7.0.5
+- Puma
 - Bootstrap 4(CSSフレームワーク)
+- Rspec
 
 ## ■ テスト(Rspec)
 - 統合テスト(system spec)
