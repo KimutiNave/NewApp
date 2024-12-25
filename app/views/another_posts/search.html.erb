@@ -1,6 +1,6 @@
 <% every_values = @another_posts.map { |another_post| [ another_post.status_error_name, another_post.other_error_name, another_post.title, another_post.other_file_name, another_post.file_type&.file_name ] }.flatten.uniq %>
 <% every_values.each do |every_value| %>
   <% if every_value.present? %>
-    <li class="list-group-item" role="option" data-autocomplete-value=""><%= every_value %></li>
+    <li class="list-group-item" role="option" data-autocomplete-value="<%= every_value %>"><%= every_value %></li>
   <% end %>
 <% end %>
