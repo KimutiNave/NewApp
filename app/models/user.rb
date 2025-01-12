@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :another_posts, dependent: :destroy
-  #通知機能
+  # 通知機能
   has_many :notification_settings, dependent: :destroy
   has_many :alerms, dependent: :destroy
   # お気に入り機能
@@ -39,7 +39,8 @@ class User < ApplicationRecord
   def skip_confirmation!
     self.confirmed_at = Time.now
   end
- # post用のお気に入り
+  
+  # post用のお気に入り
   def bookmark(post)
     bookmark_posts << post
   end
@@ -66,7 +67,7 @@ class User < ApplicationRecord
   end
 
   private
-  #X(Twitter)用のダミーメールの作成
+  # X(Twitter)用のダミーメールの作成
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end

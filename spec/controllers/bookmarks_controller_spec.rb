@@ -9,13 +9,13 @@ RSpec.describe BookmarksController, type: :controller do
     sign_in user
   end
 
-  describe "お気に入りの作成" do
+  describe 'お気に入りの作成' do
     it "responds with JSON formatted output" do
       expect(bookmark.save).to be_truthy
     end
   end
   
-  describe "お気に入りの削除" do
+  describe 'お気に入りの削除' do
     it "responds with JSON formatted output" do
       expect(bookmark.destroy).to be_truthy
     end

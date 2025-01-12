@@ -1,0 +1,90 @@
+require:
+  - rubocop
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.2.2
+  TargetRailsVersion: 7.0.5
+  SuggestExtensions: false
+  # 最新のルールを適用する
+  NewCops: enable
+  # 何のルールに引っかかったか表示する
+  DisplayCopNames: true
+  # 除外するディレクトリ
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+# 1行あたりの文字数をチェックする
+Layout/LineLength:
+  Max: 402
+  # 下記ファイルはチェックの対象から外す
+  Exclude:
+    - "Rakefile"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+# ネストが深すぎないかをチェック（if文のネストもチェック）
+Metrics/BlockNesting:
+  Max: 5
+
+# クラスの行数をチェック（無効）
+Metrics/ClassLength:
+  CountComments: false
+
+Metrics/AbcSize:
+  Max: 22
+
+Metrics/BlockLength:
+  CountComments: false
+
+Metrics/CyclomaticComplexity:
+  CountComments: false
+
+# メソッドの行数が多すぎないかをチェック
+Metrics/MethodLength:
+  CountComments: false
+  Max: 28
+# メソッドの中身が複雑になっていないか、Rubocopが計算して基準値を超えると警告を出す
+Metrics/PerceivedComplexity:
+  CountComments: false
+  Max: 9
+
+# 空メソッドの場合に、1行のスタイルにしない　NG例：def style1; end
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# `and return` の形式を利用できるようにします。基本的には、&& と || を使います。
+Style/AndOr:
+  Enabled: false
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# autocorrectの不許可
+Style/BlockDelimiters:
+  AutoCorrect: false
+  Exclude:
+    - 'app/**/*'
+    - 'spec/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/WordArray:
+  EnforcedStyle: percent
+  MinSize: 12
+
+Style/SlicingWithRange:
+  Enabled: true

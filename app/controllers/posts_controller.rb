@@ -11,7 +11,6 @@ class PostsController < ApplicationController
   
   def create
     @post_form = PostForm.new(post_params)
-    #binding.pry
     if @post_form.valid?
       @post_form.save
       redirect_to posts_path, notice: "メモが作成されました"
@@ -52,7 +51,6 @@ class PostsController < ApplicationController
   def bookmarks
     @q = current_user.bookmark_posts.ransack(params[:q])
     @bookmark_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
-    #@bookmark_posts = current_user.bookmark_posts.distinct.includes(:user).order(created_at: :desc)
   end
 
   def show

@@ -8,14 +8,14 @@ RSpec.describe FavoritesController, type: :controller do
     sign_in user
   end
 
-  describe "お気に入りの作成" do
-    it "responds with JSON formatted output" do
+  describe 'お気に入りの作成' do
+    it 'responds with JSON formatted output' do
       expect(favorite.save).to be_truthy
     end
   end
   
-  describe "お気に入りの削除" do
-    it "responds with JSON formatted output" do
+  describe 'お気に入りの削除' do
+    it 'responds with JSON formatted output' do
       expect(favorite.destroy).to be_truthy
     end
   end
