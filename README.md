@@ -2,7 +2,7 @@
 <a href="https://gyazo.com/4b83dc974f3738287e8bc04774b58dc7"><img src="https://i.gyazo.com/4b83dc974f3738287e8bc04774b58dc7.png" alt="Image from Gyazo" width="1400"/></a>
 
 ## ■アプリURL
-https://rails-memo-app.fly.dev
+https://rails-memo.com/
 
 ## ■サービス概要
 

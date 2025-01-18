@@ -8,7 +8,6 @@ LABEL fly_launch_runtime="rails"
 
 # Rails app lives here
 WORKDIR /rails
-COPY . /app
 
 # Set production environment
 ENV BUNDLE_DEPLOYMENT="1" \
@@ -32,6 +31,19 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
     rm -rf /tmp/node-build-master
 
+# Latest releases available at https://github.com/aptible/supercronic/releases
+ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.2.29/supercronic-linux-amd64 \
+    SUPERCRONIC=supercronic-linux-amd64 \
+    SUPERCRONIC_SHA1SUM=cd48d45c4b10f3f0bfdd3a57d054cd05ac96812b
+
+RUN curl -fsSLO "$SUPERCRONIC_URL" \
+ && echo "${SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
+ && chmod +x "$SUPERCRONIC" \
+ && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
+ && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+
+# You might need to change this depending on where your crontab is located
+COPY crontab crontab
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
@@ -67,6 +79,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN /bin/sh -c SECRET_KEY_BASE=$PRODUCTION_SECRET_KEY ./bin/rails assets:precompile
 
+
 # Final stage for app image
 FROM base
 
@@ -94,4 +107,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+CMD ["./bin/rails", "server" "-b", "0.0.0.0"]
