@@ -5,11 +5,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
-  def twitter
+  def twitter2
     callback_for(:twitter2)
   end
 
-  def google
+  def google_oauth2
     callback_for(:google_oauth2)
   end
 
@@ -22,10 +22,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       redirect_to new_user_registration_path
     end
-  end
-
-  def failure
-    redirect_to root_path, alert: "ログインに失敗しました。"
   end
 
   # More info at:

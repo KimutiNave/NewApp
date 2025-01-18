@@ -10,7 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  
   def create
     @user = build_resource(sign_up_params)
     @user.skip_confirmation!
@@ -38,7 +37,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #def configure_permitted_parameters
     #devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   #end
-
 
   # GET /resource/edit
   # def edit

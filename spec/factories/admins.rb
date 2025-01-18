@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :admin do
     name { "adminuser" }
-    email { "testadmin@gmail.com"}
-    password { "admin12345"} 
+    email { "testadmin@gmail.com" }
+    password { "admin12345" } 
     password_confirmation { "admin12345" }
-    confirmed_at { Date.today }
+    confirmed_at { Time.zone.today }
   end
 end

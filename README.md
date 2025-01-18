@@ -1,8 +1,8 @@
 ## 残しておきたいRailsのコードを保存できるアプリ　「Railsめも」
-<a href="https://gyazo.com/4b83dc974f3738287e8bc04774b58dc7"><img src="https://i.gyazo.com/4b83dc974f3738287e8bc04774b58dc7.png" alt="Image from Gyazo" width="561"/></a>
+<a href="https://gyazo.com/4b83dc974f3738287e8bc04774b58dc7"><img src="https://i.gyazo.com/4b83dc974f3738287e8bc04774b58dc7.png" alt="Image from Gyazo" width="1400"/></a>
 
 ## ■アプリURL
-https://rails-memo-app.fly.dev
+https://rails-memo.com/
 
 ## ■サービス概要
 
@@ -28,22 +28,25 @@ controller‥など記載しなくても選択でcontrollerやmodelなど記載�
 記載したコードを消さずに取っておきたい人、メモに保存してもメモの量が多くなりコードをどこに記載したか分からなくなってしまう人向け
 
 ## ■ 機能一覧
+- ユーザー登録、ログイン機能(devise)
+- SNSログイン機能(omniauth-twitter2 & omniauth-google-oauth2 & omniauth-rails_csrf_protection)
 - 投稿機能
+  - 記事の作成
 - TwitterおよびGoogleログイン(TwitterAPI+GoogleAPI & Devise)
 - マルチ検索機能（ransack & rails-autocomplete & JQuery）
 - 通知作成(Rakeタスク & cron)
 - お気に入り機能(Ajax)
 - ページネーション機能(kaminari)
-- FaaS
-  - fly.io
-
 
 ## ■ 使用技術
 - Ruby 3.2.2
 - Ruby on Rails 7.0.5
 - Puma
 - Bootstrap 4(CSSフレームワーク)
+- Font Awesome
 - Rspec
+- FaaS
+  - fly.io
 
 ## ■ テスト(Rspec)
-- 統合テスト(system spec)
+- 統合テスト(system spec model)

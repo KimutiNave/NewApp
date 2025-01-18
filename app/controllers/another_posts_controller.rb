@@ -6,7 +6,6 @@ class AnotherPostsController < ApplicationController
   end
   
   def new
-    #binding.pry
     @another_post_form = AnotherPostForm.new
   end
 
@@ -14,7 +13,7 @@ class AnotherPostsController < ApplicationController
     @another_post_form = AnotherPostForm.new(another_post_params)
     if @another_post_form.valid?
       @another_post_form.save
-      redirect_to another_posts_path, notice: "メモが作成されました"
+      redirect_to another_posts_path, notice: 'メモが作成されました'
     else
       flash.now[:notice] = 'メモの作成に失敗しました'
       render :new, status: :unprocessable_entity
@@ -22,7 +21,6 @@ class AnotherPostsController < ApplicationController
   end
 
   def edit
-    #binding.pry
     @another_post = current_user.another_posts.find(params[:id])
     @another_post_form = AnotherPostForm.new(another_post: @another_post)
   end

@@ -1,6 +1,6 @@
 <% all_values = @posts.map { |post| [post.title, post.other_file_name, post.file_type&.file_name ] }.flatten.uniq %>
-<% all_values.each do |value| %>
-  <% if value.present? %>
-    <li class="list-group-item" role="option" data-autocomplete-value=""><%= value %></li>
+<% all_values.each do |all_value| %>
+  <% if all_value.present? %>
+    <li class="list-group-item" role="option" data-autocomplete-value="<%= all_value %>"><%= all_value %></li>
   <% end %>
 <% end %>

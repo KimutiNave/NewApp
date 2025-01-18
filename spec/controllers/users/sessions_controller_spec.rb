@@ -8,11 +8,11 @@ RSpec.describe Users::SessionsController, type: :controller do
     sign_in user
   end
 
-  describe "ログアウト処理" do
-    it "ユーザーがログアウトできる" do
+  describe 'ログアウト処理' do
+    it 'ユーザーがログアウトできる' do
       delete :destroy
-      expect(response).to redirect_to(new_user_session_path)  # ログアウト後のリダイレクト先を確認
-      expect(flash[:notice]).to eq("ログアウトしました。")  # フラッシュメッセージの確認
+      expect(response).to redirect_to(new_user_session_path)
+      expect(flash[:notice]).to eq('ログアウトしました。')
     end
   end
 end

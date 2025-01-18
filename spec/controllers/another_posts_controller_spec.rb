@@ -8,7 +8,7 @@ RSpec.describe AnotherPostsController, type: :controller do
     sign_in user
   end
 
-  describe 'エラー用メモの編集フォーム' do
+  describe 'エラー用メモの編集' do
     let(:valid_attributes) do
       {
         title: '新しいタイトル',
@@ -25,8 +25,9 @@ RSpec.describe AnotherPostsController, type: :controller do
 
     context '有効な属性が与えられた場合' do
       it 'AnotherPostが更新される' do
+        # sliceで指定した属性だけを抽出し、stringify_keysでキーを文字列に変換
         expect { another_post_form.update_another_post }.to change { another_post.reload.attributes.slice('title', 'file_type_id', 'status_error_name', 'code_content', 'other_content') }
-          .to(include(valid_attributes.stringify_keys))#sliceで指定した属性だけを抽出し、stringify_keysでキーを文字列に変換
+          .to(include(valid_attributes.stringify_keys))
       end
 
       it '更新が成功するとtrueを返す' do

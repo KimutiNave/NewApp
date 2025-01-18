@@ -38,7 +38,7 @@ class PostForm
     false
   end
 
-  #編集用のメソッド
+  # 編集用のメソッド
   def update_post
     ActiveRecord::Base.transaction do
       post.update(user_id:, save_type_name:, title:, file_type_id:, other_file_name:, code_content:, other_content:)

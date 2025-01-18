@@ -8,7 +8,7 @@ RSpec.describe PostsController, type: :controller do
     sign_in user
   end
 
-  describe '保存用メモの編集フォーム' do
+  describe '保存用メモの編集' do
     let(:valid_attributes) do
       {
         title: '新しいタイトル',
@@ -24,8 +24,9 @@ RSpec.describe PostsController, type: :controller do
 
     context '有効な属性が与えられた場合' do
       it 'Postが更新される' do
+        # sliceで指定した属性だけを抽出し、stringify_keysでキーを文字列に変換
         expect { post_form.update_post }.to change { post.reload.attributes.slice('title', 'file_type_id', 'code_content', 'other_content') }
-          .to(include(valid_attributes.stringify_keys))#sliceで指定した属性だけを抽出し、stringify_keysでキーを文字列に変換
+          .to(include(valid_attributes.stringify_keys))
       end
 
       it '更新が成功するとtrueを返す' do

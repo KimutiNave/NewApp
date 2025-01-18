@@ -29,7 +29,7 @@ class AnotherPostForm
     false
   end
 
-  #編集用のメソッド
+  # 編集用のメソッド
   def update_another_post
     ActiveRecord::Base.transaction do
       another_post.update(
@@ -48,7 +48,7 @@ class AnotherPostForm
   rescue ActiveRecord::RecordInvalid
     false
   end
- #通知用のメソッド
+ # 通知用のメソッド
   def self.create_timey_alerms(current_user)
     temp = AnotherPost.where(confirmn: false)
     if temp.present?
