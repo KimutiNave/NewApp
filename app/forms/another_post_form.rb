@@ -48,62 +48,6 @@ class AnotherPostForm
   rescue ActiveRecord::RecordInvalid
     false
   end
- # 通知用のメソッド
-  def self.create_timey_alerms(current_user)
-    temp = AnotherPost.where(confirmn: false)
-    if temp.present?
-      if notice_days.in?(%w[minute day week month])
-        alerm = current_user.active_alerms.new(
-          user_id: current_user.id,
-          another_post_id: alerm.another_post_id
-        )
-        alerm.save if alerm.valid?
-        temp.update(confirmn: true)
-      end
-    end
-  end
-
-  def self.create_daily_alerms(current_user)
-    temp = AnotherPost.where(confirmn: false)
-    if temp.present?
-      if notice_days.in?(%w[minute day week month])
-        alerm = current_user.active_alerms.new(
-          user_id: current_user.id,
-          another_post_id: alerm.another_post_id
-        )
-        alerm.save if alerm.valid?
-        temp.update(confirmn: true)
-      end
-    end
-  end
-
-  def self.create_week_alerms(current_user)
-    temp = AnotherPost.where(confirmn: false)
-    if temp.present?
-      if notice_days.in?(%w[minute day week month])
-        alerm = current_user.active_alerms.new(
-          user_id: current_user.id,
-          another_post_id: alerm.another_post_id
-        )
-        alerm.save if alerm.valid?
-        temp.update(confirmn: true)
-      end
-    end
-  end
-
-  def self.create_monthly_alerms(current_user)
-    temp = AnotherPost.where(confirmn: false)
-    if temp.present?
-      if notice_days.in?(%w[minute day week month])
-        alerm = current_user.active_alerms.new(
-          user_id: current_user.id,
-          another_post_id: alerm.another_post_id
-        )
-        alerm.save if alerm.valid?
-        temp.update(confirmn: true)
-      end
-    end
-  end
 
   private
 

@@ -8,5 +8,3 @@ function initializeDropdown() {
     return new bootstrap.Dropdown(dropdownToggleEl);
   });
 }
-
-console.log("ADC")

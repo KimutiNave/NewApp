@@ -49,6 +49,7 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'mini_racer'
 gem 'sassc'
+# Use Sass to process CSS
 gem 'sass-rails'
 gem 'uglifier'
 
@@ -106,9 +107,6 @@ gem 'pry'
 gem 'pry-byebug'
 gem 'pry-doc'
 gem 'pry-rails'
-
-# Use Sass to process CSS
-# gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

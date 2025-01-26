@@ -15,5 +15,3 @@ document.addEventListener('turbo:load', function() {
     });
   }
 });
-
-console.log("ABC")
