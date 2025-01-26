@@ -1,8 +1,8 @@
 30 * * * * bundle exec rake alerm:create_alerm_timely
 0 0 * * * bundle exec rake alerm:create_alarm_daily
-0 0 * * 0 bundle exec rake alerm:create_alarm_weekly
+0 0 * * 1 bundle exec rake alerm:create_alarm_weekly
 0 0 1 * * bundle exec rake alerm:create_alerm_monthly
 30 * * * * bundle exec rake notification_setting:create_notification_setting_timely
 0 0 * * * bundle exec rake notification_setting:create_notification_setting_daily
-0 0 * * 0 bundle exec rake notification_setting:create_notification_setting_weekly
+0 0 * * 1 bundle exec rake notification_setting:create_notification_setting_weekly
 0 0 1 * * bundle exec rake notification_setting:create_notification_setting_monthly
