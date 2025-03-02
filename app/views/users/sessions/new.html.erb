@@ -2,19 +2,19 @@
   <%= render "homes/shared/navbar" %>
   <div class="row">
     <div class="center">
-      <div class="card">
+      <div class="card" style="margin-top: 50px;">
         <h2>ログイン</h2>
         <div class="card-body mt-3">
           <br />
-          <div class="btn btn-dark">
+          <div class="btn btn-dark distable rounded-pill" >
             <%= link_to user_twitter2_omniauth_authorize_path, style: "color: white;", method: :post do %>
-              X(Twitter)でログイン<i class="fa-solid fa-kiwi-bird"></i>
+              <i class="fa-brands fa-x-twitter"></i>　X(Twitter) でログイン
             <% end %>
           </div>
           <br>
-          <div class="btn btn-danger mt-3">
+          <div class="btn btn-danger rounded-pill mt-3">
             <%= link_to user_google_oauth2_omniauth_authorize_path, style: "color: white;", method: :post do %>
-              Googleアカウントでログイン<i class="fa-brands fa-google"></i>
+              <i class="fa-brands fa-google"></i>　Googleアカウントでログイン
             <% end %>
           </div>
         </div>
@@ -24,18 +24,18 @@
             <%= flash[:error] %>
             <div class="mb-3">
               <%= f.label :name %><br />
-              <%= f.text_field :name, autofocus: true, autocomplete: "name", size: "50x10", placeholder: "名前" %>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "名前" %>
             </div>
             <div class="mb-3">
               <%= f.label :email %><br />
-              <%= f.email_field :email, size: "50x10", placeholder: "メールアドレス" %>
+              <%= f.email_field :email, placeholder: "メールアドレス" %>
             </div>
 
             <div class="mb-3">
               <%= f.label :password %>
               <em>(8文字以上で入力してください)</em>
               <br />
-              <%= f.password_field :password, class: 'user_password', autocomplete: "new-password", size: "50x10", placeholder: "パスワード" %>
+              <%= f.password_field :password, class: 'user_password', autocomplete: "new-password", placeholder: "パスワード" %>
               <input type="checkbox" class="toggle_password_checkbox"> 表示
             </div>
             <!--div class="mb-3">
