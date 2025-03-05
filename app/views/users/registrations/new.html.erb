@@ -14,18 +14,18 @@
             <%= render "devise/shared/error_messages", resource: @user %>
             <div class="mb-3 mt-3">
               <%= f.label :name %><br />
-              <%= f.text_field :name, required: true, size: "50x10", placeholder: "名前" %>
+              <%= f.text_field :name, required: true, placeholder: "名前" %>
             </div>
             <div class="mb-3">
               <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50x10", placeholder: "メールアドレス" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
             </div>
             <div class="mb-3">
               <%= f.label :password %>
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
               <% end %><br />
-              <%= f.password_field :password, class: 'user_password', autocomplete: "new-password", size: "50x10", placeholder: "パスワード" %>
+              <%= f.password_field :password, class: 'user_password', autocomplete: "new-password", placeholder: "パスワード" %>
               <input type="checkbox" class="toggle_password_checkbox"> 表示
             </div>
             <div class="mb-3">
@@ -38,7 +38,6 @@
               <%= f.submit "新規登録", class: "btn btn-primary" %>
             </div>
           <% end %>
-          <br >
           <%= render "users/shared/links" %>
         </div>
       </div>
