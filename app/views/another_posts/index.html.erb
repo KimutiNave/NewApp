@@ -7,11 +7,10 @@
 
 <div class="font-arrange"><div class="text-left"><i class="fa-solid fa-wand-magic-sparkles"></i>エラー用の記事一覧<i class="fas fa-dove"></i></div></div>
 <div class="posts-container">
-  <div class="col-lg-5 offset-lg-1">
     <% if @another_posts.present? %>
       <% @another_posts.each do |another_post| %>
-        <div class="card" style="width: 40rem;">
-          <h5 class="card-title"><%= another_post.error_type_name %></h5>
+        <div class="card mb-2">
+          <h5 class="card-title" ><%= another_post.error_type_name %></h5>
           <h6 class="card-subtitle mb-2 text-body-secondary"><%= another_post.title %></h6>
           <ul class="list-group list-group-flush">
             <% if another_post.status_error_name.present? %>
@@ -33,12 +32,12 @@
           </ul>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              <p class="card-text"><%= another_post.code_content %></p>
+              <p class="card-text" id="limit-str"><%= another_post.code_content %></p>
             </blockquote>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              <p class="card-text"><%= another_post.other_content %></p>
+              <p class="card-text" id="limit-tex"><%= another_post.other_content %></p>
             </blockquote>
           </div>
           <div class="card-body"><%= another_post.created_at.strftime("%B %d, %Y %H:%M") %></div>
@@ -65,7 +64,6 @@
         </div>
       <% end %>
     <% end %>
-  </div>
 </div>
 <br />
 <div class="center"><%= paginate @another_posts, theme: 'bootstrap-5'%></div>
