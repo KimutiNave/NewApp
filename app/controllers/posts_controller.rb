@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
     @q = current_user.posts.ransack(params[:q])
-    @posts = @q.result(distinct: true).includes(:user, :file_type, :bookmarks).order(created_at: :desc).page(params[:page])
+    @posts = @q.result(distinct: true).includes(:user, :file_type).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -51,6 +51,16 @@ class PostsController < ApplicationController
   def bookmarks
     @q = current_user.bookmark_posts.ransack(params[:q])
     @bookmark_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+  end
+
+  def bookmark_search
+    @bookmark_posts = current_user.bookmark_posts.includes(:user, :file_type)
+    .joins(:file_type)
+    .where("CAST(title AS text) LIKE ? OR CAST(other_file_name AS text) LIKE ? OR CAST(file_types.file_name AS text) LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    .distinct
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show

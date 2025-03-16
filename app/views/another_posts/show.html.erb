@@ -45,14 +45,14 @@
         </li>
       <% end %>
       <br>
-      <p class="card-text">
+      <p class="card-text" id="font-limit">
         <div class="fo2">コード内容:</div>
-        <div class="fo3"><%= @another_post.code_content %></div>
+        <div class="fo4"><%= @another_post.code_content %></div>
       </p>
       <br>
       <p class="card-text">
         <div class="fo2">その他:</div>
-        <div class="fo3"><%= @another_post.other_content %></div>
+        <div class="fo4"><%= @another_post.other_content %></div>
       </p>
       <div class="card-body"> 
         <%= link_to edit_another_post_path(@another_post), id: "button-edit-#{@another_post.id}", data: { turbo: false } do%> 
