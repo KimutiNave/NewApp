@@ -50,6 +50,13 @@ class AnotherPostsController < ApplicationController
     @favorite_another_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
+  def favotite_search
+    @favorite_another_posts = current_user.favorite_another_posts.includes(:user, :file_type).joins(:file_type).where("CAST(status_error_name AS text) LIKE ? OR CAST(other_error_name AS text) LIKE ? OR CAST(title AS text) LIKE ?  OR CAST(other_file_name AS text) LIKE ? OR CAST(file_types.file_name AS text) LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%").distinct
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     @another_post = current_user.another_posts.find(params[:id])
   end

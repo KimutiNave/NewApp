@@ -1,0 +1,6 @@
+<% all_bookmark_values = @bookmark_posts.map { |bookmark_post| [bookmark_post.title, bookmark_post.other_file_name, bookmark_post.file_type&.file_name ] }.flatten.uniq %>
+<% all_bookmark_values.each do |all_bookmark_value| %>
+  <% if all_bookmark_value.present? %>
+    <li class="list-group-item" role="option" data-autocomplete-value="<%= all_bookmark_value %>"><%= all_bookmark_value %></li>
+  <% end %>
+<% end %>

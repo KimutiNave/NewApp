@@ -1,0 +1,6 @@
+<% favorite_values = @favorite_another_posts.map { |favorite_another_post| [ favorite_another_post.status_error_name, favorite_another_post.other_error_name, favorite_another_post.title, favorite_another_post.other_file_name, favorite_another_post.file_type&.file_name ] }.flatten.uniq %>
+<% favorite_values.each do |favorite_value| %>
+  <% if favorite_value.present? %>
+    <li class="list-group-item" role="option" data-autocomplete-value="<%= favorite_value %>"><%= favorite_value %></li>
+  <% end %>
+<% end %>

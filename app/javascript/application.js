@@ -18,3 +18,5 @@ import 'custom/other_option';
 import 'original/other_option';
 import 'original/navbar_custum';
 import './users/toggle_password';
+import 'custom/text_limit';
+import 'original/font_change';

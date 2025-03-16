@@ -2,18 +2,7 @@
   <div class="text-left"><i class="fas fa-tags"></i>お気に入りの記事一覧<i class="fas fa-thumbs-up"></i></div>
 </div>
 <div class="center">
-  <%= search_form_for @q, url: favorites_another_posts_path do |f| %>
-    <div data-controller="autocomplete" data-autocomplete-url-value="/posts/search" role="combobox">
-      <%= f.search_field :error_type_name_or_file_type_file_name_or_status_error_name_or_other_error_name_or_title_or_code_content_or_other_content_cont, data: { autocomplete_target: "input" }, type: "text", class: "form-control", placeholder: "ファイル名とタイトル検索" %>
-      <%= f.hidden_field :error_type_name_or_file_type_file_name_or_status_error_name_or_other_error_name_or_title_or_code_content_or_other_content_cont, data: { autocomplete_target: 'hidden' } %>
-      <ul class="list-group" style="max-height: 10rem; overflow-y: scroll;" data-autocomplete-target="results"></ul>
-    </div>
-    <%= f.label :created_at_gteq, '投稿日から' %>
-    <%= f.date_field :created_at_gteq %>
-    <%= f.label :created_at_lteq, '投稿日まで' %>
-    <%= f.date_field :created_at_lteq, class: "mt-2"%>
-    <%= f.submit "検索", class: "btn btn-primary" %>
-  <% end %>
+  <%= render 'another_posts/favorite_search_anotherpost', url: favotite_search_another_posts_path%>
 </div>
 
 <div class="text-left"><%= link_to "エラー用メモ一覧に戻る", another_posts_path, data: { turbo: false },  class: "btn btn-primary mt-5 " %> </div>
@@ -21,7 +10,7 @@
 <div class="bookmark-box">
   <% @favorite_another_posts.each do |another_post| %> 
     <div class="bookmark-box">
-      <div class="card" style="width: 40rem;">
+      <div class="card">
         <h5 class="card-title"><%= another_post.title %></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary"><%= another_post.error_type_name %></h6>
         <ul class="list-group list-group-flush">

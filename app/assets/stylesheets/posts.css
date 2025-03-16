@@ -10,10 +10,13 @@
   right: 100px;
   font-size: 15px;
 }
-.form-group{
-  text-align: center;
-  justify-content: space-around;
-  font-size: 15pt;
+
+@media screen and (min-width: 481px) {
+  .form-group{
+    text-align: center;
+    justify-content: space-around;
+    font-size: 15pt;
+  }
 }
 
 .hidden{
@@ -21,10 +24,12 @@
   justify-content: center;
 }
 
-.font-arrange {
-  border-bottom: 3px dashed #000;
-  font-size: 20px;
-  margin: 8px;
+@media screen and (min-width: 481px) {
+  .font-arrange {
+    border-bottom: 3px dashed #000;
+    font-size: 20px;
+    margin: 8px;
+  }
 }
 .text-left{
   text-align: left;
@@ -42,20 +47,24 @@
   padding-left: 10px;
 }
 
-.posts-container {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  margin-left: 10px;
-  flex-shrink: 0;
+@media screen and (min-width: 481px) {
+  .posts-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
 }
-.search-container{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-left: 5px;
+@media screen and (min-width: 481px) {
+  .search-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: 5px;
+  }
 }
 
 .bookmark-box{
