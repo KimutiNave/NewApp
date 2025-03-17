@@ -73,7 +73,7 @@ h4 {
   font-weight: bold;
 }
 h5{
-  font-size: unquote('min(1vw, 16px)');
+  font-size: unquote('clamp(1rem, 1vw, 2.5rem)');
 }
 
 @media screen and (min-width: 481px) {
