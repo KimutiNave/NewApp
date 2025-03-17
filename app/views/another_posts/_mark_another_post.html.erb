@@ -14,6 +14,14 @@
         <h5 class="card-title"><%= another_post.title %></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary"><%= another_post.error_type_name %></h6>
         <ul class="list-group list-group-flush">
+          <% if another_post.status_error_name.present? %>
+            <li class="list-group-item"><%= another_post.status_error_name %></li>
+          <% else %>
+            <li class="list-group-item"><%= " " %></li>
+          <% end%>
+          <li class="list-group-item"><%= another_post.other_error_name %></li>
+        </ul>
+        <ul class="list-group list-group-flush">
           <% if another_post.file_type.present? %>
             <li class="list-group-item"><%= another_post.file_type.file_name %></li>
           <% else %>
