@@ -10,7 +10,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
       Rails.application.env_config['omniauth.auth'] = twitter_mock
       visit category_path
       expect(page).to_not have_content('新しいメモを作る')
-      find_link('X(Twitter)でログイン', href: '/users/auth/twitter2').click
+      find_link('X(Twitter) でログイン', href: '/users/auth/twitter2').click
       expect(page).to have_content('新しいメモを作る')
     end
   end
