@@ -1,5 +1,5 @@
 ## 残しておきたいRailsのコードを保存できるアプリ　「Railsめも」
-<a href="https://gyazo.com/4b83dc974f3738287e8bc04774b58dc7"><img src="https://i.gyazo.com/4b83dc974f3738287e8bc04774b58dc7.png" alt="Image from Gyazo" width="1400"/></a>
+<a href="https://gyazo.com/4b83dc974f3738287e8bc04774b58dc7"><img src="https://i.gyazo.com/4b83dc974f3738287e8bc04774b58dc7.png" alt="Image from Gyazo" width="500"/></a>
 
 ## ■アプリURL
 https://rails-memo.com/
