@@ -7,10 +7,10 @@
 
 <div class="text-left"><%= link_to "保存用メモ一覧に戻る", posts_path, data: { turbo: false },  class: "btn btn-primary mt-5 " %> </div>
 
-<div class="bookmark-box">
+<div class="center">
   <% @bookmark_posts.each do |post| %> 
-    <div class="bookmark-box">
-      <div class="card">
+    <div class="center mt-5">
+      <div class="card" style="min-width: 50rem; max-width: 100rem;">
         <h5 class="card-title"><%= post.title %></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.save_type_name %></h6>
         <ul class="list-group list-group-flush">

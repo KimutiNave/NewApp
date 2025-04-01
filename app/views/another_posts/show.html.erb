@@ -1,5 +1,5 @@
-<div class="center mt-2">
-  <div class="card">
+<div class="center mt-5">
+  <div class="card" style="width: 100rem;">
     <div class="card-body">
       <div class="fo1"><%= @another_post.title %></div>
       <ul class="list-group list-group-flush">
@@ -47,11 +47,11 @@
       <br>
       <p class="card-text">
         <div class="fo2">コード内容:</div>
-        <div class="fo4"><%= @another_post.code_content %></div>
+        <div class="fo3"><%= @another_post.code_content %></div>
       </p>
       <p class="card-text">
         <div class="fo2">その他:</div>
-        <div class="fo4"><%= @another_post.other_content %></div>
+        <div class="fo3"><%= @another_post.other_content %></div>
       </p>
       <div class="card-body"> 
         <%= link_to edit_another_post_path(@another_post), id: "button-edit-#{@another_post.id}", data: { turbo: false } do%> 

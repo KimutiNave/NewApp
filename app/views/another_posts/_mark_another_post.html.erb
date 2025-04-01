@@ -7,10 +7,10 @@
 
 <div class="text-left"><%= link_to "エラー用メモ一覧に戻る", another_posts_path, data: { turbo: false },  class: "btn btn-primary mt-5 " %> </div>
 
-<div class="bookmark-box">
+<div class="center">
   <% @favorite_another_posts.each do |another_post| %> 
-    <div class="bookmark-box">
-      <div class="card">
+    <div class="center mt-3">
+      <div class="card" style="min-width: 50rem; max-width: 100rem;">
         <h5 class="card-title"><%= another_post.title %></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary"><%= another_post.error_type_name %></h6>
         <ul class="list-group list-group-flush">
