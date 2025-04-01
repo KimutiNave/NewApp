@@ -1,6 +1,8 @@
 ## 残しておきたいRailsのコードを保存できるアプリ　「Railsめも」
-<a href="https://gyazo.com/4b83dc974f3738287e8bc04774b58dc7"><img src="https://i.gyazo.com/4b83dc974f3738287e8bc04774b58dc7.png" alt="Image from Gyazo" width="500"/></a>
-
+<table>
+  <td><a href="https://gyazo.com/4b83dc974f3738287e8bc04774b58dc7"><img src="https://i.gyazo.com/4b83dc974f3738287e8bc04774b58dc7.png" alt="Image from Gyazo" width="500"/></a></td>
+  <td><a href="https://gyazo.com/a1f02e46a93c69629cd960bc7f40ac5a"><img src="https://i.gyazo.com/a1f02e46a93c69629cd960bc7f40ac5a.gif" alt="Image from Gyazo" width="400"/></a></td>
+</table>
 ## ■アプリURL
 https://rails-memo.com/
 
@@ -27,6 +29,8 @@ controller‥など記載しなくても選択でcontrollerやmodelなど記載�
 ## ■ おすすめしたいユーザー
 記載したコードを消さずに取っておきたい人、メモに保存してもメモの量が多くなりコードをどこに記載したか分からなくなってしまう人向け
 
+## ■ ER図
+[![Image from Gyazo](https://i.gyazo.com/bbcc9d39b86153a8410c3e3f60bc2a09.png)](https://gyazo.com/bbcc9d39b86153a8410c3e3f60bc2a09)
 ## ■ 機能一覧
 - ユーザー登録、ログイン機能(devise)
 - SNSログイン機能(omniauth-twitter2 & omniauth-google-oauth2 & omniauth-rails_csrf_protection)
