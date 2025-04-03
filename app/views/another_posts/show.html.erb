@@ -1,7 +1,7 @@
 <div class="center mt-5">
-  <div class="card" style="width: 100rem;">
+  <div class="card" style="max-width: 100rem;">
     <div class="card-body">
-      <div class="fo1"><%= @another_post.title %></div>
+      <div class="fo1"><%= safe_join(@another_post.title.split("\n"),tag(:br)) %></div>
       <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <div class="fo2">カテゴリー:</div>
@@ -19,7 +19,7 @@
       <% if @another_post.other_error_name.present? %>
         <li class="list-group-item">
           <div class="fo2">その他のエラー名:</div>
-          <p><div class="fo2"><%= @another_post.other_error_name %></div></p>
+          <p><div class="fo2"><%= safe_join(@another_post.other_error_name.split("\n"),tag(:br)) %></div></p>
         </li>
       <%else%>
         <li class="list-group-item">
@@ -41,17 +41,17 @@
       <% if @another_post.other_file_name.present? %>
         <li class="list-group-item">
           <div class="fo2">その他のファイル名:</div>
-          <p><div class="fo3"><%= @another_post.other_file_name %></div></p>
+          <p><div class="fo3"><%= safe_join(@another_post.other_file_name.split("\n"),tag(:br)) %></div></p>
         </li>
       <% end %>
       <br>
       <p class="card-text">
         <div class="fo2">コード内容:</div>
-        <div class="fo3"><%= @another_post.code_content %></div>
+        <div class="fo3"><%= safe_join(@another_post.code_content.split("\n"),tag(:br)) %></div>
       </p>
       <p class="card-text">
         <div class="fo2">その他:</div>
-        <div class="fo3"><%= @another_post.other_content %></div>
+        <div class="fo3"><%= safe_join(@another_post.other_content.split("\n"),tag(:br)) %></div>
       </p>
       <div class="card-body"> 
         <%= link_to edit_another_post_path(@another_post), id: "button-edit-#{@another_post.id}", data: { turbo: false } do%> 
