@@ -9,16 +9,16 @@
 <div class="posts-container">
     <% if @another_posts.present? %>
       <% @another_posts.each do |another_post| %>
-        <div class="card mb-2">
+        <div class="card mb-2" style="max-width: 100rem; max-height: 100rem;">
           <h5 class="card-title" ><%= another_post.error_type_name %></h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary"><%= another_post.title %></h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary"><%= safe_join(another_post.title.split("\n"),tag(:br)) %></h6>
           <ul class="list-group list-group-flush">
             <% if another_post.status_error_name.present? %>
               <li class="list-group-item"><%= another_post.status_error_name %></li>
             <% else %>
               <li class="list-group-item"><%= " " %></li>
             <% end%>
-            <li class="list-group-item"><%= another_post.other_error_name %></li>
+            <li class="list-group-item"><%= safe_join(another_post.other_error_name.split("\n"),tag(:br)) %></li>
           </ul>
           <ul class="list-group list-group-flush">
             <% if another_post.file_type.present? %>
@@ -28,16 +28,16 @@
             <% end %>
           </ul>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= another_post.other_file_name %></li>
+            <li class="list-group-item"><%= safe_join(another_post.other_file_name.split("\n"),tag(:br)) %></li>
           </ul>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              <p class="card-text" id="limit-str"><%= another_post.code_content %></p>
+              <p class="card-text" id="limit-str"><%= safe_join(another_post.code_content.split("\n"),tag(:br)) %></p>
             </blockquote>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              <p class="card-text" id="limit-tex"><%= another_post.other_content %></p>
+              <p class="card-text" id="limit-tex"><%= safe_join(another_post.other_content.split("\n"),tag(:br)) %></p>
             </blockquote>
           </div>
           <div class="card-body"><%= another_post.created_at.strftime("%B %d, %Y %H:%M") %></div>

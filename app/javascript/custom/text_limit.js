@@ -1,6 +1,6 @@
 document.addEventListener('turbo:load', function() {
   const els = document.getElementsByClassName('card-text');
-  const len = 1000;
+  const len = 500;
 
   for(let i = 0; i < els.length; i++) {
     const el = els[i];
