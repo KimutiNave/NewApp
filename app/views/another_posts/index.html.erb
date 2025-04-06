@@ -9,7 +9,7 @@
 <div class="posts-container">
     <% if @another_posts.present? %>
       <% @another_posts.each do |another_post| %>
-        <div class="card mb-2" style="max-width: 100rem; max-height: 100rem;">
+        <div class="card mb-2" style="max-width: 100rem;">
           <h5 class="card-title" ><%= another_post.error_type_name %></h5>
           <h6 class="card-subtitle mb-2 text-body-secondary"><%= safe_join(another_post.title.split("\n"),tag(:br)) %></h6>
           <ul class="list-group list-group-flush">

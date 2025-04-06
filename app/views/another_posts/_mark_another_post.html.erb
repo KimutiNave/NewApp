@@ -10,7 +10,7 @@
 <div class="center">
   <% @favorite_another_posts.each do |another_post| %> 
     <div class="center mt-3">
-      <div class="card" style="min-width: 50rem; max-width: 100rem;">
+      <div class="card" style="max-width: 100rem;">
         <h5 class="card-title"><%= safe_join(another_post.title.split("\n"),tag(:br)) %></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary"><%= another_post.error_type_name %></h6>
         <ul class="list-group list-group-flush">
