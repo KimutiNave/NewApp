@@ -8,7 +8,6 @@ LABEL fly_launch_runtime="rails"
 
 # Rails app lives here
 WORKDIR /rails
-
 # Set production environment
 ENV BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
