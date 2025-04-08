@@ -22,7 +22,7 @@
     </div>
   </div>
 </nav>
-<div class="top-adjust"> 
+<div style="center"> 
   <div class="form-group me-3">
     <%= I18n.l Time.zone.now, format: :full_date  %>
   </div>
@@ -46,17 +46,17 @@
     </div>
     <br>
     <div class="form-group">
-      <%= f.text_area :other_file_name, id: "post_other_content", style: "min-width: 250px", class: "hidden" %>
+      <%= f.text_area :other_file_name, id: "post_other_content", style: "width: 40%", class: "hidden" %>
     </div>
     <br>
     <div class="form-group">
       <%= f.label :code_content, 'コード内容' %><br>
-      <%= f.text_area :code_content, style: "width:40%", rows: "30" %>
+      <%= f.text_area :code_content, style: "width: 40%;", rows: "30" %>
     </div>
     <br>
     <div class="form-group">
       <%= f.label :other_content, 'その他' %><br>
-      <%= f.text_area :other_content, style: "width:40%", rows: "10"  %>
+      <%= f.text_area :other_content, style: "width: 40%;", rows: "10" %>
     </div>
     <br>
     <div class="form-group">
