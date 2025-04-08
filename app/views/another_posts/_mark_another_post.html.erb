@@ -5,9 +5,9 @@
   <%= render 'another_posts/favorite_search_anotherpost', url: favotite_search_another_posts_path%>
 </div>
 
-<div class="text-left"><%= link_to "エラー用メモ一覧に戻る", another_posts_path, data: { turbo: false },  class: "btn btn-success mt-5" %> </div>
+<div class="text-left"><%= link_to "エラー用メモ一覧に戻る", another_posts_path, data: { turbo: false },  class: "btn btn-success mt-5 " %> </div>
 
-<div class="center">
+<div style="posts-container">
   <% @favorite_another_posts.each do |another_post| %> 
     <div class="center mt-3">
       <div class="card" style="max-width: 65%;">

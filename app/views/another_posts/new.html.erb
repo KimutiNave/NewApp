@@ -23,60 +23,63 @@
   </div>
 </nav>
 <div class="center"> 
-  <div class="form-group  me-3">
+  <div class="form-group me-3">
     <%= I18n.l Time.zone.now, format: :full_date  %>
   </div>
 </div>
 <br />
-<%= form_with model: @another_post_form, url: another_posts_path, class: "fst-normal", local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :error_type_name, 'カテゴリー' %><br>
-    <%= f.text_field :error_type_name, value: 'エラー用', style: "text-align: center;", readonly: true %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :status_error_name, 'エラー名' %><br>
-    <%= f.select :status_error_name, options_for_select(AnotherPost.status_error_names.keys.map { |k| [k.humanize, k] }) , include_blank: true %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.text_area :other_error_name, id: "error_post_other_content", style: "width: 40%", class: "hidden" %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :title, 'タイトル' %><br>
-    <%= f.text_field :title %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :file_name, 'ファイル名' %><br>
-    <%= f.collection_select :file_type_id, FileType.all, :id, :file_name, include_blank: true %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.text_area :other_file_name, id: "another_post_other_content", style: "width: 30%", class: "hidden"  %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :code_content, 'コード内容' %><br>
-    <%= f.text_area :code_content, style: "width:40%", rows: "30" %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :other_content, 'その他' %><br>
-    <%= f.text_area :other_content, style: "width:40%", rows: "10"  %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :notice_days, "リマインド通知", class: "center mt-3"%>
-    <%= f.select :notice_days, AnotherPost.notice_days.keys.map {|k| [I18n.t("enums.another_post.notice_days.#{k}"), k]} %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.hidden_field :confirmn, boolean: false %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.submit 'メモを作成', class: "btn btn-success", data: { turbo: false } %>
-  </div>
-<% end %>
+<div style="center">
+  <%= form_with model: @another_post_form, url: another_posts_path, class: "fst-normal", local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :error_type_name, 'カテゴリー' %><br>
+      <%= f.text_field :error_type_name, value: 'エラー用', style: "text-align: center;", readonly: true %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.label :status_error_name, 'エラー名' %><br>
+      <%= f.select :status_error_name, options_for_select(AnotherPost.status_error_names.keys.map { |k| [k.humanize, k] }) , include_blank: true %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.text_area :other_error_name, id: "error_post_other_content", style: "width: 40%", class: "hidden" %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.label :title, 'タイトル' %><br>
+      <%= f.text_field :title %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.label :file_name, 'ファイル名' %><br>
+      <%= f.collection_select :file_type_id, FileType.all, :id, :file_name, include_blank: true %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.text_area :other_file_name, id: "another_post_other_content", style: "width: 30%", class: "hidden"  %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.label :code_content, 'コード内容' %><br>
+      <%= f.text_area :code_content, style: "width:40%", rows: "30" %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.label :other_content, 'その他' %><br>
+      <%= f.text_area :other_content, style: "width:40%", rows: "10"  %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.label :notice_days, "リマインド通知", class: "center mt-3"%>
+      <%= f.select :notice_days, AnotherPost.notice_days.keys.map {|k| [I18n.t("enums.another_post.notice_days.#{k}"), k]} %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.hidden_field :confirmn, boolean: false %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.submit 'メモを作成', class: "btn btn-success", data: { turbo: false } %>
+    </div>
+  <% end %>
+</div>
+
