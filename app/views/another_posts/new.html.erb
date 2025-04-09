@@ -28,7 +28,7 @@
   </div>
 </div>
 <br />
-<div style="center">
+<div class="d-flex flex-column">
   <%= form_with model: @another_post_form, url: another_posts_path, class: "fst-normal", local: true do |f| %>
     <div class="form-group">
       <%= f.label :error_type_name, 'カテゴリー' %><br>

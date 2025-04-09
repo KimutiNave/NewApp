@@ -36,6 +36,11 @@
   margin-left: 10px;
 }
 
+.left-text{
+  text-align: left;
+  margin-left: 20px;
+}
+
 [data-controller="autocomplete"] {
   display: inline-block; /* コンテナをインラインブロック要素として扱う */
   width: 300px; /* 適切な幅に設定 */

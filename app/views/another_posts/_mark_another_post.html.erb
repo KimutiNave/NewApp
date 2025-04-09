@@ -1,13 +1,11 @@
 <div class="font-arrange">
   <div class="text-left"><i class="fas fa-tags"></i>お気に入りの記事一覧<i class="fas fa-thumbs-up"></i></div>
 </div>
-<div class="center">
+<div class="d-flex justify-content-center" style="margin: 18px;">
   <%= render 'another_posts/favorite_search_anotherpost', url: favotite_search_another_posts_path%>
 </div>
-
-<div class="text-left"><%= link_to "エラー用メモ一覧に戻る", another_posts_path, data: { turbo: false },  class: "btn btn-success mt-5 " %> </div>
-
-<div style="posts-container">
+<div class="left-text"><%= link_to "エラー用メモ一覧に戻る", another_posts_path, data: { turbo: false },  class: "btn btn-success mt-5 " %> </div>
+<div class="d-flex flex-column" style="margin: 18px;">
   <% @favorite_another_posts.each do |another_post| %> 
     <div class="center mt-3">
       <div class="card" style="max-width: 65%;">
