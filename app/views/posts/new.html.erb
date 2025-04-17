@@ -28,11 +28,11 @@
   </div>
 </div>
 <br />
-<div class="d-flex flex-column" style="margin: 50px;">
+<div class="d-flex flex-column" style="margin: 50px">
   <%= form_with model: @post_form, url: posts_path, class: "fst-normal", local: true do |f| %>
     <div class="form-group">
       <%= f.label :save_type_name, 'カテゴリー' %><br>
-      <%= f.text_field :save_type_name, value: '保存用', style: "text-align: center;", readonly: true %>
+      
     </div>
     <br>
     <div class="form-group">
@@ -51,12 +51,12 @@
     <br>
     <div class="form-group">
       <%= f.label :code_content, 'コード内容' %><br>
-      <%= f.text_area :code_content, style: "width: 40%;", rows: "30" %>
+      <%= f.text_area :code_content, style: "width: 40%; aligin-item: center;", rows: "30" %>
     </div>
     <br>
     <div class="form-group">
       <%= f.label :other_content, 'その他' %><br>
-      <%= f.text_area :other_content, style: "width: 40%;", rows: "10" %>
+      <%= f.text_area :other_content, style: "width: 40%; aligin-item: center;", rows: "10" %>
     </div>
     <br>
     <div class="form-group">

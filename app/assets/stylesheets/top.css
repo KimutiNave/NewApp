@@ -4,8 +4,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: #fff;
     z-index: -1;
   }
@@ -106,7 +106,7 @@ h5{
   }
   .text-label {
     display: inline-block;
-    width: 100;
+    width: 100%;
     color: #364e96;/*文字色*/
     border: solid 3px #364e96;/*線色*/
     padding: 0.5em;/*文字周りの余白*/
@@ -139,14 +139,15 @@ h5{
     background: #4e9fc8;  
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
     width: 100%;
-    height:100vh;
+    min-height:100vh;
+    background-attachment: fixed;
   }
 
   .shape li{
     position: absolute;
     display: block;
     list-style: none;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(1, 85, 211, 0.2);
     height: 100%;
     width: 100%;
     clip-path: polygon(55% 0, 100% 100%, 0 55%);
