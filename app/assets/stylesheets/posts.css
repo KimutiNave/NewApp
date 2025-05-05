@@ -11,7 +11,7 @@
   font-size: 15px;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .form-group{
     text-align: center;
     justify-content: space-around;
@@ -24,7 +24,7 @@
   justify-content: center;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .font-arrange {
     border-bottom: 3px dashed #000;
     font-size: 20px;
@@ -52,7 +52,7 @@
   padding-left: 10px;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .posts-container {
     display: flex;
     flex-flow: column;
@@ -63,7 +63,7 @@
     flex-shrink: 0;
   }
 }
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .search-container{
     display: flex;
     justify-content: center;

@@ -1,5 +1,5 @@
 /*背景*/
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .bg_pattern {
     position: fixed;
     top: 0;
@@ -10,7 +10,8 @@
     z-index: -1;
   }
 }
-@media screen and (min-width: 481px) {
+
+@media screen and (min-width: 320px) {
   .Paper_v2 {
     background-image:
       repeating-linear-gradient(to bottom,
@@ -76,42 +77,40 @@ h5{
   font-size: unquote('clamp(1rem, 1vw, 2.5rem)');
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .center{
     display: flex;
     justify-content: center;
   }
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .font-arrange {
     border-bottom: 3px dashed #000;
     text-align: center;
     font-size: 30px;
   }
 }
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .haikei{
     background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%); 
   }
 }
 
-@media screen and (min-width: 481px) {
-  .tophead{
-    display: center;
-  }
+@media screen and (min-width: 320px) {
   .center-text {
     text-align: center;
-    margin: 200px;
+    margin: 10%;
   }
   .text-label {
     display: inline-block;
-    width: 100%;
+    max-width: 100%;
     color: #364e96;/*文字色*/
     border: solid 3px #364e96;/*線色*/
     padding: 0.5em;/*文字周りの余白*/
     border-radius: 0.5em;/*角丸*/
     font-size: 2.5em;
+    z-index: 1;
   }
   .center-context{
     text-align: center;
@@ -125,7 +124,7 @@ h5{
   }
 }
 
-@media (min-width: 481px) {
+@media screen and (min-width: 320px) {
   .shape{
     position: absolute;
     top: 0;
@@ -133,14 +132,7 @@ h5{
     height: 100%;
     width: 100%;
     overflow: hidden;
-  }
-
-  .area{
-    background: #4e9fc8;  
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
-    width: 100%;
-    min-height:100vh;
-    background-attachment: fixed;
+    z-index: -1;
   }
 
   .shape li{
@@ -156,8 +148,8 @@ h5{
   }
   .shape li:nth-child(1){
     left: 25%;
-    width: 80px;
-    height: 80px;
+    width: 180px;
+    height: 180px;
     animation-delay: 0s;
   }
   .shape li:nth-child(2){
