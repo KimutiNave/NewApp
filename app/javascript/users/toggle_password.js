@@ -3,6 +3,8 @@ document.addEventListener('turbo:load', function() {
   const password = document.querySelector('.user_password');
   const confirmCheckbox = document.querySelector('.toggle_password_confirmation');
   const passconfirm = document.querySelector('.user_password_confirmation');
+  const currentpassCheckbox = document.querySelector('.toggle_password_current');
+  const currentpass = document.querySelector('.user_current_password');
 
   // パスワードフィールドの表示・非表示
   if (passwordCheckbox && password) {
@@ -19,6 +21,12 @@ document.addEventListener('turbo:load', function() {
       confirmCheckbox.nextSibling.textContent = confirmCheckbox.checked ? '非表示' : '表示';
     });
   }
-});
 
-console.log("ADE")
+  // 現在のパスワード確認表示・非表示
+  if (currentpassCheckbox && currentpass){
+    currentpassCheckbox.addEventListener('change', () =>{
+      currentpass.type = currentpassCheckbox.checked ? 'text' : 'password';
+      currentpassCheckbox.nextSibling.textContent = currentpassCheckbox.checked ?  '非表示' : '表示';
+    });
+  }
+});

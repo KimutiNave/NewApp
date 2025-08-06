@@ -3,15 +3,15 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render '/users/shared/error_messages', resource: resource %>
 
-   <div class="center">
+  <div class="center mt-3">
     <div class="field mt-3">
-      <%= f.label :name %><br />
+      <%= f.label :name, "名前" %>
       <%= f.text_field :name, autofocus: true %>
     </div>
   </div>
   <div class="center">
     <div class="field mt-3">
-      <%= f.label :email %><br />
+      <%= f.label :email %>
       <%= f.email_field :email, autocomplete: "email" %>
     </div>
   </div>
@@ -24,20 +24,23 @@
   </div>
   <div class="center">
     <div class="field mt-3">
-      <%= f.label :password, "パスワード変更" %><i>(変更しない場合は空欄にして下さい)</i>
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数8文字以上" %>
+      <%= f.label :password, "パスワード変更" %><i>(変更しない場合は空欄にして下さい)</i><br>
+      <%= f.password_field :password, autocomplete: "new-password", class: "user_password", placeholder: "半角英数8文字以上" %>
+      <input type="checkbox" class="toggle_password_checkbox"> 表示
     </div>
   </div>
   <div class="center">
     <div class="field mt-3">
-      <%= f.label :password_confirmation, "パスワード変更(確認)" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "再度ご入力ください" %>
+      <%= f.label :password_confirmation, "パスワード変更(確認)" %><br>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "user_password_confirmation", placeholder: "再度ご入力ください" %>
+      <input type="checkbox" class="toggle_password_confirmation"> 表示
     </div>
   </div>
   <div class="center">
     <div class="field mt-3">
       <%= f.label :current_password %> <i>(変更にはパスワードが必要です)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password",class: "form-control", placeholder: "必須項目です" %>
+      <%= f.password_field :current_password, autocomplete: "current-password",class: "user_current_password", placeholder: "必須項目です" %>
+      <input type="checkbox" class="toggle_password_current"> 表示
     </div>
   </div>
   <div class="center">
@@ -45,14 +48,14 @@
       <%= f.submit "変更する", class: "btn btn-primary form-submit-btn" %>
     </div>
   </div>
-  <div class="center">
-    <div class="field mt-3">
-      <i class="fas fa-walking"></i><%= link_to "保存用メモ一覧に戻る", posts_path, data: { turbo: false } %>
-    </div>
-  </div>
-  <div class="center">
-    <div class="field mt-3">
-      <%= link_to "エラー用メモ一覧に戻る", another_posts_path, data: { turbo: false } %><i class="fas fa-walking"></i>
-    </div>
+
+  <div class="center mt-4">
+    <%= link_to posts_path, class: "btn btn-secondary me-3", data: { turbo: false } do %>
+      <i class="fas fa-walking"></i> 保存用メモ一覧に戻る
+    <% end %>
+
+    <%= link_to another_posts_path, class: "btn btn-secondary", data: { turbo: false } do %>
+      エラー用メモ一覧に戻る <i class="fas fa-walking"></i>
+    <% end %>
   </div>
 <% end %>
